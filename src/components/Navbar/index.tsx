@@ -23,7 +23,7 @@ export default function NavBar() {
 
   return (
     <nav
-      className=" mb-5 flex items-center justify-evenly gap-10 bg-gray-800 p-3"
+      className=" mb-5 flex items-center justify-evenly gap-10  p-3"
       aria-label="Main Navigation -z-30"
     >
       <div className="flex w-1/3 justify-end">

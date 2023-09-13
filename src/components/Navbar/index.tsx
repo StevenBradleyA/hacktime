@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+
 import clock from "../../../public/photos/clock.png";
+import { useEffect, useState } from "react";
 export default function NavBar() {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
 
@@ -23,18 +24,32 @@ export default function NavBar() {
 
   return (
     <nav
-      className=" mb-5 flex items-center justify-evenly gap-10  p-3"
+      className=" font-aeonik mb-5 flex items-center justify-between gap-10 px-20 pt-10 text-lg"
       aria-label="Main Navigation -z-30"
     >
-      <div className="flex w-1/3 justify-end">
+      <Link href="/" aria-label="Home" className="text-4xl">
+        HackTime
+      </Link>
+      <div className="flex gap-5">
         <Link href="/" aria-label="Home">
-          <Image alt="home" src={clock} className="mb-2 w-10" />
+          <button className="rounded-3xl bg-white px-6 py-2">LET'S CHAT</button>
+        </Link>
+
+        <Link href="/" aria-label="Home">
+          <button className="rounded-3xl bg-white px-6 py-2">MENU</button>
         </Link>
       </div>
-      <div className="flex w-1/3 justify-center">
+    </nav>
+  );
+}
+
+/*
+ <div className="flex justify-center">
         <Link href="/" aria-label="Home">
           <div className="flex flex-col items-center justify-center">
-            <div className=" text-center text-5xl  mono: ['var(--font-roboto-mono)'],">HackTime</div>
+            <div className=" mono: ['var(--font-roboto-mono)'],  text-center text-5xl">
+              HackTime
+            </div>
 
             <div
               className="border-t-2  text-xs"
@@ -46,9 +61,8 @@ export default function NavBar() {
           </div>
         </Link>
       </div>
-      {/* 01101000 01100001 01100011 01101011 01110100 01101001 01101101 01100101 */}
 
-      <div className="ju flex w-1/3 gap-10">
+  <div className="flex gap-10">
         <Link href="/steven" aria-label="Pricing">
           <div className="flex flex-col">
             <div className=" relative top-2 flex justify-end text-xs"> 00</div>
@@ -69,6 +83,7 @@ export default function NavBar() {
           </div>
         </Link>
       </div>
-    </nav>
-  );
-}
+
+
+
+*/

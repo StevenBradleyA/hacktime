@@ -3,7 +3,7 @@ import NavBar from "./Navbar";
 
 import localFont from "next/font/local";
 const myFont = localFont({
-  src: "../../public/fonts/Aeonik/AeonikRegular.otf", 
+  src: "../../public/fonts/Aeonik/AeonikRegular.otf", // Specify the correct path to your font file.
   display: "swap",
   variable: "--font-aeonik",
 });

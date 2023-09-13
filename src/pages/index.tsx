@@ -12,7 +12,7 @@ export default function Home() {
 
       <div> it is hacktime</div>
 
-      <Spline scene="https://prod.spline.design/vC6L8LFnvRbgMcAo/scene.splinecode" />
+      {/* <Spline scene="https://prod.spline.design/vC6L8LFnvRbgMcAo/scene.splinecode" /> */}
     </>
   );
 }

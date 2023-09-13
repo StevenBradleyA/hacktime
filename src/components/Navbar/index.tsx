@@ -34,7 +34,7 @@ export default function NavBar() {
       <div className="flex w-1/3 justify-center">
         <Link href="/" aria-label="Home">
           <div className="flex flex-col items-center justify-center">
-            <div className=" text-center text-5xl">HackTime</div>
+            <div className=" text-center text-5xl  mono: ['var(--font-roboto-mono)'],">HackTime</div>
 
             <div
               className="border-t-2  text-xs"

@@ -4,6 +4,9 @@ export default {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        aeonik: ['var(--font-aeonik)'],
+      },
       textColor: {
         hacktime: "#00FF99",
       },

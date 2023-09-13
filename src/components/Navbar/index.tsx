@@ -24,7 +24,7 @@ export default function NavBar() {
 
   return (
     <nav
-      className=" font-aeonik mb-5 flex items-center justify-between gap-10 px-20 pt-10 text-lg"
+      className=" font-aeonik mb-5 flex items-center justify-between gap-10 px-20 pt-10 text-lg "
       aria-label="Main Navigation -z-30"
     >
       <Link href="/" aria-label="Home" className="text-4xl">

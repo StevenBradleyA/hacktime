@@ -18,7 +18,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </Head>
 
       <div
-        className={`flex min-h-screen flex-col bg-black text-green-500 ${myFont.className} `}
+        className={`bg-dark flex min-h-screen flex-col text-green-500 ${myFont.className} `}
       >
         <NavBar />
         <main className="flex flex-col items-center justify-center">

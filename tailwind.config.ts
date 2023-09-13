@@ -5,10 +5,15 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        aeonik: ['var(--font-aeonik)'],
+        aeonik: ["var(--font-aeonik)"],
       },
       textColor: {
         hacktime: "#00FF99",
+      },
+      backgroundColor: {
+        dark: "#1E1E1E",
+        slateBlack: "#202124",
+        charcoal: "#333",
       },
     },
   },

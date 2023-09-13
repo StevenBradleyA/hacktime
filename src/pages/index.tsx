@@ -1,5 +1,4 @@
 import Head from "next/head";
-// import Scene from "~/components/HackTimeLogo";
 import Spline from "@splinetool/react-spline";
 
 export default function Home() {
@@ -12,8 +11,6 @@ export default function Home() {
       </Head>
 
       <div> it is hacktime</div>
-
-      {/* <Scene /> */}
 
       <Spline scene="https://prod.spline.design/vC6L8LFnvRbgMcAo/scene.splinecode" />
     </>

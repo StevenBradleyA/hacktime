@@ -13,7 +13,8 @@ export default function Home() {
         <div className="relative h-3/4 w-full rounded-3xl bg-black">
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-75 transform ">
             <Spline
-              scene="https://draft.spline.design/PDUl8CbOC1qs-vDQ/scene.splinecode"
+              scene="https://draft.spline.design/j0eJgdDnboOd6Ng6/scene.splinecode"
+              // scene="https://draft.spline.design/PDUl8CbOC1qs-vDQ/scene.splinecode"
               // className=" outline-dashed"
             />
           </div>

@@ -8,7 +8,7 @@ export default {
         aeonik: ["var(--font-aeonik)"],
       },
       textColor: {
-        hacktime: "#00FF99",
+        neonTeal: "#00FF99",
       },
       backgroundColor: {
         dark: "#1E1E1E",

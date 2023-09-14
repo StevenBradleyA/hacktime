@@ -1,10 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
-
-import clock from "../../../public/photos/clock.png";
 import { useEffect, useState } from "react";
+
 export default function NavBar() {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const [isSecondMenuClick, setIsSecondMenuClick] = useState<boolean>(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,6 +23,10 @@ export default function NavBar() {
     };
   }, []);
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <nav
       className=" font-aeonik mb-5 flex items-center justify-between gap-10 px-20 pt-10 text-lg "
@@ -30,14 +35,40 @@ export default function NavBar() {
       <Link href="/" aria-label="Home" className="text-4xl">
         HackTime
       </Link>
-      <div className="flex gap-5">
+      <div className="relative flex gap-5">
         <Link href="/" aria-label="Home">
           <button className="rounded-3xl bg-white px-6 py-2">LET'S CHAT</button>
         </Link>
 
-        <Link href="/" aria-label="Home">
-          <button className="rounded-3xl bg-white px-6 py-2">MENU</button>
-        </Link>
+        <button onClick={toggleMenu} className="rounded-3xl bg-white px-6 py-2">
+          MENU
+        </button>
+
+        {isMenuOpen && (
+          <div className="absolute z-30 mt-16  w-full flex-col text-3xl">
+            <div className=" flex flex-col gap-5 rounded-2xl bg-white p-5">
+              <div>HOME</div>
+              <div>ABOUT US</div>
+              <div>PROJECTS</div>
+              <div>CONTACT</div>
+            </div>
+            <div className="mt-5 flex flex-col gap-5 rounded-2xl bg-white p-5 ">
+              <div>Meet the Team</div>
+              <Link href="/steven" aria-label="Steven Profile">
+                <div className="relative flex">
+                  <div> {`// Steven`}</div>
+                  <div className="absolute bottom-5 right-20 text-sm ">00</div>
+                </div>
+              </Link>
+              <Link href="/zaviar" aria-label="Zaviar Profile">
+                <div className="relative flex">
+                  <div> {`// Zaviar`}</div>
+                  <div className="absolute bottom-5 right-24 text-sm ">01</div>
+                </div>
+              </Link>
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );

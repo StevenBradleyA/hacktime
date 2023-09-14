@@ -1,7 +1,22 @@
 import Head from "next/head";
 import Spline from "@splinetool/react-spline";
+import { useState } from "react";
 
 export default function Home() {
+  const [is3DHover, setIs3DHover] = useState<boolean>(false);
+
+  // Function to handle mouse enter event
+  const handle3DSceneMouseEnter = () => {
+    setIs3DHover(true);
+  };
+
+  // Function to handle mouse leave event
+  const handle3DSceneMouseLeave = () => {
+    setIs3DHover(false);
+  };
+
+  console.log(is3DHover);
+
   return (
     <>
       <Head>
@@ -17,20 +32,33 @@ export default function Home() {
       </div>
 
       <div className="mt-10 h-screen w-full flex-col items-center justify-center  px-20">
-        <div className="relative h-3/4 w-full rounded-3xl bg-black">
+        <div
+          className="relative h-3/4 w-full rounded-3xl bg-black"
+          onMouseEnter={handle3DSceneMouseEnter}
+          onMouseLeave={handle3DSceneMouseLeave}
+        >
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-75 transform ">
-            {/* <Spline
+            <Spline
               scene="https://draft.spline.design/j0eJgdDnboOd6Ng6/scene.splinecode"
               // className=" outline-dashed"
-            /> */}
+            />
           </div>
         </div>
-        <div className="flex w-full justify-between">
-          <div>00</div>
-          <div>01</div>
-          <div>00</div>
-          <div>01</div>
-        </div>
+        {is3DHover ? (
+          <div className="flex w-full justify-between">
+            <div>Hacktime</div>
+            <div>Hacktime</div>
+            <div>Hacktime</div>
+            <div>Hacktime</div>
+          </div>
+        ) : (
+          <div className="flex w-full justify-between">
+            <div>00</div>
+            <div>01</div>
+            <div>00</div>
+            <div>01</div>
+          </div>
+        )}
       </div>
     </>
   );

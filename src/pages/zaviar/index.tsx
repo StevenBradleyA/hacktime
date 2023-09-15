@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function ZaviarBrownProfile() {
   return (
-    <div className="mt-20 flex w-screen items-center justify-center ">
+    <div className="h-3/4 w-3/4 ">
       <motion.div
         initial={{ opacity: 1, x: -200 }}
         animate={{
@@ -14,10 +14,10 @@ export default function ZaviarBrownProfile() {
           duration: 3,
           type: "spring",
           stiffness: 75,
-          damping: 4
+          damping: 4,
         }}
       >
-        <Spline scene="https://prod.spline.design/rlJs00XkpmgtyfSU/scene.splinecode" />
+        <Spline scene="https://draft.spline.design/UNte7wVDLbwLYlon/scene.splinecode" />
       </motion.div>
     </div>
   );

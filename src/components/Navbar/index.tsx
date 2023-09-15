@@ -1,11 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 export default function NavBar() {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-  const [isSecondMenuClick, setIsSecondMenuClick] = useState<boolean>(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,14 +45,24 @@ export default function NavBar() {
         </button>
 
         {isMenuOpen && (
-          <div className="absolute z-30 mt-16  w-full flex-col text-3xl">
-            <div className=" flex flex-col gap-5 rounded-2xl bg-white p-5">
+          <div className="absolute z-30  mt-16 w-full flex-col text-3xl">
+            <motion.div
+              className=" first-menu flex flex-col gap-5 rounded-2xl bg-white p-5"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
               <div>HOME</div>
               <div>ABOUT US</div>
               <div>PROJECTS</div>
               <div>CONTACT</div>
-            </div>
-            <div className="mt-5 flex flex-col gap-5 rounded-2xl bg-white p-5 ">
+            </motion.div>
+            <motion.div
+              className=" second-menu mt-5 flex flex-col gap-5 rounded-2xl bg-white p-5 "
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
               <div>Meet the Team</div>
               <Link href="/steven" aria-label="Steven Profile">
                 <div className="relative flex">
@@ -66,7 +76,7 @@ export default function NavBar() {
                   <div className="absolute bottom-5 right-24 text-sm ">01</div>
                 </div>
               </Link>
-            </div>
+            </motion.div>
           </div>
         )}
       </div>

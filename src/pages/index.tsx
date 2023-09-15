@@ -1,21 +1,17 @@
 import Head from "next/head";
 import Spline from "@splinetool/react-spline";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const [is3DHover, setIs3DHover] = useState<boolean>(false);
 
-  // Function to handle mouse enter event
   const handle3DSceneMouseEnter = () => {
     setIs3DHover(true);
   };
 
-  // Function to handle mouse leave event
   const handle3DSceneMouseLeave = () => {
     setIs3DHover(false);
   };
-
-  console.log(is3DHover);
 
   return (
     <>
@@ -45,11 +41,11 @@ export default function Home() {
           </div>
         </div>
         {is3DHover ? (
-          <div className="flex w-full justify-between">
-            <div>Hacktime</div>
-            <div>Hacktime</div>
-            <div>Hacktime</div>
-            <div>Hacktime</div>
+          <div className="flex w-full justify-between overflow-hidden">
+            <span>Click me </span>
+            <span>Click me </span>
+            <span>Click me </span>
+            <span>Click me </span>
           </div>
         ) : (
           <div className="flex w-full justify-between">

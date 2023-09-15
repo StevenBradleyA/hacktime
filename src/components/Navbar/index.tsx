@@ -29,7 +29,7 @@ export default function NavBar() {
 
   return (
     <nav
-      className=" font-aeonik mb-5 flex items-center justify-between gap-10 px-20 pt-10 text-lg "
+      className=" mb-5 flex items-center justify-between gap-10 px-20 pt-10 font-aeonik text-lg "
       aria-label="Main Navigation -z-30"
     >
       <Link href="/" aria-label="Home" className="text-4xl">
@@ -49,23 +49,46 @@ export default function NavBar() {
             <motion.div
               className="absolute z-30 mt-16 w-full flex-col text-3xl"
               initial={{ opacity: 1, y: 100 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 150 }}
-              transition={{
-                duration: 0.5,
-                type: "spring",
-                stiffness: 100,
+              key={"menu-parent"}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: 0.75,
+                  type: "spring",
+                  stiffness: 100,
+                },
+              }}
+              exit={{
+                opacity: 0,
+                y: 125,
+                transition: {
+                  ease: "easeOut",
+                  duration: 1.5,
+                  y: { duration: 2 },
+                },
               }}
             >
               <motion.div
                 className="first-menu flex flex-col gap-5 rounded-2xl bg-white p-5"
+                key={"menu-top"}
                 initial={{ opacity: 1, rotate: -5 }}
                 animate={{ opacity: 1, rotate: 0 }}
-                exit={{ opacity: 0, rotate: 5 }}
+                exit={{
+                  opacity: 0,
+                  rotate: 5,
+                  transition: {
+                    ease: "easeOut",
+                    duration: 1.5,
+                    y: { duration: 2 },
+                  },
+                }}
               >
-                <motion.button className="flex justify-start">
-                  HOME
-                </motion.button>
+                <Link href="/" aria-label="Home">
+                  <motion.button className="flex justify-start">
+                    HOME
+                  </motion.button>
+                </Link>
                 <motion.button className="flex justify-start">
                   ABOUT US
                 </motion.button>
@@ -78,9 +101,18 @@ export default function NavBar() {
               </motion.div>
               <motion.div
                 className="second-menu mt-5 flex flex-col gap-5 rounded-2xl bg-white p-5"
+                key={"menu-bottom"}
                 initial={{ opacity: 1, rotate: 5 }}
                 animate={{ opacity: 1, rotate: 0 }}
-                exit={{ opacity: 0, rotate: -5 }}
+                exit={{
+                  opacity: 0,
+                  rotate: -5,
+                  transition: {
+                    ease: "easeOut",
+                    duration: 1.5,
+                    y: { duration: 2 },
+                  },
+                }}
               >
                 <div>Meet the Team</div>
                 <Link href="/steven" aria-label="Steven Profile">

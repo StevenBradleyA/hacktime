@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function NavBar() {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
@@ -44,41 +44,65 @@ export default function NavBar() {
           MENU
         </button>
 
-        {isMenuOpen && (
-          <div className="absolute z-30  mt-16 w-full flex-col text-3xl">
+        <AnimatePresence>
+          {isMenuOpen && (
             <motion.div
-              className=" first-menu flex flex-col gap-5 rounded-2xl bg-white p-5"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+              className="absolute z-30 mt-16 w-full flex-col text-3xl"
+              initial={{ opacity: 1, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 150 }}
+              transition={{
+                duration: 0.5,
+                type: "spring",
+                stiffness: 100,
+              }}
             >
-              <div>HOME</div>
-              <div>ABOUT US</div>
-              <div>PROJECTS</div>
-              <div>CONTACT</div>
+              <motion.div
+                className="first-menu flex flex-col gap-5 rounded-2xl bg-white p-5"
+                initial={{ opacity: 1, rotate: -5 }}
+                animate={{ opacity: 1, rotate: 0 }}
+                exit={{ opacity: 0, rotate: 5 }}
+              >
+                <motion.button className="flex justify-start">
+                  HOME
+                </motion.button>
+                <motion.button className="flex justify-start">
+                  ABOUT US
+                </motion.button>
+                <motion.button className="flex justify-start">
+                  PROJECTS
+                </motion.button>
+                <motion.button className="flex justify-start">
+                  CONTACT
+                </motion.button>
+              </motion.div>
+              <motion.div
+                className="second-menu mt-5 flex flex-col gap-5 rounded-2xl bg-white p-5"
+                initial={{ opacity: 1, rotate: 5 }}
+                animate={{ opacity: 1, rotate: 0 }}
+                exit={{ opacity: 0, rotate: -5 }}
+              >
+                <div>Meet the Team</div>
+                <Link href="/steven" aria-label="Steven Profile">
+                  <div className="relative flex">
+                    <div> {`// Steven`}</div>
+                    <div className="absolute bottom-5 right-20 text-sm ">
+                      00
+                    </div>
+                  </div>
+                </Link>
+                <Link href="/zaviar" aria-label="Zaviar Profile">
+                  <div className="relative flex">
+                    <div> {`// Zaviar`}</div>
+                    <div className="absolute bottom-5 right-24 text-sm ">
+                      01
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
             </motion.div>
-            <motion.div
-              className=" second-menu mt-5 flex flex-col gap-5 rounded-2xl bg-white p-5 "
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            >
-              <div>Meet the Team</div>
-              <Link href="/steven" aria-label="Steven Profile">
-                <div className="relative flex">
-                  <div> {`// Steven`}</div>
-                  <div className="absolute bottom-5 right-20 text-sm ">00</div>
-                </div>
-              </Link>
-              <Link href="/zaviar" aria-label="Zaviar Profile">
-                <div className="relative flex">
-                  <div> {`// Zaviar`}</div>
-                  <div className="absolute bottom-5 right-24 text-sm ">01</div>
-                </div>
-              </Link>
-            </motion.div>
-          </div>
-        )}
+          )}
+        </AnimatePresence>
       </div>
     </nav>
   );

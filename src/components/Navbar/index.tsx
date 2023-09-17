@@ -91,14 +91,15 @@ export default function NavBar() {
                     HOME
                   </motion.button>
                 </Link>
-                <motion.button className="flex justify-start">
-                  ABOUT US
-                </motion.button>
+                <Link href="/about-us" aria-label="projects">
+                  <motion.button className="flex justify-start">
+                    ABOUT US
+                  </motion.button>
+                </Link>
                 <Link href="/projects" aria-label="projects">
-
-                <motion.button className="flex justify-start">
-                  PROJECTS
-                </motion.button>
+                  <motion.button className="flex justify-start">
+                    PROJECTS
+                  </motion.button>
                 </Link>
                 <motion.button className="flex justify-start">
                   CONTACT

@@ -1,9 +1,7 @@
-
-
-export default function AboutUs (){
-    return (
-        <div>
-            <div className="text-9xl"> about us</div>
-        </div>
-    )
+export default function AboutUs() {
+  return (
+    <div>
+      <div className="text-9xl"> ABOUT US</div>
+    </div>
+  );
 }

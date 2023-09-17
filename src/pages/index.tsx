@@ -1,6 +1,13 @@
 import Head from "next/head";
 import Spline from "@splinetool/react-spline";
 import { useEffect, useState } from "react";
+import {
+  motion,
+  animate,
+  useMotionValue,
+  useTransform,
+  useAnimation,
+} from "framer-motion";
 
 export default function Home() {
   const [is3DHover, setIs3DHover] = useState<boolean>(false);
@@ -14,6 +21,21 @@ export default function Home() {
   };
 
   // TODO test resposive sizing with autozoom test moving it to different monitors as well
+  const [count, setCount] = useState(0);
+  const controls = useAnimation();
+
+  useEffect(() => {
+    const animateCount = () => {
+      let i = 0;
+      const interval = setInterval(() => {
+        i++;
+        setCount(i);
+        if (i === 100) clearInterval(interval);
+      }, 100); // Adjust the interval as needed (milliseconds)
+    };
+
+    animateCount();
+  }, []);
 
   return (
     <>
@@ -66,7 +88,10 @@ export default function Home() {
           <Spline scene="https://prod.spline.design/KLzdjlL6uWS9CbiJ/scene.splinecode" />
         </div>
       </div>
-      <div className="mt-40">hallo </div>
+      <div className="mb-40 mt-40 flex justify-between">
+        <motion.div className="w-1/3 text-5xl">{count} </motion.div>
+        <div className="text-6xl">Reasons to work with us</div>
+      </div>
     </>
   );
 }

@@ -11,7 +11,7 @@ export default function ZaviarBrownProfile() {
           x: 0,
         }}
         transition={{
-          duration: 3,
+          duration: 2,
           type: "spring",
           stiffness: 75,
           damping: 4,

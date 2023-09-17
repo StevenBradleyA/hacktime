@@ -13,6 +13,8 @@ export default function Home() {
     setIs3DHover(false);
   };
 
+  // TODO test resposive sizing with autozoom test moving it to different monitors as well
+
   return (
     <>
       <Head>
@@ -27,13 +29,13 @@ export default function Home() {
         <div>visions into online reality</div>
       </div>
 
-      <div className="mt-10 h-screen w-full flex-col items-center justify-center  px-20">
+      <div className="mt-10 h-screen w-full flex-col items-center justify-center   px-20">
         <div
           className="relative h-3/4 w-full rounded-3xl bg-black"
           onMouseEnter={handle3DSceneMouseEnter}
           onMouseLeave={handle3DSceneMouseLeave}
         >
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-75 transform ">
+          <div className="full:scale-95 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-75 transform ">
             <Spline
               scene="https://draft.spline.design/j0eJgdDnboOd6Ng6/scene.splinecode"
               // className=" outline-dashed"
@@ -56,6 +58,15 @@ export default function Home() {
           </div>
         )}
       </div>
+      <div className="flex w-full justify-evenly bg-dark px-20">
+        <div className="mt-30 w-1/3 text-8xl ">
+          Your Business is unique and your site should be too
+        </div>
+        <div className="flex h-[600px] w-1/4 items-center justify-center rounded-2xl bg-black px-10 shadow-2xl">
+          <Spline scene="https://prod.spline.design/KLzdjlL6uWS9CbiJ/scene.splinecode" />
+        </div>
+      </div>
+      <div className="mt-40">hallo </div>
     </>
   );
 }

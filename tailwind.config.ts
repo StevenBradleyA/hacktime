@@ -15,6 +15,11 @@ export default {
         slateBlack: "#202124",
         charcoal: "#333",
       },
+      screens: {
+        mobile: "320px",
+        full: "1920px",
+        ultrawide: "2560px",
+      },
     },
   },
   plugins: [],

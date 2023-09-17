@@ -60,7 +60,7 @@ export default function Home() {
       </div>
       <div className="flex w-full justify-evenly bg-dark px-20">
         <div className="mt-30 w-1/3 text-8xl ">
-          Your Business is unique and your site should be too
+          Your Business is unique so your site should be too
         </div>
         <div className="flex h-[600px] w-1/4 items-center justify-center rounded-2xl bg-black px-10 shadow-2xl">
           <Spline scene="https://prod.spline.design/KLzdjlL6uWS9CbiJ/scene.splinecode" />

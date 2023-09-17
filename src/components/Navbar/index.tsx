@@ -27,6 +27,8 @@ export default function NavBar() {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  // TODO need to make menu close off click and close when navigating to new link
+
   return (
     <nav
       className=" mb-5 flex items-center justify-between gap-10 px-20 pt-10 font-aeonik text-lg "
@@ -92,9 +94,12 @@ export default function NavBar() {
                 <motion.button className="flex justify-start">
                   ABOUT US
                 </motion.button>
+                <Link href="/projects" aria-label="projects">
+
                 <motion.button className="flex justify-start">
                   PROJECTS
                 </motion.button>
+                </Link>
                 <motion.button className="flex justify-start">
                   CONTACT
                 </motion.button>

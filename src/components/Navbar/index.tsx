@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
+import CircleNav from "../Icons/CircleNav";
 
 export default function NavBar() {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
@@ -12,20 +13,27 @@ export default function NavBar() {
   const [isAboutUs, setIsAboutUs] = useState(false);
   const [isProjects, setIsProjects] = useState(false);
   const [isContactUs, setIsContactUs] = useState(false);
+  const [isSteven, setIsSteven] = useState(false);
+  const [isZaviar, setIsZaviar] = useState(false);
 
   useEffect(() => {
     // Update state based on the current route
+
     setIsHome(router.pathname === "/");
     setIsAboutUs(router.pathname === "/about-us");
     setIsProjects(router.pathname === "/projects");
-    setIsContactUs(router.pathname === "/contact-us");
+    setIsContactUs(router.pathname === "/contact");
+    setIsSteven(router.pathname === "/steven");
+    setIsZaviar(router.pathname === "/zaviar");
 
     // Add event listener for route changes to update state variables
     const handleRouteChange = (url: string) => {
       setIsHome(url === "/");
       setIsAboutUs(url === "/about-us");
       setIsProjects(url === "/projects");
-      setIsContactUs(url === "/contact-us");
+      setIsContactUs(url === "/contact");
+      setIsSteven(url === "/steven");
+      setIsZaviar(url === "/zaviar");
     };
 
     router.events.on("routeChangeComplete", handleRouteChange);
@@ -116,24 +124,36 @@ export default function NavBar() {
                 }}
               >
                 <Link href="/" aria-label="Home">
-                  <motion.button className="flex justify-start">
-                    HOME
-                  </motion.button>
+                  <div className="flex items-center justify-between">
+                    <motion.button className="flex justify-start">
+                      HOME
+                    </motion.button>
+                    {isHome && <CircleNav />}
+                  </div>
                 </Link>
                 <Link href="/about-us" aria-label="projects">
-                  <motion.button className="flex justify-start">
-                    ABOUT US
-                  </motion.button>
+                  <div className="flex items-center justify-between">
+                    <motion.button className="flex justify-start">
+                      ABOUT US
+                    </motion.button>
+                    {isAboutUs && <CircleNav />}
+                  </div>
                 </Link>
                 <Link href="/projects" aria-label="projects">
-                  <motion.button className="flex justify-start">
-                    PROJECTS
-                  </motion.button>
+                  <div className="flex items-center justify-between">
+                    <motion.button className="flex justify-start">
+                      PROJECTS
+                    </motion.button>
+                    {isProjects && <CircleNav />}
+                  </div>
                 </Link>
                 <Link href="/contact" aria-label="contact">
-                  <motion.button className="flex justify-start">
-                    CONTACT
-                  </motion.button>
+                  <div className="flex items-center justify-between">
+                    <motion.button className="flex justify-start">
+                      CONTACT
+                    </motion.button>
+                    {isContactUs && <CircleNav />}
+                  </div>
                 </Link>
               </motion.div>
               <motion.div
@@ -153,19 +173,25 @@ export default function NavBar() {
               >
                 <div>Meet the Team</div>
                 <Link href="/steven" aria-label="Steven Profile">
-                  <div className="relative flex">
-                    <div> {`// Steven`}</div>
-                    <div className="absolute bottom-5 right-20 text-sm ">
-                      00
+                  <div className="flex items-center justify-between">
+                    <div className="relative flex">
+                      <div> {`// Steven`}</div>
+                      <div className="absolute -right-5 bottom-5 text-sm ">
+                        00
+                      </div>
                     </div>
+                    {isSteven && <CircleNav />}
                   </div>
                 </Link>
                 <Link href="/zaviar" aria-label="Zaviar Profile">
-                  <div className="relative flex">
-                    <div> {`// Zaviar`}</div>
-                    <div className="absolute bottom-5 right-24 text-sm ">
-                      01
+                  <div className="flex items-center justify-between">
+                    <div className="relative flex">
+                      <div> {`// Zaviar`}</div>
+                      <div className="absolute -right-5 bottom-5 text-sm ">
+                        01
+                      </div>
                     </div>
+                    {isZaviar && <CircleNav />}
                   </div>
                 </Link>
               </motion.div>

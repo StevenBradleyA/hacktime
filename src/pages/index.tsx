@@ -54,20 +54,8 @@ export default function Home() {
       </div>
 
       <div className="mt-10 h-screen w-full flex-col items-center justify-center   px-20">
-        <div
-          className="relative h-3/4 w-full rounded-3xl bg-black"
-          onMouseEnter={handle3DSceneMouseEnter}
-          onMouseLeave={handle3DSceneMouseLeave}
-        >
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-75 transform full:scale-95 ">
-            <Spline
-              scene="https://draft.spline.design/j0eJgdDnboOd6Ng6/scene.splinecode"
-              // className=" outline-dashed"
-            />
-          </div>
-        </div>
         {is3DHover ? (
-          <div className=" flex w-full gap-[15%] overflow-hidden bg-red-200 text-lg">
+          <div className=" flex h-7 w-full gap-[15%] overflow-hidden text-lg">
             <div className="move-left flex items-center gap-1">
               <PlayArrowIcon />
               <span className=" ml-2 inline-block">CLICK ME</span>
@@ -118,7 +106,74 @@ export default function Home() {
             </div>
           </div>
         ) : (
-          <div className="flex w-full justify-between">
+          <div className="flex h-7 w-full justify-between"></div>
+        )}
+
+        <div
+          className="relative h-3/4 w-full rounded-3xl bg-black"
+          onMouseEnter={handle3DSceneMouseEnter}
+          onMouseLeave={handle3DSceneMouseLeave}
+        >
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-75 transform full:scale-95 ">
+            <Spline
+              scene="https://draft.spline.design/j0eJgdDnboOd6Ng6/scene.splinecode"
+              // className=" outline-dashed"
+            />
+          </div>
+        </div>
+        {is3DHover ? (
+          <div className=" flex h-7 w-full gap-[15%] overflow-hidden text-lg">
+            <div className="move-right flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">CLICK ME</span>
+            </div>
+            <div className="move-right flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">CLICK ME</span>
+            </div>{" "}
+            <div className="move-right flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">CLICK ME</span>
+            </div>{" "}
+            <div className="move-right flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">CLICK ME</span>
+            </div>{" "}
+            <div className="move-right flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">CLICK ME</span>
+            </div>{" "}
+            <div className="move-right flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">CLICK ME</span>
+            </div>{" "}
+            <div className="move-right flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">CLICK ME</span>
+            </div>{" "}
+            <div className="move-right flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">CLICK ME</span>
+            </div>{" "}
+            <div className="move-right flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">CLICK ME</span>
+            </div>{" "}
+            <div className="move-right flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">CLICK ME</span>
+            </div>
+            <div className="move-right flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">CLICK ME</span>
+            </div>
+            <div className="move-right flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">CLICK ME</span>
+            </div>
+          </div>
+        ) : (
+          <div className="flex h-7 w-full justify-between">
             <div>00</div>
             <div>01</div>
             <div>00</div>

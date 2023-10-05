@@ -23,3 +23,17 @@
     transform: translateX(-2000%);
   }
 }
+
+.move-right {
+  white-space: nowrap;
+  animation: move-rt 15s linear infinite;
+}
+
+@keyframes move-rt {
+  0% {
+    transform: translateX(-2000%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}

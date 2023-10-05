@@ -8,6 +8,7 @@ import {
   useTransform,
   useAnimation,
 } from "framer-motion";
+import PlayArrowIcon from "~/components/Icons/PlayArrow";
 
 export default function Home() {
   const [is3DHover, setIs3DHover] = useState<boolean>(false);
@@ -24,6 +25,7 @@ export default function Home() {
   const [count, setCount] = useState(0);
   const controls = useAnimation();
 
+  // todo implement acceleration on count and instersect observer
   useEffect(() => {
     const animateCount = () => {
       let i = 0;
@@ -57,7 +59,7 @@ export default function Home() {
           onMouseEnter={handle3DSceneMouseEnter}
           onMouseLeave={handle3DSceneMouseLeave}
         >
-          <div className="full:scale-95 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-75 transform ">
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-75 transform full:scale-95 ">
             <Spline
               scene="https://draft.spline.design/j0eJgdDnboOd6Ng6/scene.splinecode"
               // className=" outline-dashed"
@@ -65,11 +67,55 @@ export default function Home() {
           </div>
         </div>
         {is3DHover ? (
-          <div className="flex w-full justify-between overflow-hidden">
-            <span>Click me </span>
-            <span>Click me </span>
-            <span>Click me </span>
-            <span>Click me </span>
+          <div className=" flex w-full gap-[15%] overflow-hidden bg-red-200 text-lg">
+            <div className="move-left flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">CLICK ME</span>
+            </div>
+            <div className="move-left flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">CLICK ME</span>
+            </div>{" "}
+            <div className="move-left flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">CLICK ME</span>
+            </div>{" "}
+            <div className="move-left flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">CLICK ME</span>
+            </div>{" "}
+            <div className="move-left flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">CLICK ME</span>
+            </div>{" "}
+            <div className="move-left flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">CLICK ME</span>
+            </div>{" "}
+            <div className="move-left flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">CLICK ME</span>
+            </div>{" "}
+            <div className="move-left flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">CLICK ME</span>
+            </div>{" "}
+            <div className="move-left flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">CLICK ME</span>
+            </div>{" "}
+            <div className="move-left flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">CLICK ME</span>
+            </div>
+            <div className="move-left flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">CLICK ME</span>
+            </div>
+            <div className="move-left flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">CLICK ME</span>
+            </div>
           </div>
         ) : (
           <div className="flex w-full justify-between">
@@ -77,6 +123,7 @@ export default function Home() {
             <div>01</div>
             <div>00</div>
             <div>01</div>
+            <div>00</div>
           </div>
         )}
       </div>
@@ -92,6 +139,16 @@ export default function Home() {
         <motion.div className="w-1/3 text-5xl">{count} </motion.div>
         <div className="text-6xl">Reasons to work with us</div>
       </div>
+      <div className="my-10 text-3xl">
+        {" "}
+        Sites that look great on mobile and all devices{" "}
+      </div>
+      <div>
+        Payment integration, email, text confirmations, cloud storage whatever
+        your business needs we can do it.
+      </div>
+      <div>Featured Work</div>
+      <div>cards here</div>
     </>
   );
 }

@@ -10,3 +10,16 @@
   text-shadow: 0 0 10px rgba(0, 255, 153, 0.7);
 }
 
+.move-left {
+  white-space: nowrap;
+  animation: move-lft 15s linear infinite;
+}
+
+@keyframes move-lft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-2000%);
+  }
+}

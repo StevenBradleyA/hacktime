@@ -2,26 +2,55 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useRouter } from "next/router";
 
 export default function NavBar() {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const router = useRouter();
+  const [isHome, setIsHome] = useState(false);
+  const [isAboutUs, setIsAboutUs] = useState(false);
+  const [isProjects, setIsProjects] = useState(false);
+  const [isContactUs, setIsContactUs] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+    // Update state based on the current route
+    setIsHome(router.pathname === "/");
+    setIsAboutUs(router.pathname === "/about-us");
+    setIsProjects(router.pathname === "/projects");
+    setIsContactUs(router.pathname === "/contact-us");
+
+    // Add event listener for route changes to update state variables
+    const handleRouteChange = (url: string) => {
+      setIsHome(url === "/");
+      setIsAboutUs(url === "/about-us");
+      setIsProjects(url === "/projects");
+      setIsContactUs(url === "/contact-us");
     };
 
-    window.addEventListener("scroll", handleScroll);
+    router.events.on("routeChangeComplete", handleRouteChange);
 
+    // Cleanup the event listener on component unmount
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      router.events.off("routeChangeComplete", handleRouteChange);
     };
-  }, []);
+  }, [router.pathname]);
+
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     if (window.scrollY > 10) {
+  //       setIsScrolled(true);
+  //     } else {
+  //       setIsScrolled(false);
+  //     }
+  //   };
+
+  //   window.addEventListener("scroll", handleScroll);
+
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -101,9 +130,11 @@ export default function NavBar() {
                     PROJECTS
                   </motion.button>
                 </Link>
-                <motion.button className="flex justify-start">
-                  CONTACT
-                </motion.button>
+                <Link href="/contact" aria-label="contact">
+                  <motion.button className="flex justify-start">
+                    CONTACT
+                  </motion.button>
+                </Link>
               </motion.div>
               <motion.div
                 className="second-menu mt-5 flex flex-col gap-5 rounded-2xl bg-white p-5"

@@ -88,9 +88,12 @@ export default function Home() {
         <div className="text-6xl">Reasons to work with us</div>
       </div>
       <div className="my-10 text-3xl">
-        {" "}
-        Sites that look great on mobile and all devices{" "}
+        Sites that look great on mobile and all devices
       </div>
+      <div className="my-10 text-3xl">
+        Our sites are search engine optimized so your business will get clicks
+      </div>
+      <div className="my-10 text-3xl">Your success is our success</div>
       <div>
         Payment integration, email, text confirmations, cloud storage whatever
         your business needs we can do it.

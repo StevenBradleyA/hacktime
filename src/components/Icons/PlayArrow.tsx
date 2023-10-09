@@ -28,3 +28,125 @@ const PlayArrowIcon = () => (
 );
 
 export default PlayArrowIcon;
+
+/*
+{is3DHover ? (
+          <div className=" flex h-7 w-full gap-[15%] overflow-hidden text-lg">
+            <div className="move-left flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">PLAY</span>
+            </div>
+            <div className="move-left flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">PLAY</span>
+            </div>{" "}
+            <div className="move-left flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">PLAY</span>
+            </div>{" "}
+            <div className="move-left flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">PLAY</span>
+            </div>{" "}
+            <div className="move-left flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">PLAY</span>
+            </div>{" "}
+            <div className="move-left flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">PLAY</span>
+            </div>{" "}
+            <div className="move-left flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">PLAY</span>
+            </div>{" "}
+            <div className="move-left flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">PLAY</span>
+            </div>{" "}
+            <div className="move-left flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">PLAY</span>
+            </div>{" "}
+            <div className="move-left flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">PLAY</span>
+            </div>
+            <div className="move-left flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">PLAY</span>
+            </div>
+            <div className="move-left flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">PLAY</span>
+            </div>
+          </div>
+        ) : (
+          <div className="flex h-7 w-full justify-between"></div>
+        )}
+
+ {is3DHover ? (
+          <div className=" flex h-7 w-full gap-[15%] overflow-hidden text-lg">
+            <div className="move-right flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">PLAY</span>
+            </div>
+            <div className="move-right flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">PLAY</span>
+            </div>{" "}
+            <div className="move-right flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">PLAY</span>
+            </div>{" "}
+            <div className="move-right flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">PLAY</span>
+            </div>{" "}
+            <div className="move-right flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">PLAY</span>
+            </div>{" "}
+            <div className="move-right flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">PLAY</span>
+            </div>{" "}
+            <div className="move-right flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">PLAY</span>
+            </div>{" "}
+            <div className="move-right flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">PLAY</span>
+            </div>{" "}
+            <div className="move-right flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">PLAY</span>
+            </div>{" "}
+            <div className="move-right flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">PLAY</span>
+            </div>
+            <div className="move-right flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">PLAY</span>
+            </div>
+            <div className="move-right flex items-center gap-1">
+              <PlayArrowIcon />
+              <span className=" ml-2 inline-block">PLAY</span>
+            </div>
+          </div>
+        ) : (
+          <div className="flex h-7 w-full justify-between">
+            <div>00</div>
+            <div>01</div>
+            <div>00</div>
+            <div>01</div>
+            <div>00</div>
+          </div>
+        )}
+
+
+
+
+*/

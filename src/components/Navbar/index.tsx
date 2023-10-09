@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
 import CircleNav from "../Icons/CircleNav";
@@ -8,6 +8,9 @@ import CircleNav from "../Icons/CircleNav";
 export default function NavBar() {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const menuRef = useRef<HTMLDivElement | null>(null);
+  const menuButtonRef = useRef<HTMLDivElement | null>(null);
+
   const router = useRouter();
   const [isHome, setIsHome] = useState(false);
   const [isAboutUs, setIsAboutUs] = useState(false);
@@ -17,8 +20,6 @@ export default function NavBar() {
   const [isZaviar, setIsZaviar] = useState(false);
 
   useEffect(() => {
-    // Update state based on the current route
-
     setIsHome(router.pathname === "/");
     setIsAboutUs(router.pathname === "/about-us");
     setIsProjects(router.pathname === "/projects");
@@ -26,7 +27,6 @@ export default function NavBar() {
     setIsSteven(router.pathname === "/steven");
     setIsZaviar(router.pathname === "/zaviar");
 
-    // Add event listener for route changes to update state variables
     const handleRouteChange = (url: string) => {
       setIsHome(url === "/");
       setIsAboutUs(url === "/about-us");
@@ -38,31 +38,38 @@ export default function NavBar() {
 
     router.events.on("routeChangeComplete", handleRouteChange);
 
-    // Cleanup the event listener on component unmount
     return () => {
       router.events.off("routeChangeComplete", handleRouteChange);
     };
   }, [router.pathname]);
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     if (window.scrollY > 10) {
-  //       setIsScrolled(true);
-  //     } else {
-  //       setIsScrolled(false);
-  //     }
-  //   };
-
-  //   window.addEventListener("scroll", handleScroll);
-
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, []);
-
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  const handleClose = useCallback(() => {
+    setIsMenuOpen(false);
+  }, []);
+
+  const handleOutsideClick = (e: MouseEvent) => {
+    if (
+      isMenuOpen &&
+      menuRef.current &&
+      !menuRef.current.contains(e.target as Node) &&
+      menuButtonRef.current &&
+      !menuButtonRef.current.contains(e.target as Node)
+    ) {
+      handleClose();
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("mousedown", handleOutsideClick);
+
+    return () => {
+      window.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [isMenuOpen, handleClose]);
 
   // TODO need to make menu close off click and close when navigating to new link
 
@@ -79,13 +86,18 @@ export default function NavBar() {
           <button className="rounded-3xl bg-white px-6 py-2">LET'S CHAT</button>
         </Link>
 
-        <button onClick={toggleMenu} className="rounded-3xl bg-white px-6 py-2">
+        <button
+          onClick={toggleMenu}
+          ref={menuButtonRef}
+          className="rounded-3xl bg-white px-6 py-2"
+        >
           MENU
         </button>
 
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
+              ref={menuRef}
               className="absolute z-30 mt-16 w-full flex-col text-3xl"
               initial={{ opacity: 1, y: 100 }}
               key={"menu-parent"}
@@ -123,7 +135,7 @@ export default function NavBar() {
                   },
                 }}
               >
-                <Link href="/" aria-label="Home">
+                <Link href="/" aria-label="Home" onClick={handleClose}>
                   <div className="flex items-center justify-between">
                     <motion.button className="flex justify-start">
                       HOME
@@ -131,7 +143,11 @@ export default function NavBar() {
                     {isHome && <CircleNav />}
                   </div>
                 </Link>
-                <Link href="/about-us" aria-label="projects">
+                <Link
+                  href="/about-us"
+                  aria-label="projects"
+                  onClick={handleClose}
+                >
                   <div className="flex items-center justify-between">
                     <motion.button className="flex justify-start">
                       ABOUT US
@@ -139,7 +155,11 @@ export default function NavBar() {
                     {isAboutUs && <CircleNav />}
                   </div>
                 </Link>
-                <Link href="/projects" aria-label="projects">
+                <Link
+                  href="/projects"
+                  aria-label="projects"
+                  onClick={handleClose}
+                >
                   <div className="flex items-center justify-between">
                     <motion.button className="flex justify-start">
                       PROJECTS
@@ -147,7 +167,11 @@ export default function NavBar() {
                     {isProjects && <CircleNav />}
                   </div>
                 </Link>
-                <Link href="/contact" aria-label="contact">
+                <Link
+                  href="/contact"
+                  aria-label="contact"
+                  onClick={handleClose}
+                >
                   <div className="flex items-center justify-between">
                     <motion.button className="flex justify-start">
                       CONTACT
@@ -172,7 +196,11 @@ export default function NavBar() {
                 }}
               >
                 <div>Meet the Team</div>
-                <Link href="/steven" aria-label="Steven Profile">
+                <Link
+                  href="/steven"
+                  aria-label="Steven Profile"
+                  onClick={handleClose}
+                >
                   <div className="flex items-center justify-between">
                     <div className="relative flex">
                       <div> {`// Steven`}</div>
@@ -183,7 +211,11 @@ export default function NavBar() {
                     {isSteven && <CircleNav />}
                   </div>
                 </Link>
-                <Link href="/zaviar" aria-label="Zaviar Profile">
+                <Link
+                  href="/zaviar"
+                  aria-label="Zaviar Profile"
+                  onClick={handleClose}
+                >
                   <div className="flex items-center justify-between">
                     <div className="relative flex">
                       <div> {`// Zaviar`}</div>

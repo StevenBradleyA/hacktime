@@ -10,6 +10,8 @@
   text-shadow: 0 0 10px rgba(0, 255, 153, 0.7);
 }
 
+/* -----     PLAY button animation     ----- */
+/* 
 .move-left {
   white-space: nowrap;
   animation: move-lft 15s linear infinite;
@@ -36,4 +38,6 @@
   100% {
     transform: translateX(0%);
   }
-}
+} */
+
+/* -----          ----- */

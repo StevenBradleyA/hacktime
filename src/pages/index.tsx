@@ -9,8 +9,13 @@ import {
   useAnimation,
 } from "framer-motion";
 import PlayArrowIcon from "~/components/Icons/PlayArrow";
+import temporary from "@public/Homepage/_f4b1680f-f1c9-478f-b70e-bacd25904b37.jpg";
+import Image from "next/image";
 
 export default function Home() {
+  // todo enable scroll on 3D scene
+  // todo what is background had the matrix falling when clicked for the 3d scene? could be cool?
+
   const [is3DHover, setIs3DHover] = useState<boolean>(false);
 
   const handle3DSceneMouseEnter = () => {
@@ -53,7 +58,7 @@ export default function Home() {
         <div>visions into online reality</div>
       </div>
 
-      <div className="mt-10 h-screen w-full flex-col items-center justify-center   px-20">
+      <div className="mt-10 h-screen w-full flex-col items-center justify-center  px-20">
         <div className="flex h-7 w-full justify-between"></div>
 
         <div
@@ -75,6 +80,20 @@ export default function Home() {
           <div>01</div>
         </div>
       </div>
+
+      <div className="flex w-full justify-between px-20 ">
+        <Image src={temporary} alt="temp photo" className="w-80" />
+        <div className="flex-col">
+          <div className="my-10 text-3xl">
+            Sites that look great on mobile and all devices
+          </div>
+          <div className="my-10 text-3xl">
+            Our sites are search engine optimized so your business will get
+            clicks
+          </div>
+        </div>
+      </div>
+
       <div className="flex w-full justify-evenly bg-dark px-20">
         <div className="mt-30 w-1/3 text-8xl ">
           Your Business is unique so your site should be too

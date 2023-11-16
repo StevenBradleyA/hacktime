@@ -9,7 +9,7 @@ export default function NavBar() {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
-  const menuButtonRef = useRef<HTMLDivElement | null>(null);
+  const menuButtonRef = useRef<HTMLButtonElement | null>(null);
 
   const router = useRouter();
   const [isHome, setIsHome] = useState(false);
@@ -51,17 +51,20 @@ export default function NavBar() {
     setIsMenuOpen(false);
   }, []);
 
-  const handleOutsideClick = (e: MouseEvent) => {
-    if (
-      isMenuOpen &&
-      menuRef.current &&
-      !menuRef.current.contains(e.target as Node) &&
-      menuButtonRef.current &&
-      !menuButtonRef.current.contains(e.target as Node)
-    ) {
-      handleClose();
-    }
-  };
+  const handleOutsideClick = useCallback(
+    (e: MouseEvent) => {
+      if (
+        isMenuOpen &&
+        menuRef.current &&
+        !menuRef.current.contains(e.target as Node) &&
+        menuButtonRef.current &&
+        !menuButtonRef.current.contains(e.target as Node)
+      ) {
+        handleClose();
+      }
+    },
+    [isMenuOpen, handleClose],
+  );
 
   useEffect(() => {
     window.addEventListener("mousedown", handleOutsideClick);
@@ -69,9 +72,11 @@ export default function NavBar() {
     return () => {
       window.removeEventListener("mousedown", handleOutsideClick);
     };
-  }, [isMenuOpen, handleClose]);
+  }, [isMenuOpen, handleClose, handleOutsideClick]);
 
-  // TODO need to make menu close off click and close when navigating to new link
+  // TODO add menu hover animations for clickable links on the drop down
+  // todo add a indicator for when the menu is open or closed
+  // todo sound effects????
 
   return (
     <nav

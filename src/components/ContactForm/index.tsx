@@ -34,7 +34,7 @@ export default function ContactForm({ closeModal }: ContactFormProps) {
       </div>
 
       <div>What kind of site do you want us to build for you?</div>
-      <input />
+      <textarea />
 
       <div>{`What's your email?`} </div>
       <input />

@@ -12,6 +12,7 @@ import PlayArrowIcon from "~/components/Icons/PlayArrow";
 import temporary from "@public/Homepage/_f4b1680f-f1c9-478f-b70e-bacd25904b37.jpg";
 import Image from "next/image";
 
+
 export default function Home() {
   // todo enable scroll on 3D scene
   // todo what is background had the matrix falling when clicked for the 3d scene? could be cool?
@@ -82,7 +83,7 @@ export default function Home() {
       </div>
       <div className="w-full flex-col px-20">
 
-        
+
         <div className="flex w-full justify-between ">
           <Image src={temporary} alt="temp photo" className="w-80" />
           <div className="flex-col">

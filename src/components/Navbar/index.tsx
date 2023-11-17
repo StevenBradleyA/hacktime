@@ -4,20 +4,31 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
 import CircleNav from "../Icons/CircleNav";
+import ModalDialog from "../Modal";
+import ContactForm from "../ContactForm";
 
 export default function NavBar() {
-  const [isScrolled, setIsScrolled] = useState<boolean>(false);
-  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const menuButtonRef = useRef<HTMLButtonElement | null>(null);
-
   const router = useRouter();
-  const [isHome, setIsHome] = useState(false);
-  const [isAboutUs, setIsAboutUs] = useState(false);
-  const [isProjects, setIsProjects] = useState(false);
-  const [isContactUs, setIsContactUs] = useState(false);
-  const [isSteven, setIsSteven] = useState(false);
-  const [isZaviar, setIsZaviar] = useState(false);
+
+  // const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const [isHome, setIsHome] = useState<boolean>(false);
+  const [isAboutUs, setIsAboutUs] = useState<boolean>(false);
+  const [isProjects, setIsProjects] = useState<boolean>(false);
+  const [isContactUs, setIsContactUs] = useState<boolean>(false);
+  const [isSteven, setIsSteven] = useState<boolean>(false);
+  const [isZaviar, setIsZaviar] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   useEffect(() => {
     setIsHome(router.pathname === "/");
@@ -88,16 +99,27 @@ export default function NavBar() {
       </Link>
       <div className="relative flex gap-5">
         <Link href="/" aria-label="Home">
-          <button className="rounded-3xl bg-white px-6 py-2">LET'S CHAT</button>
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className="rounded-3xl bg-white px-6 py-2"
+            onClick={openModal}
+          >{`LET'S CHAT`}</motion.button>
         </Link>
+        <ModalDialog isOpen={isModalOpen} onClose={closeModal}>
+                        
+          <ContactForm  closeModal={closeModal} />
+        </ModalDialog>
 
-        <button
+        <motion.button
           onClick={toggleMenu}
           ref={menuButtonRef}
           className="rounded-3xl bg-white px-6 py-2"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
         >
           MENU
-        </button>
+        </motion.button>
 
         <AnimatePresence>
           {isMenuOpen && (

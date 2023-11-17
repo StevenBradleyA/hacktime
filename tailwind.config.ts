@@ -12,6 +12,7 @@ export default {
       },
       backgroundColor: {
         dark: "#1E1E1E",
+        keeby: "#222",
         slateBlack: "#202124",
         charcoal: "#333",
       },

@@ -80,45 +80,48 @@ export default function Home() {
           <div>01</div>
         </div>
       </div>
+      <div className="w-full flex-col px-20">
 
-      <div className="flex w-full justify-between px-20 ">
-        <Image src={temporary} alt="temp photo" className="w-80" />
-        <div className="flex-col">
-          <div className="my-10 text-3xl">
-            Sites that look great on mobile and all devices
-          </div>
-          <div className="my-10 text-3xl">
-            Our sites are search engine optimized so your business will get
-            clicks
+        
+        <div className="flex w-full justify-between ">
+          <Image src={temporary} alt="temp photo" className="w-80" />
+          <div className="flex-col">
+            <div className="my-10 text-3xl">
+              Sites that look great on mobile and all devices
+            </div>
+            <div className="my-10 text-3xl">
+              Our sites are search engine optimized so your business will get
+              clicks
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="flex w-full justify-evenly bg-dark px-20">
-        <div className="mt-30 w-1/3 text-8xl ">
-          Your Business is unique so your site should be too
+        <div className="flex w-full justify-evenly bg-dark">
+          <div className="mt-30 w-1/3 text-8xl ">
+            Your Business is unique so your site should be too
+          </div>
+          <div className="flex h-[600px] w-1/4 items-center justify-center rounded-2xl bg-black px-10 shadow-2xl">
+            <Spline scene="https://prod.spline.design/KLzdjlL6uWS9CbiJ/scene.splinecode" />
+          </div>
         </div>
-        <div className="flex h-[600px] w-1/4 items-center justify-center rounded-2xl bg-black px-10 shadow-2xl">
-          <Spline scene="https://prod.spline.design/KLzdjlL6uWS9CbiJ/scene.splinecode" />
+        <div className="mb-40 mt-40 flex justify-between">
+          <motion.div className="w-1/3 text-5xl">{count} </motion.div>
+          <div className="text-6xl">Reasons to work with us</div>
         </div>
+        <div className="my-10 text-3xl">
+          Sites that look great on mobile and all devices
+        </div>
+        <div className="my-10 text-3xl">
+          Our sites are search engine optimized so your business will get clicks
+        </div>
+        <div className="my-10 text-3xl">Your success is our success</div>
+        <div>
+          Payment integration, email, text confirmations, cloud storage whatever
+          your business needs we can do it.
+        </div>
+        <div>Featured Work</div>
+        <div>cards here</div>
       </div>
-      <div className="mb-40 mt-40 flex justify-between">
-        <motion.div className="w-1/3 text-5xl">{count} </motion.div>
-        <div className="text-6xl">Reasons to work with us</div>
-      </div>
-      <div className="my-10 text-3xl">
-        Sites that look great on mobile and all devices
-      </div>
-      <div className="my-10 text-3xl">
-        Our sites are search engine optimized so your business will get clicks
-      </div>
-      <div className="my-10 text-3xl">Your success is our success</div>
-      <div>
-        Payment integration, email, text confirmations, cloud storage whatever
-        your business needs we can do it.
-      </div>
-      <div>Featured Work</div>
-      <div>cards here</div>
     </>
   );
 }

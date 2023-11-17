@@ -57,6 +57,14 @@ model User {
     sessions      Session[]
 }
 
+model Request {
+    id     String @id @default(cuid())
+    budget String
+    email  String
+    text   String
+}
+
+
 model VerificationToken {
     identifier String
     token      String   @unique

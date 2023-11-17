@@ -35,4 +35,11 @@ https://www.efinitytech.com/newsletter-cms.aspx
 
 
 
+
+Text reminders Email confirmation, instagram feed, google maps. Whatever you want on your site we can make it happen. 
+creating newsletter
+acquiring domains 
+special admin properties? 
+creating 
+
  -->

@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, easeOut, motion, useAnimation } from "framer-motion";
 import { useRouter } from "next/router";
 import CircleNav from "../Icons/CircleNav";
+import MenuArrow from "../Icons/menuArrow";
 import ModalDialog from "../Modal";
 import ContactForm from "../ContactForm";
 
@@ -89,24 +90,6 @@ export default function NavBar() {
   // todo add a indicator for when the menu is open or closed
   // todo sound effects????
 
-  const [isAnimationPlaying, setIsAnimationPlaying] = useState(false);
-
-  const divAnimationControls = useAnimation();
-
-  const divAnimationVariants = {
-    init: {
-      y: 0,
-      opacity: 1,
-    },
-    anim: {
-      y: [-25, 25, 0],
-      opacity: [1, 0, 1],
-      transition: {
-        type: easeOut,
-      },
-    },
-  };
-
   return (
     <nav
       className=" mb-5 flex items-center justify-between gap-10 px-20 pt-10 font-aeonik text-lg "
@@ -181,7 +164,7 @@ export default function NavBar() {
               >
                 <Link href="/" aria-label="Home" onClick={handleClose}>
                   <div className="flex items-center justify-between">
-                    <motion.button className="flex justify-start">
+                    <motion.button className="flex w-full justify-start bg-red-200">
                       HOME
                     </motion.button>
                     {isHome && <CircleNav />}
@@ -193,7 +176,7 @@ export default function NavBar() {
                   onClick={handleClose}
                 >
                   <div className="flex items-center justify-between">
-                    <motion.button className="flex justify-start">
+                    <motion.button className="flex w-full justify-start bg-red-200">
                       ABOUT US
                     </motion.button>
                     {isAboutUs && <CircleNav />}
@@ -204,15 +187,20 @@ export default function NavBar() {
                   aria-label="projects"
                   onClick={handleClose}
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="header-menu-link-inner">
-                      <span className="header-menu-link-text">PROJECTS</span>
-                      <span className="header-menu-link-text-clone ">
-                        PROJECTS
-                      </span>
-                    </div>
+                  <motion.div
+                    className="menu-slide-container flex w-full items-center justify-between bg-red-200 "
+                    // whileHover={{
+                    //   backgroundColor: "#222",
+                    //   transition: { delay: 0.3 },
+                    // }}
+                  >
+                    {/* <div className="menu-slide-container"> */}
+                    <button className="menu-slide-text">PROJECTS</button>
+                    <button className="menu-slide-text-clone ">PROJECTS</button>
+                    {!isProjects && <MenuArrow />}
+                    {/* </div> */}
                     {isProjects && <CircleNav />}
-                  </div>
+                  </motion.div>
                 </Link>
                 <Link
                   href="/contact"
@@ -220,7 +208,7 @@ export default function NavBar() {
                   onClick={handleClose}
                 >
                   <div className="flex items-center justify-between">
-                    <motion.button className="flex justify-start">
+                    <motion.button className="flex w-full justify-start bg-red-200">
                       CONTACT
                     </motion.button>
                     {isContactUs && <CircleNav />}

@@ -18,7 +18,12 @@
   position: relative;
   overflow: hidden;
   /* background-color: #333333; */
-  background-color: #005057;
+  background-color: #464646;
+  /* background-color: #2C3539; */
+  /* background-color: #4D4D4D; */
+  /* background-color: #595959; */
+  /* background-color: #6C757D; */
+
   /* color: black; */
   transition: background-color 0.3s ease;
 }
@@ -26,6 +31,10 @@
 .second-menu:hover {
   background-color: transparent;
   color: aqua;
+  /* color: lime; */
+  /* color: mediumspringgreen; */
+  /* color: springgreen; */
+  /* box-shadow: 0 0 10px 5px rgba(0, 255, 0, 0.3); */
 }
 
 .second-menu::before {

@@ -91,7 +91,7 @@ export default function NavBar() {
 
   return (
     <nav
-      className=" mb-5 flex items-center justify-between gap-10 px-20 pt-10 font-aeonik text-lg "
+      className=" mb-5 flex items-center justify-between gap-10 px-20 pt-10 font-aeonik text-lg sticky top-0 z-50"
       aria-label="Main Navigation -z-30"
     >
       <Link href="/" aria-label="Home" className="text-4xl">

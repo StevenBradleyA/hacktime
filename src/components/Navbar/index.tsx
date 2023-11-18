@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, easeOut, motion, useAnimation } from "framer-motion";
 import { useRouter } from "next/router";
 import CircleNav from "../Icons/CircleNav";
 import ModalDialog from "../Modal";
@@ -89,6 +89,24 @@ export default function NavBar() {
   // todo add a indicator for when the menu is open or closed
   // todo sound effects????
 
+  const [isAnimationPlaying, setIsAnimationPlaying] = useState(false);
+
+  const divAnimationControls = useAnimation();
+
+  const divAnimationVariants = {
+    init: {
+      y: 0,
+      opacity: 1,
+    },
+    anim: {
+      y: [-25, 25, 0],
+      opacity: [1, 0, 1],
+      transition: {
+        type: easeOut,
+      },
+    },
+  };
+
   return (
     <nav
       className=" mb-5 flex items-center justify-between gap-10 px-20 pt-10 font-aeonik text-lg "
@@ -107,8 +125,7 @@ export default function NavBar() {
           >{`LET'S CHAT`}</motion.button>
         </Link>
         <ModalDialog isOpen={isModalOpen} onClose={closeModal}>
-                        
-          <ContactForm  closeModal={closeModal} />
+          <ContactForm closeModal={closeModal} />
         </ModalDialog>
 
         <motion.button
@@ -118,7 +135,7 @@ export default function NavBar() {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
-          MENU
+          {`${isMenuOpen ? "CLOSE" : "MENU"}`}
         </motion.button>
 
         <AnimatePresence>
@@ -188,9 +205,12 @@ export default function NavBar() {
                   onClick={handleClose}
                 >
                   <div className="flex items-center justify-between">
-                    <motion.button className="flex justify-start">
-                      PROJECTS
-                    </motion.button>
+                    <div className="header-menu-link-inner">
+                      <span className="header-menu-link-text">PROJECTS</span>
+                      <span className="header-menu-link-text-clone ">
+                        PROJECTS
+                      </span>
+                    </div>
                     {isProjects && <CircleNav />}
                   </div>
                 </Link>

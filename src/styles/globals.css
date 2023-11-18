@@ -10,6 +10,37 @@
   text-shadow: 0 0 10px rgba(0, 255, 153, 0.7);
 }
 
+/* -----     navbar     ----- */
+.header-menu-link-inner {
+  position: relative;
+  overflow: hidden;
+}
+
+.header-menu-link-text,
+.header-menu-link-text-clone {
+  display: inline-block;
+  position: relative;
+  transition:
+    0.4s color,
+    0.4s transform cubic-bezier(0.4, 0, 0.1, 1);
+  z-index: 1;
+}
+
+.header-menu-link-text-clone {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate3d(0, 100%, 0);
+}
+
+.header-menu-link-inner:hover .header-menu-link-text {
+  transform: translate3d(0, -100%, 0);
+}
+
+.header-menu-link-inner:hover .header-menu-link-text-clone {
+  transform: translate3d(0, 0, 0);
+}
+
 /* -----     PLAY button animation     ----- */
 /* 
 .move-left {

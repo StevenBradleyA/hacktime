@@ -12,6 +12,45 @@
 
 /* -----     navbar     ----- */
 
+/* menu matrix */
+
+.second-menu {
+  position: relative;
+  overflow: hidden;
+  background-color: #333333;
+  /* color: black; */
+  transition: background-color 0.3s ease;
+}
+
+.second-menu:hover {
+  background-color: transparent;
+  color: aqua;
+}
+
+.second-menu::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 150%;
+  height: 150%;
+  background-image: url("../../public/Gifs/matrix.gif");
+  background-size: 150%;
+  background-repeat: no-repeat;
+  background-position: right center;
+  opacity: 0;
+  transform: rotate(45deg);
+  transition:
+    opacity 0.3s ease,
+    transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  z-index: -1;
+}
+
+.second-menu:hover::before {
+  opacity: 0.5;
+  transform: rotate(0deg);
+}
+
 /* -----     menu drop down slide up effect    ----- */
 
 .menu-slide-container {

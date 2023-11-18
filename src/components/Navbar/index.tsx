@@ -86,9 +86,8 @@ export default function NavBar() {
     };
   }, [isMenuOpen, handleClose, handleOutsideClick]);
 
-  // TODO add menu hover animations for clickable links on the drop down
-  // todo add a indicator for when the menu is open or closed
   // todo sound effects????
+  // todo cool menu and lets chat button animations like lusion
 
   return (
     <nav
@@ -208,7 +207,7 @@ export default function NavBar() {
                 </Link>
               </motion.div>
               <motion.div
-                className="second-menu mt-5 flex flex-col gap-5 rounded-2xl bg-white p-5"
+                className="second-menu mt-5 flex flex-col gap-5 rounded-2xl  p-5"
                 key={"menu-bottom"}
                 initial={{ opacity: 1, rotate: 5 }}
                 animate={{ opacity: 1, rotate: 0 }}
@@ -286,48 +285,3 @@ export default function NavBar() {
     </nav>
   );
 }
-
-/*
- <div className="flex justify-center">
-        <Link href="/" aria-label="Home">
-          <div className="flex flex-col items-center justify-center">
-            <div className=" mono: ['var(--font-roboto-mono)'],  text-center text-5xl">
-              HackTime
-            </div>
-
-            <div
-              className="border-t-2  text-xs"
-              style={{ borderColor: "#00FF99" }}
-            >
-              01101000 01100001 01100011 01101011
-            </div>
-            <div className="text-xs">01110100 01101001 01101101 01100101</div>
-          </div>
-        </Link>
-      </div>
-
-  <div className="flex gap-10">
-        <Link href="/steven" aria-label="Pricing">
-          <div className="flex flex-col">
-            <div className=" relative top-2 flex justify-end text-xs"> 00</div>
-            <div className="flex items-center gap-2 text-2xl">
-              <div className=" relative bottom-1 ">{`//`}</div>
-              <div className="">Steven</div>
-            </div>
-          </div>
-        </Link>
-
-        <Link href="/zaviar" aria-label="Feature">
-          <div className="flex flex-col">
-            <div className=" relative top-2 flex justify-end text-xs"> 01</div>
-            <div className="flex items-center justify-center gap-2 text-2xl">
-              <div className="relative bottom-1 ">{`//`}</div>
-              <div>Zaviar</div>
-            </div>
-          </div>
-        </Link>
-      </div>
-
-
-
-*/

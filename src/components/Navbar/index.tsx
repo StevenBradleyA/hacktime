@@ -163,42 +163,34 @@ export default function NavBar() {
                 }}
               >
                 <Link href="/" aria-label="Home" onClick={handleClose}>
-                  <div className="flex items-center justify-between">
-                    <motion.button className="flex w-full justify-start bg-red-200">
-                      HOME
-                    </motion.button>
+                  <motion.div className="menu-slide-container flex w-full items-center justify-between  ">
+                    <button className="menu-slide-text">HOME</button>
+                    <button className="menu-slide-text-clone ">HOME</button>
+                    {!isHome && <MenuArrow />}
                     {isHome && <CircleNav />}
-                  </div>
+                  </motion.div>
                 </Link>
                 <Link
                   href="/about-us"
                   aria-label="projects"
                   onClick={handleClose}
                 >
-                  <div className="flex items-center justify-between">
-                    <motion.button className="flex w-full justify-start bg-red-200">
-                      ABOUT US
-                    </motion.button>
+                  <motion.div className="menu-slide-container flex w-full items-center justify-between  ">
+                    <button className="menu-slide-text">ABOUT US</button>
+                    <button className="menu-slide-text-clone ">ABOUT US</button>
+                    {!isAboutUs && <MenuArrow />}
                     {isAboutUs && <CircleNav />}
-                  </div>
+                  </motion.div>
                 </Link>
                 <Link
                   href="/projects"
                   aria-label="projects"
                   onClick={handleClose}
                 >
-                  <motion.div
-                    className="menu-slide-container flex w-full items-center justify-between bg-red-200 "
-                    // whileHover={{
-                    //   backgroundColor: "#222",
-                    //   transition: { delay: 0.3 },
-                    // }}
-                  >
-                    {/* <div className="menu-slide-container"> */}
+                  <motion.div className="menu-slide-container flex w-full items-center justify-between  ">
                     <button className="menu-slide-text">PROJECTS</button>
                     <button className="menu-slide-text-clone ">PROJECTS</button>
                     {!isProjects && <MenuArrow />}
-                    {/* </div> */}
                     {isProjects && <CircleNav />}
                   </motion.div>
                 </Link>
@@ -207,12 +199,12 @@ export default function NavBar() {
                   aria-label="contact"
                   onClick={handleClose}
                 >
-                  <div className="flex items-center justify-between">
-                    <motion.button className="flex w-full justify-start bg-red-200">
-                      CONTACT
-                    </motion.button>
+                  <motion.div className="menu-slide-container flex w-full items-center justify-between  ">
+                    <button className="menu-slide-text">CONTACT</button>
+                    <button className="menu-slide-text-clone ">CONTACT</button>
+                    {!isContactUs && <MenuArrow />}
                     {isContactUs && <CircleNav />}
-                  </div>
+                  </motion.div>
                 </Link>
               </motion.div>
               <motion.div
@@ -236,13 +228,26 @@ export default function NavBar() {
                   aria-label="Steven Profile"
                   onClick={handleClose}
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="relative flex">
-                      <div> {`// Steven`}</div>
-                      <div className="absolute -right-5 bottom-5 text-sm ">
-                        00
+                  <div className="menu-slide-container flex w-full items-center justify-between  ">
+                    <button className="menu-slide-text">
+                      <div className="relative flex">
+                        <div> {`// Steven`}</div>
+                        <div className="absolute -right-5 bottom-5 text-sm ">
+                          00
+                        </div>
                       </div>
-                    </div>
+                    </button>
+                    <button className="menu-slide-text-clone ">
+                      <div className="relative flex">
+                        <div> {`// Steven`}</div>
+                        <div className="absolute -right-5 bottom-5 text-sm ">
+                          00
+                        </div>
+                      </div>
+                    </button>
+
+                    {!isSteven && <MenuArrow />}
+
                     {isSteven && <CircleNav />}
                   </div>
                 </Link>
@@ -251,13 +256,25 @@ export default function NavBar() {
                   aria-label="Zaviar Profile"
                   onClick={handleClose}
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="relative flex">
-                      <div> {`// Zaviar`}</div>
-                      <div className="absolute -right-5 bottom-5 text-sm ">
-                        01
+                  <div className="menu-slide-container flex w-full items-center justify-between  ">
+                    <button className="menu-slide-text">
+                      <div className="relative flex">
+                        <div> {`// Zaviar`}</div>
+                        <div className="absolute -right-5 bottom-5 text-sm ">
+                          01
+                        </div>
                       </div>
-                    </div>
+                    </button>
+                    <button className="menu-slide-text-clone ">
+                      <div className="relative flex">
+                        <div> {`// Zaviar`}</div>
+                        <div className="absolute -right-5 bottom-5 text-sm ">
+                          01
+                        </div>
+                      </div>
+                    </button>
+
+                    {!isZaviar && <MenuArrow />}
                     {isZaviar && <CircleNav />}
                   </div>
                 </Link>

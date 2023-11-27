@@ -64,6 +64,11 @@ model Request {
     text   String
 }
 
+model Project {
+    id    String @id @default(cuid())
+    title String
+    text  String
+}
 
 model VerificationToken {
     identifier String

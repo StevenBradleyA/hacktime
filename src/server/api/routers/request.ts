@@ -7,9 +7,9 @@ import {
 } from "~/server/api/trpc";
 
 export const requestRouter = createTRPCRouter({
-  // getAll: publicProcedure.query(({ ctx }) => {
-  //   return ctx.prisma.request.findMany();
-  // }),
+  getAll: publicProcedure.query(({ ctx }) => {
+    return ctx.prisma.request.findMany();
+  }),
 
   getSecretMessage: protectedProcedure.query(() => {
     return "you can now see this secret message!";

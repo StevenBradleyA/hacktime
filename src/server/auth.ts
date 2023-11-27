@@ -20,6 +20,7 @@ declare module "next-auth" {
   interface Session extends DefaultSession {
     user: DefaultSession["user"] & {
       id: string;
+      isAdmin: boolean;
       // ...other properties
       // role: UserRole;
     };
@@ -38,13 +39,14 @@ declare module "next-auth" {
  */
 export const authOptions: NextAuthOptions = {
   callbacks: {
-    session: ({ session, user }) => ({
-      ...session,
-      user: {
-        ...session.user,
-        id: user.id,
-      },
-    }),
+    session: ({ session, user }) => {
+      return {
+        ...session,
+        user: {
+          ...user,
+        },
+      };
+    },
   },
   adapter: PrismaAdapter(prisma),
   providers: [

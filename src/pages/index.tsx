@@ -12,7 +12,6 @@ import PlayArrowIcon from "~/components/Icons/PlayArrow";
 import temporary from "@public/Homepage/_f4b1680f-f1c9-478f-b70e-bacd25904b37.jpg";
 import Image from "next/image";
 
-
 export default function Home() {
   // todo enable scroll on 3D scene
   // todo what is background had the matrix falling when clicked for the 3d scene? could be cool?
@@ -68,10 +67,8 @@ export default function Home() {
           onMouseLeave={handle3DSceneMouseLeave}
         >
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-75 transform full:scale-95 ">
-            <Spline
-              scene="https://draft.spline.design/j0eJgdDnboOd6Ng6/scene.splinecode"
-              // className=" outline-dashed"
-            />
+            {/* // scene="https://draft.spline.design/j0eJgdDnboOd6Ng6/scene.splinecode" */}
+            <Spline scene="https://draft.spline.design/j0eJgdDnboOd6Ng6/scene.splinecode" />
           </div>
         </div>
         <div className="flex h-7 w-full justify-between">
@@ -82,8 +79,6 @@ export default function Home() {
         </div>
       </div>
       <div className="w-full flex-col px-20">
-
-
         <div className="flex w-full justify-between ">
           <Image src={temporary} alt="temp photo" className="w-80" />
           <div className="flex-col">
@@ -122,6 +117,7 @@ export default function Home() {
         </div>
         <div>Featured Work</div>
         <div>cards here</div>
+        <Spline scene="https://draft.spline.design/D1k3SkcwCXlSKPtE/scene.splinecode" />
       </div>
     </>
   );

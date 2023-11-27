@@ -20,7 +20,7 @@ export default function Admin() {
       {allRequests &&
         allRequests.length > 0 &&
         allRequests.map((e, i) => (
-          <div className="w-1/3 bg-black p-10" key={i}>
+          <div className="w-1/3 rounded-xl bg-black p-10" key={i}>
             <div className="mb-5 flex justify-between">
               <div>{e.email}</div>
               <div>{e.budget}</div>

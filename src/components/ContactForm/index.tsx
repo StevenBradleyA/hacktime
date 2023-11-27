@@ -9,6 +9,7 @@ interface ContactFormProps {
 
 interface ErrorsObj {
   email?: string;
+  emailFormat?: string;
   budget?: string;
   text?: string;
 }
@@ -19,6 +20,7 @@ export default function ContactForm({ closeModal }: ContactFormProps) {
   const [budget, setBudget] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [text, setText] = useState<string>("");
+  const [showErrors, setShowErrors] = useState<boolean>(false);
 
   const { mutate } = api.request.create.useMutation({
     onSuccess: () => {
@@ -40,11 +42,22 @@ export default function ContactForm({ closeModal }: ContactFormProps) {
     const errorsObj: ErrorsObj = {};
 
     if (!budget.length) {
-      errorsObj.budget = "Please provide a budget";
+      errorsObj.budget = "Please select a budget";
     }
     if (!email.length) {
-      errorsObj.email = "Please provide your first name";
+      errorsObj.email = "Please provide your email";
     }
+    const emailParts = email.split("@");
+
+    if (
+      emailParts.length !== 2 ||
+      !emailParts[0]?.trim() ||
+      !emailParts[1]?.trim() ||
+      emailParts[1]?.indexOf(".") === -1
+    ) {
+      errorsObj.emailFormat = "Please provide a valid email address";
+    }
+
     if (!text.length) {
       errorsObj.text = "Please provide the body";
     }
@@ -61,7 +74,7 @@ export default function ContactForm({ closeModal }: ContactFormProps) {
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
-
+    setShowErrors(true);
     if (!Object.values(errors).length) {
       const data = {
         email,
@@ -108,6 +121,9 @@ export default function ContactForm({ closeModal }: ContactFormProps) {
           10k+
         </motion.button>
       </div>
+      {showErrors && errors.budget && (
+        <div className="text-failure text-lg ">{errors.budget}</div>
+      )}
 
       <div className="my-5">
         What kind of site do you want us to build for you?
@@ -118,6 +134,9 @@ export default function ContactForm({ closeModal }: ContactFormProps) {
         className=" h-48 w-full rounded-md bg-black p-5 text-lg text-white focus:border-transparent focus:outline-none focus:ring-1 focus:ring-green-500"
         placeholder="Explain a bit about your site"
       />
+      {showErrors && errors.text && (
+        <div className="text-failure text-lg ">{errors.text}</div>
+      )}
       <div className=" mt-5 flex items-center gap-5 ">
         <div>{`What's your email?`} </div>
         <input
@@ -127,6 +146,12 @@ export default function ContactForm({ closeModal }: ContactFormProps) {
           placeholder="example@gmail.com"
         />
       </div>
+      {showErrors && errors.email && (
+        <div className="text-failure text-lg ">{errors.email}</div>
+      )}
+      {showErrors && errors.emailFormat && (
+        <div className="text-failure text-lg">{errors.emailFormat}</div>
+      )}
       <motion.button
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}

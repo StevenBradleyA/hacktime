@@ -9,13 +9,14 @@ export default {
       },
       textColor: {
         neonTeal: "#00FF99",
+        hack: "#00dd00",
+        failure: "#ff0000",
       },
       backgroundColor: {
         dark: "#1E1E1E",
         keeby: "#222",
         slateBlack: "#202124",
         charcoal: "#333",
-        
       },
       screens: {
         mobile: "320px",

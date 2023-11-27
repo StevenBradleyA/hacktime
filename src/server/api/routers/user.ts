@@ -1,11 +1,7 @@
 import { compare } from "bcryptjs";
 import { z } from "zod";
 import { env } from "~/env.mjs";
-import {
-  createTRPCRouter,
-  publicProcedure,
-  protectedProcedure,
-} from "~/server/api/trpc";
+import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
 export const userRouter = createTRPCRouter({
   grantAdmin: publicProcedure
@@ -18,7 +14,6 @@ export const userRouter = createTRPCRouter({
           where: { id: ctx.session?.user.id },
           data: {
             isAdmin: true,
-            isNew: false,
           },
         });
         return updatedUser ? "Success" : "Error";

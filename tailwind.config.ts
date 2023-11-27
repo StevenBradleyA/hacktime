@@ -15,6 +15,7 @@ export default {
         keeby: "#222",
         slateBlack: "#202124",
         charcoal: "#333",
+        
       },
       screens: {
         mobile: "320px",

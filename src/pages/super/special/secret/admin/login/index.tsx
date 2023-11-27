@@ -2,35 +2,32 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { api } from "~/utils/api";
 import { hash } from "bcryptjs";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
-import Custom404 from "~/pages/404";
 import hacktime from "@public/Gifs/hackerman-gif.gif";
 import matrix from "@public/Gifs/matrix.gif";
 
 export default function SuperSpecialSecretAdminLogin() {
-  const [pass, setPass] = useState("");
+  const [pass, setPass] = useState<string>("");
   const router = useRouter();
-  const { data: sessionData, update, status } = useSession();
+  const { data: sessionData, update } = useSession();
+  const handleGoogleSignIn = async () => {
+    await signIn("google");
+  };
 
-  // const { mutate } = api.user.grantAdmin.useMutation({
-  //     onSuccess: async (res) => {
-  //         await update();
-  //         if (res === "Success") void router.push("/");
-  //         if (res === "Incorrect") return; //TODO: Cool hacker invalid msg
-  //         if (res === "Error") return; //TODO: Cool hacker error msg
-  //     },
-  // });
+  const { mutate } = api.user.grantAdmin.useMutation({
+    onSuccess: async (res) => {
+      await update();
+      if (res === "Success") void router.push("/admin");
+      if (res === "Incorrect") return;
+      if (res === "Error") return;
+    },
+  });
 
-  // const hackerHash = async () => {
-  //     const hashPass = await hash(pass, 6);
-  //     console.log("hey");
-  //     mutate(hashPass);
-  // };
-
-  //   if (status === "loading") return <></>;
-
-  //   if (!data && status === "unauthenticated") return <Custom404 />;
+  const hackerHash = async () => {
+    const hashPass = await hash(pass, 6);
+    mutate(hashPass);
+  };
 
   return (
     <div className="bg-hackingtime absolute top-0 z-10 flex h-full w-full justify-center p-20 text-green-500 ">
@@ -40,7 +37,7 @@ export default function SuperSpecialSecretAdminLogin() {
             src={hacktime}
             alt="hacking time"
             className="z-50"
-            onClick={() => void signIn()}
+            onClick={() => void handleGoogleSignIn()}
           />
         ) : (
           <Image src={hacktime} alt="hacking time" className="z-50" />
@@ -56,12 +53,12 @@ export default function SuperSpecialSecretAdminLogin() {
             <input
               value={pass}
               onChange={(e) => setPass(e.target.value)}
-              className="mb-5 rounded border border-green-500 bg-black px-4 py-2 text-green-500 placeholder-green-500 focus:border-green-700 focus:outline-none"
+              className="z-10 mb-5 rounded border border-green-500 bg-black px-4 py-2 text-green-500 placeholder-green-500 focus:border-green-700 focus:outline-none"
               placeholder="It's Hacking Time"
             />
             <button
-              // onClick={() => void hackerHash()}
-              className="hover:bg-hackingtime rounded-2xl bg-green-500 px-6 py-1  text-black hover:text-green-500"
+              onClick={() => void hackerHash()}
+              className="z-10 rounded-2xl bg-green-500 px-6 py-1 text-black  hover:bg-keeby hover:text-green-500"
             >
               {`C:\\\\> Hack`}
             </button>

@@ -66,9 +66,8 @@ export default function Home() {
           onMouseEnter={handle3DSceneMouseEnter}
           onMouseLeave={handle3DSceneMouseLeave}
         >
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-75 transform full:scale-95 ">
-            {/* // scene="https://draft.spline.design/j0eJgdDnboOd6Ng6/scene.splinecode" */}
-            <Spline scene="https://draft.spline.design/j0eJgdDnboOd6Ng6/scene.splinecode" />
+          <div className="absolute w-full -top-24 ">
+            <Spline scene="https://prod.spline.design/vC6L8LFnvRbgMcAo/scene.splinecode" />
           </div>
         </div>
         <div className="flex h-7 w-full justify-between">
@@ -117,8 +116,13 @@ export default function Home() {
         </div>
         <div>Featured Work</div>
         <div>cards here</div>
-        <Spline scene="https://draft.spline.design/D1k3SkcwCXlSKPtE/scene.splinecode" />
       </div>
     </>
   );
+}
+
+{
+  /* <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-75 transform full:scale-95 ">
+            <Spline scene="https://draft.spline.design/j0eJgdDnboOd6Ng6/scene.splinecode" />
+          </div> */
 }

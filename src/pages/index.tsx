@@ -11,6 +11,7 @@ import {
 import PlayArrowIcon from "~/components/Icons/PlayArrow";
 import temporary from "@public/Homepage/_f4b1680f-f1c9-478f-b70e-bacd25904b37.jpg";
 import Image from "next/image";
+import DownArrowIcon from "~/components/Icons/downArrow";
 
 export default function Home() {
   // todo enable scroll on 3D scene
@@ -44,6 +45,17 @@ export default function Home() {
     animateCount();
   }, []);
 
+  const bounceVariants = {
+    initial: { opacity: 1, y: 20, rotate: 0 },
+    bobble: {
+      opacity: 1,
+      y: [0, 8, 0],
+      rotate: [0, -5, 0],
+      transition: { duration: 2, yoyo: "loop", repeat: 10 },
+    },
+    exit: { opacity: 1, y: -20, rotate: 5 },
+  };
+
   return (
     <>
       <Head>
@@ -66,7 +78,7 @@ export default function Home() {
           onMouseEnter={handle3DSceneMouseEnter}
           onMouseLeave={handle3DSceneMouseLeave}
         >
-          <div className="absolute w-full -top-24 ">
+          <div className="absolute -top-24 w-full ">
             <Spline scene="https://prod.spline.design/vC6L8LFnvRbgMcAo/scene.splinecode" />
           </div>
         </div>
@@ -76,8 +88,20 @@ export default function Home() {
           <div>00</div>
           <div>01</div>
         </div>
+        <motion.div
+          className="flex justify-center gap-5"
+          initial="initial"
+          animate="bobble"
+          exit="exit"
+          variants={bounceVariants}
+        >
+          <div className="text-2xl">scroll down</div>
+          <DownArrowIcon />
+        </motion.div>
       </div>
-      <div className="w-full flex-col px-20">
+      <div className="mt-0 w-full flex-col px-20">
+        <div>hey</div>
+
         <div className="flex w-full justify-between ">
           <Image src={temporary} alt="temp photo" className="w-80" />
           <div className="flex-col">

@@ -7,11 +7,15 @@ import CircleNav from "../Icons/CircleNav";
 import MenuArrow from "../Icons/menuArrow";
 import ModalDialog from "../Modal";
 import ContactForm from "../ContactForm";
+import { useSession } from "next-auth/react";
+import hacktimeLogo from "@public/Homepage/logo.png";
 
 export default function NavBar() {
   const menuRef = useRef<HTMLDivElement | null>(null);
   const menuButtonRef = useRef<HTMLButtonElement | null>(null);
   const router = useRouter();
+  const { data: sessionData } = useSession();
+  const isAdmin = sessionData && sessionData.user.isAdmin;
 
   // const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -91,21 +95,28 @@ export default function NavBar() {
 
   return (
     <nav
-      className=" mb-5 flex items-center justify-between gap-10 px-20 pt-10 font-aeonik text-lg sticky top-0 z-50"
+      className=" sticky top-0 z-50 mb-5 flex items-center justify-between gap-10 px-20 pt-10 font-aeonik text-lg"
       aria-label="Main Navigation -z-30"
     >
       <Link href="/" aria-label="Home" className="text-4xl">
         HackTime
       </Link>
-      <div className="relative flex gap-5">
-        <Link href="/" aria-label="Home">
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            className="rounded-3xl bg-white px-6 py-2"
-            onClick={openModal}
-          >{`LET'S CHAT`}</motion.button>
-        </Link>
+      <div className="relative flex gap-5 ">
+        {isAdmin && (
+          <Link href="/admin" aria-label="Home">
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className=" flex justify-center items-center rounded-full p-2 bg-black object-cover overflow-hidden"
+            ><Image className="w-8" src={hacktimeLogo} alt="hacktime"/></motion.button>
+          </Link>
+        )}
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          className="rounded-3xl bg-white px-6 py-2"
+          onClick={openModal}
+        >{`LET'S CHAT`}</motion.button>
         <ModalDialog isOpen={isModalOpen} onClose={closeModal}>
           <ContactForm closeModal={closeModal} />
         </ModalDialog>

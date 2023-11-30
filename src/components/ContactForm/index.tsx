@@ -24,7 +24,7 @@ export default function ContactForm({ closeModal }: ContactFormProps) {
 
   const { mutate } = api.request.create.useMutation({
     onSuccess: () => {
-      //   void ctx.request.getAll.invalidate();
+      void ctx.request.getAll.invalidate();
       toast.success("Form Submitted!", {
         icon: "👏",
         style: {

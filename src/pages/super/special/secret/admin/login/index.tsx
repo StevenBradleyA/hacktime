@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { api } from "~/utils/api";
 import { hash } from "bcryptjs";
-import { signIn, useSession } from "next-auth/react";
+import { signIn, useSession, signOut } from "next-auth/react";
 import Image from "next/image";
 import hacktime from "@public/Gifs/hackerman-gif.gif";
 import matrix from "@public/Gifs/matrix.gif";
@@ -11,8 +11,13 @@ export default function SuperSpecialSecretAdminLogin() {
   const [pass, setPass] = useState<string>("");
   const router = useRouter();
   const { data: sessionData, update } = useSession();
+
+  const isAdmin = sessionData && sessionData.user.isAdmin;
   const handleGoogleSignIn = async () => {
     await signIn("google");
+  };
+  const handleGoogleSignOut = async () => {
+    await signOut();
   };
 
   const { mutate } = api.user.grantAdmin.useMutation({
@@ -36,7 +41,7 @@ export default function SuperSpecialSecretAdminLogin() {
           <Image
             src={hacktime}
             alt="hacking time"
-            className="z-50"
+            className="z-50 cursor-pointer "
             onClick={() => void handleGoogleSignIn()}
           />
         ) : (
@@ -48,7 +53,7 @@ export default function SuperSpecialSecretAdminLogin() {
           className="matrix-time absolute left-0 top-0 h-full w-full rounded-2xl opacity-50 "
         />
 
-        {sessionData && (
+        {sessionData && !isAdmin && (
           <>
             <input
               value={pass}
@@ -63,6 +68,14 @@ export default function SuperSpecialSecretAdminLogin() {
               {`C:\\\\> Hack`}
             </button>
           </>
+        )}
+        {sessionData && isAdmin && (
+          <button
+            onClick={() => void handleGoogleSignOut()}
+            className="z-10 mt-5 rounded-2xl bg-green-500 px-6 py-1 text-black  hover:bg-keeby hover:text-green-500"
+          >
+            {`C:\\\\> Log out`}
+          </button>
         )}
       </div>
     </div>

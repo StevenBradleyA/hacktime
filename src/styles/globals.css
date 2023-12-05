@@ -30,10 +30,10 @@
 
 .second-menu:hover {
   background-color: transparent;
-  color: aqua;
+  /* color: aqua; */
   /* color: lime; */
   /* color: mediumspringgreen; */
-  /* color: springgreen; */
+  color: springgreen;
   /* box-shadow: 0 0 10px 5px rgba(0, 255, 0, 0.3); */
 }
 

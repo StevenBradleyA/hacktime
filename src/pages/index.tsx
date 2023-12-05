@@ -78,7 +78,7 @@ export default function Home() {
           onMouseEnter={handle3DSceneMouseEnter}
           onMouseLeave={handle3DSceneMouseLeave}
         >
-          <div className="absolute -top-24 w-full ">
+          <div className="absolute -top-32 w-full cursor-pointer ">
             <Spline scene="https://prod.spline.design/vC6L8LFnvRbgMcAo/scene.splinecode" />
           </div>
         </div>

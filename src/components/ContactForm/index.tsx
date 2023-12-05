@@ -142,7 +142,7 @@ export default function ContactForm({ closeModal }: ContactFormProps) {
         <input
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className=" rounded-md bg-black p-3 text-lg text-white focus:border-transparent focus:outline-none focus:ring-1 focus:ring-green-500"
+          className=" rounded-md bg-black px-8 py-3 text-lg text-white focus:border-transparent focus:outline-none focus:ring-1 focus:ring-green-500"
           placeholder="example@gmail.com"
         />
       </div>
@@ -155,7 +155,7 @@ export default function ContactForm({ closeModal }: ContactFormProps) {
       <motion.button
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
-        className="mt-5 rounded-3xl bg-white px-6 py-2"
+        className="mt-6 rounded-3xl bg-white px-6 py-2"
         onClick={(e) => {
           e.preventDefault();
           void submit(e);

@@ -17,6 +17,7 @@ export default {
         keeby: "#222",
         slateBlack: "#202124",
         charcoal: "#333",
+        gold: "#D4AF37",
       },
       screens: {
         mobile: "320px",

@@ -107,8 +107,10 @@ export default function NavBar() {
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className=" flex justify-center items-center rounded-full p-2 bg-black object-cover overflow-hidden"
-            ><Image className="w-8" src={hacktimeLogo} alt="hacktime"/></motion.button>
+              className=" flex items-center justify-center overflow-hidden rounded-full bg-black object-cover p-2"
+            >
+              <Image className="w-8" src={hacktimeLogo} alt="hacktime" />
+            </motion.button>
           </Link>
         )}
         <motion.button

@@ -33,6 +33,10 @@ export const env = createEnv({
    */
   client: {
     // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
+    NEXT_PUBLIC_BUCKET_NAME: z.string(),
+    NEXT_PUBLIC_AWS_ACCESS_KEY_ID: z.string(),
+    NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY: z.string(),
+    NEXT_PUBLIC_REGION: z.string(),
   },
 
   /**
@@ -47,6 +51,11 @@ export const env = createEnv({
     GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
     GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
     POGWORD: process.env.POGWORD,
+    NEXT_PUBLIC_AWS_ACCESS_KEY_ID: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID,
+    NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY:
+      process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY,
+    NEXT_PUBLIC_BUCKET_NAME: process.env.NEXT_PUBLIC_BUCKET_NAME,
+    NEXT_PUBLIC_REGION: process.env.NEXT_PUBLIC_REGION,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation.

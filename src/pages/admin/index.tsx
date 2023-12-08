@@ -37,14 +37,17 @@ export default function Admin() {
         allRequests.map((e, i) => (
           <div key={i} className="w-1/3">
             {!deleteConfirmation && (
-              <button className="flex w-full justify-end text-orange-400 ">
+              <button
+                className="flex w-full justify-end text-orange-400 "
+                onClick={() => setDeleteConfirmation(true)}
+              >
                 delete
               </button>
             )}
             {deleteConfirmation && (
-              <div className="flex w-full justify-end text-orange-400">
+              <div className="flex w-full justify-end gap-5 text-orange-400">
                 <button>Yes</button>
-                <button>No</button>
+                <button onClick={() => setDeleteConfirmation(false)}>No</button>
               </div>
             )}
 

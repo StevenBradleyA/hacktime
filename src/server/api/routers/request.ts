@@ -32,6 +32,17 @@ export const requestRouter = createTRPCRouter({
       return newRequest;
     }),
 
+  delete: protectedProcedure
+    .input(z.object({ id: z.string() }))
+    .mutation(async ({ input, ctx }) => {
+      if (ctx.session.user.isAdmin) {
+        await ctx.prisma.request.delete({ where: { id: input.id } });
+
+        return "Successfully deleted";
+      }
+      throw new Error("Access Denied");
+    }),
+
   // want to create a route that returns true or false depending on if the secret password matches
   // if it does we will show all requests will be saved in cookies
 

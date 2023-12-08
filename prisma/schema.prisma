@@ -39,6 +39,19 @@ model Account {
     @@unique([provider, providerAccountId])
 }
 
+model Images {
+    id           String   @id @default(cuid())
+    link         String
+    resourceType String
+    resourceId   String
+    createdAt    DateTime @default(now())
+    updatedAt    DateTime @updatedAt
+
+    userId String
+
+    user User @relation(fields: [userId], references: [id])
+}
+
 model Session {
     id           String   @id @default(cuid())
     sessionToken String   @unique
@@ -56,6 +69,7 @@ model User {
     isAdmin       Boolean   @default(false)
     accounts      Account[]
     sessions      Session[]
+    Images        Images[]
 }
 
 model Request {

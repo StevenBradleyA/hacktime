@@ -6,6 +6,9 @@ import { uploadFileToS3 } from "~/utils/aws";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
+interface CreateProjectProps {
+  closeModal: () => void;
+}
 interface ErrorsObj {
   image?: string;
   imageExcess?: string;
@@ -25,15 +28,16 @@ interface ProjectData {
   title: string;
   text: string;
   preview: number;
+  userId: string;
   images: Image[];
 }
 
-export default function CreateProject() {
-  // ability to add edit update images for a project
+export default function CreateProject({ closeModal }: CreateProjectProps) {
+  //todo ability to add edit update images for a project
+  //todo add layout to Project
 
   const { data: session } = useSession();
   const ctx = api.useContext();
-  //   const router = useRouter();
 
   //   const accessDenied = !session || !session.user.isVerified;
 
@@ -48,7 +52,7 @@ export default function CreateProject() {
 
   const { mutate } = api.project.create.useMutation({
     onSuccess: () => {
-      toast.success("Listing Complete!", {
+      toast.success("Project Complete!", {
         icon: "👏",
         style: {
           borderRadius: "10px",
@@ -57,6 +61,7 @@ export default function CreateProject() {
         },
       });
       void ctx.project.getAll.invalidate();
+      closeModal();
     },
   });
 
@@ -105,6 +110,7 @@ export default function CreateProject() {
           title,
           text,
           preview,
+          userId: sessionUserId,
           images: [],
         };
 
@@ -143,7 +149,7 @@ export default function CreateProject() {
           link: imageUrl || "",
         }));
 
-        // mutate(data);
+        mutate(data);
         setImageFiles([]);
         setHasSubmitted(true);
         setIsSubmitting(false);
@@ -176,7 +182,7 @@ export default function CreateProject() {
         <textarea
           value={text}
           onChange={(e) => setText(e.target.value)}
-          className=" my-1 h-60 w-96 rounded-xl bg-black px-6 py-2 text-md"
+          className=" text-md my-1 h-60 w-96 rounded-xl bg-black px-6 py-2"
           placeholder="Description"
         ></textarea>
 
@@ -201,7 +207,9 @@ export default function CreateProject() {
               }}
             />
             <button className="h-20 w-44 rounded-2xl bg-black">
-              <span className="bg-black text-center text-red-600">Access Data Vessels</span>
+              <span className="bg-black text-center text-red-600">
+                Access Data Vessels
+              </span>
             </button>
           </label>
         </div>

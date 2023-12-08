@@ -7,6 +7,7 @@ import SkullCrossBones from "~/components/Icons/skullCrossBones";
 import { motion } from "framer-motion";
 import ModalDialog from "~/components/Modal";
 import CreateProject from "~/components/Projects/CreateProject";
+import CrossIcon from "~/components/Icons/cross";
 
 export default function AdminProjects() {
   const { data: session } = useSession();
@@ -42,7 +43,7 @@ export default function AdminProjects() {
         </motion.button>
       </div>
       <ModalDialog isOpen={isModalOpen} onClose={closeModal}>
-        <CreateProject />
+        <CreateProject closeModal={closeModal} />
       </ModalDialog>
 
       {allProjects &&
@@ -51,27 +52,45 @@ export default function AdminProjects() {
           <div key={i} className="w-1/3">
             {!deleteConfirmation && (
               <motion.button
-                className="flex w-full justify-end text-orange-400 "
+                className="flex w-full justify-end "
                 onClick={() => setDeleteConfirmation(true)}
-                whileHover={{ scale: 1.1 }}
+                whileHover={{
+                  y: -2,
+                  transition: { type: "spring", stiffness: 400 },
+                }}
                 whileTap={{ scale: 0.95 }}
               >
-                <PlusIcon />
+                <CrossIcon />
               </motion.button>
             )}
             {deleteConfirmation && (
-              <div className="flex w-full justify-end gap-5 text-orange-400">
-                {/* <button onClick={() => mutate({ id: e.id })}>Yes</button> */}
-                <button onClick={() => setDeleteConfirmation(false)}>No</button>
+              <div className="flex w-full justify-end gap-5 ">
+                <motion.button
+                  //   onClick={() => mutate({ id: e.id })}
+                  whileHover={{
+                    y: -2,
+                    transition: { type: "spring", stiffness: 400 },
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <SkullCrossBones />
+                </motion.button>
+                <motion.button
+                  onClick={() => setDeleteConfirmation(false)}
+                  whileHover={{
+                    y: -2,
+                    transition: { type: "spring", stiffness: 400 },
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {`C:// abort`}
+                </motion.button>
               </div>
             )}
 
-            <div className="relative mb-10  rounded-xl bg-black p-10 text-white">
-              <div className="mb-5 flex justify-between">
-                <div className="text-sky-300">{e.title}</div>
-                <div className="text-pink-300">{e.text}</div>
-              </div>
-              <div>{e.text}</div>
+            <div className="mb-10 rounded-xl bg-black p-10 ">
+              <div className="text-2xl mb-3">{e.title}</div>
+              <div className="">{e.text}</div>
             </div>
           </div>
         ))}

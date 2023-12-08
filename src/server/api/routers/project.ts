@@ -10,7 +10,6 @@ export const projectRouter = createTRPCRouter({
   getAll: publicProcedure.query(({ ctx }) => {
     return ctx.prisma.project.findMany();
   }),
-
   create: protectedProcedure
     .input(
       z.object({

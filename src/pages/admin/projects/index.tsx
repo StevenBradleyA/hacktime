@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import ModalDialog from "~/components/Modal";
 import CreateProject from "~/components/Projects/CreateProject";
 import CrossIcon from "~/components/Icons/cross";
+import WizardHat from "~/components/Icons/wizardHat";
 
 export default function AdminProjects() {
   const { data: session } = useSession();
@@ -16,6 +17,7 @@ export default function AdminProjects() {
   const { data: allProjects } = api.project.getAll.useQuery();
   const [deleteConfirmation, setDeleteConfirmation] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState<boolean>(false);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -23,6 +25,14 @@ export default function AdminProjects() {
 
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+  const openEditModal = () => {
+    setIsEditModalOpen(true);
+  };
+
+  const closeEditModal = () => {
+    setIsEditModalOpen(false);
   };
 
   if (accessDenied) {
@@ -45,23 +55,38 @@ export default function AdminProjects() {
       <ModalDialog isOpen={isModalOpen} onClose={closeModal}>
         <CreateProject closeModal={closeModal} />
       </ModalDialog>
+      <ModalDialog isOpen={isEditModalOpen} onClose={closeEditModal}>
+        yoyoyoyoyoy edit modal time
+      </ModalDialog>
 
       {allProjects &&
         allProjects.length > 0 &&
         allProjects.map((e, i) => (
           <div key={i} className="w-1/3">
             {!deleteConfirmation && (
-              <motion.button
-                className="flex w-full justify-end "
-                onClick={() => setDeleteConfirmation(true)}
-                whileHover={{
-                  y: -2,
-                  transition: { type: "spring", stiffness: 400 },
-                }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <CrossIcon />
-              </motion.button>
+              <div className="flex w-full items-center justify-end">
+                <motion.button
+                  onClick={openEditModal}
+                  whileHover={{
+                    y: -2,
+                    transition: { type: "spring", stiffness: 400 },
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  className="mb-1"
+                >
+                  <WizardHat />
+                </motion.button>
+                <motion.button
+                  onClick={() => setDeleteConfirmation(true)}
+                  whileHover={{
+                    y: -2,
+                    transition: { type: "spring", stiffness: 400 },
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <CrossIcon />
+                </motion.button>
+              </div>
             )}
             {deleteConfirmation && (
               <div className="flex w-full justify-end gap-5 ">
@@ -89,7 +114,7 @@ export default function AdminProjects() {
             )}
 
             <div className="mb-10 rounded-xl bg-black p-10 ">
-              <div className="text-2xl mb-3">{e.title}</div>
+              <div className="mb-3 text-2xl">{e.title}</div>
               <div className="">{e.text}</div>
             </div>
           </div>

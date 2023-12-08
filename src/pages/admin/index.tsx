@@ -8,6 +8,7 @@ import adminLogo from "@public/Admin/admin-title.png";
 import { useState } from "react";
 import CrossIcon from "~/components/Icons/cross";
 import SkullCrossBones from "~/components/Icons/skullCrossBones";
+import { motion } from "framer-motion";
 
 export default function Admin() {
   const { data: session } = useSession();
@@ -29,6 +30,8 @@ export default function Admin() {
     return <Custom404 />;
   }
 
+ 
+
   return (
     <>
       <Image src={adminLogo} alt="admin" className="w-1/4" />
@@ -47,21 +50,40 @@ export default function Admin() {
         allRequests.map((e, i) => (
           <div key={i} className="w-1/3">
             {!deleteConfirmation && (
-              <button
+              <motion.button
                 className="flex w-full justify-end text-orange-400 "
                 onClick={() => setDeleteConfirmation(true)}
+                whileHover={{
+                  y: -2,
+                  transition: { type: "spring", stiffness: 400 },
+                }}
+                whileTap={{ scale: 0.95 }}
               >
                 <CrossIcon />
-              </button>
+              </motion.button>
             )}
             {deleteConfirmation && (
               <div className="flex w-full justify-end gap-5 text-orange-400">
-                <button onClick={() => mutate({ id: e.id })}>
+                <motion.button
+                  onClick={() => mutate({ id: e.id })}
+                  whileHover={{
+                    y: -2,
+                    transition: { type: "spring", stiffness: 400 },
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
                   <SkullCrossBones />
-                </button>
-                <button onClick={() => setDeleteConfirmation(false)}>
+                </motion.button>
+                <motion.button
+                  onClick={() => setDeleteConfirmation(false)}
+                  whileHover={{
+                    y: -2,
+                    transition: { type: "spring", stiffness: 400 },
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
                   {`C:// abort`}
-                </button>
+                </motion.button>
               </div>
             )}
 

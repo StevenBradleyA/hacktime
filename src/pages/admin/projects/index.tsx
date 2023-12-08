@@ -4,6 +4,9 @@ import Custom404 from "~/pages/404";
 import { api } from "~/utils/api";
 import PlusIcon from "~/components/Icons/plus";
 import SkullCrossBones from "~/components/Icons/skullCrossBones";
+import { motion } from "framer-motion";
+import ModalDialog from "~/components/Modal";
+import CreateProject from "~/components/Projects/CreateProject";
 
 export default function AdminProjects() {
   const { data: session } = useSession();
@@ -11,28 +14,50 @@ export default function AdminProjects() {
 
   const { data: allProjects } = api.project.getAll.useQuery();
   const [deleteConfirmation, setDeleteConfirmation] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   if (accessDenied) {
     return <Custom404 />;
   }
-
+  // in the future could have different layouts for projects so they look unique
   return (
     <>
-      <div className="mt-10 text-6xl ">PROJECTS</div>
-      <button> Create</button>
+      <div className="relative mt-10 flex items-center justify-center text-6xl ">
+        PROJECTS
+        <motion.button
+          className="absolute -right-96 rounded-2xl bg-black px-6 py-1"
+          whileHover={{ y: -5, transition: { type: "spring", stiffness: 400 } }}
+          whileTap={{ scale: 0.95 }}
+          onClick={openModal}
+        >
+          <PlusIcon />
+        </motion.button>
+      </div>
+      <ModalDialog isOpen={isModalOpen} onClose={closeModal}>
+        <CreateProject />
+      </ModalDialog>
 
       {allProjects &&
         allProjects.length > 0 &&
         allProjects.map((e, i) => (
           <div key={i} className="w-1/3">
             {!deleteConfirmation && (
-              <button
+              <motion.button
                 className="flex w-full justify-end text-orange-400 "
                 onClick={() => setDeleteConfirmation(true)}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
               >
                 <PlusIcon />
-                
-              </button>
+              </motion.button>
             )}
             {deleteConfirmation && (
               <div className="flex w-full justify-end gap-5 text-orange-400">

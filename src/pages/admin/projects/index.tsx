@@ -7,6 +7,8 @@ export default function AdminProjects() {
   const accessDenied = !session || !session.user.isAdmin;
 
   const { data: allProjects } = api.project.getAll.useQuery();
+ 
+
 
   if (accessDenied) {
     return <Custom404 />;
@@ -15,7 +17,6 @@ export default function AdminProjects() {
   return (
     <>
       <button> Create</button>
-        
     </>
   );
 }

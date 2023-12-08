@@ -15,6 +15,14 @@ export default function Admin() {
 
   const [deleteConfirmation, setDeleteConfirmation] = useState<boolean>(false);
 
+  const ctx = api.useContext();
+
+  const { mutate } = api.request.delete.useMutation({
+    onSuccess: () => {
+      void ctx.request.getAll.invalidate();
+    },
+  });
+
   if (accessDenied) {
     return <Custom404 />;
   }
@@ -46,7 +54,7 @@ export default function Admin() {
             )}
             {deleteConfirmation && (
               <div className="flex w-full justify-end gap-5 text-orange-400">
-                <button>Yes</button>
+                <button onClick={() => mutate({ id: e.id })}>Yes</button>
                 <button onClick={() => setDeleteConfirmation(false)}>No</button>
               </div>
             )}

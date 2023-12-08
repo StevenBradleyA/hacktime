@@ -6,6 +6,8 @@ import Link from "next/link";
 import projectLogo from "@public/Admin/projects.png";
 import adminLogo from "@public/Admin/admin-title.png";
 import { useState } from "react";
+import CrossIcon from "~/components/Icons/cross";
+import SkullCrossBones from "~/components/Icons/skullCrossBones";
 
 export default function Admin() {
   const { data: session } = useSession();
@@ -49,17 +51,21 @@ export default function Admin() {
                 className="flex w-full justify-end text-orange-400 "
                 onClick={() => setDeleteConfirmation(true)}
               >
-                delete
+                <CrossIcon />
               </button>
             )}
             {deleteConfirmation && (
               <div className="flex w-full justify-end gap-5 text-orange-400">
-                <button onClick={() => mutate({ id: e.id })}>Yes</button>
-                <button onClick={() => setDeleteConfirmation(false)}>No</button>
+                <button onClick={() => mutate({ id: e.id })}>
+                  <SkullCrossBones />
+                </button>
+                <button onClick={() => setDeleteConfirmation(false)}>
+                  {`C:// abort`}
+                </button>
               </div>
             )}
 
-            <div className="relative mb-10  rounded-xl bg-black p-10 text-white">
+            <div className="relative mb-10 mt-1  rounded-xl bg-black p-10 text-white">
               <div className="mb-5 flex justify-between">
                 <div className="text-sky-300">{e.email}</div>
                 <div className="text-pink-300">{e.budget}</div>

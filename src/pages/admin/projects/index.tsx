@@ -2,6 +2,8 @@ import { useSession } from "next-auth/react";
 import { useState } from "react";
 import Custom404 from "~/pages/404";
 import { api } from "~/utils/api";
+import PlusIcon from "~/components/Icons/plus";
+import SkullCrossBones from "~/components/Icons/skullCrossBones";
 
 export default function AdminProjects() {
   const { data: session } = useSession();
@@ -28,7 +30,8 @@ export default function AdminProjects() {
                 className="flex w-full justify-end text-orange-400 "
                 onClick={() => setDeleteConfirmation(true)}
               >
-                delete
+                <PlusIcon />
+                
               </button>
             )}
             {deleteConfirmation && (

@@ -30,8 +30,6 @@ export default function Admin() {
     return <Custom404 />;
   }
 
- 
-
   return (
     <>
       <Image src={adminLogo} alt="admin" className="w-1/4" />
@@ -96,6 +94,9 @@ export default function Admin() {
             </div>
           </div>
         ))}
+      {allRequests && allRequests.length === 0 && (
+        <div className="text-xl text-orange-400"> no requests :/ </div>
+      )}
     </>
   );
 }

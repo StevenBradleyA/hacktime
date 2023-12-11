@@ -17,6 +17,13 @@ const config = {
     locales: ["en"],
     defaultLocale: "en",
   },
+  images: {
+    domains: [
+      "s3.us-west-2.amazonaws.com",
+      "lh3.googleusercontent.com",
+      "hacktime.s3.us-west-2.amazonaws.com",
+    ],
+  },
 };
 
 export default config;

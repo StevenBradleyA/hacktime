@@ -5,6 +5,7 @@ import {
   protectedProcedure,
   publicProcedure,
 } from "~/server/api/trpc";
+import { removeFileFromS3 } from "../utils";
 
 export const projectRouter = createTRPCRouter({
   getAll: publicProcedure.query(({ ctx }) => {
@@ -51,6 +52,47 @@ export const projectRouter = createTRPCRouter({
           newProject,
           createdImages,
         };
+      }
+
+      throw new Error("Invalid userId");
+    }),
+  delete: protectedProcedure
+    .input(
+      z.object({
+        id: z.string(),
+        imageIds: z.array(z.string()),
+      }),
+    )
+    .mutation(async ({ input, ctx }) => {
+      const { id, imageIds } = input;
+      if (ctx.session.user.isAdmin) {
+        if (imageIds.length > 0) {
+          const images = await ctx.prisma.images.findMany({
+            where: {
+              id: { in: imageIds },
+            },
+          });
+          const removeFilePromises = images.map(async (image) => {
+            try {
+              await removeFileFromS3(image.link);
+            } catch (err) {
+              console.error(`Failed to remove file from S3: `, err);
+              throw new Error(`Failed to remove file from S3: `);
+            }
+          });
+
+          await Promise.all(removeFilePromises);
+
+          await ctx.prisma.images.deleteMany({
+            where: {
+              id: { in: imageIds },
+            },
+          });
+        }
+
+        await ctx.prisma.project.delete({ where: { id: id } });
+
+        return "Successfully deleted";
       }
 
       throw new Error("Invalid userId");

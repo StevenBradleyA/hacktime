@@ -46,8 +46,8 @@ export default function EditProjectModal({
 
   //   const accessDenied = !session || !session.user.isVerified;
 
-  const [title, setTitle] = useState<string>("");
-  const [text, setText] = useState<string>("");
+  const [title, setTitle] = useState<string>(project.title);
+  const [text, setText] = useState<string>(project.text);
   const [preview, setPreview] = useState<number>(0);
   const [imageFiles, setImageFiles] = useState<File[]>([]);
   const [errors, setErrors] = useState<ErrorsObj>({});
@@ -176,6 +176,7 @@ export default function EditProjectModal({
   //   if (accessDenied) {
   //     return <Custom404 />;
   //   }
+  // TODO Preview image change is going to be complex but poggers here
 
   return (
     <div className=" flex flex-col items-center">
@@ -253,6 +254,34 @@ export default function EditProjectModal({
               </button>
             </div>
           ))}
+          {images &&
+            images.length > 0 &&
+            images.map((image, i) =>
+              !activeDeletedImageIds.includes(image.id) ? (
+                <div key={i} className="relative">
+                  <Image
+                    className="h-28 w-auto rounded-lg object-cover shadow-sm hover:scale-105 hover:shadow-md"
+                    alt={`listing-${i}`}
+                    src={image.link}
+                    width={100}
+                    height={100}
+                  />
+                  <button
+                    className="absolute right-[-10px] top-[-32px] transform p-1 text-2xl text-gray-600 transition-transform duration-300 ease-in-out hover:rotate-45 hover:scale-110 hover:text-red-500"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const newDeletedImageIds = [
+                        ...activeDeletedImageIds,
+                        image.id,
+                      ];
+                      setActiveDeletedImageIds(newDeletedImageIds);
+                    }}
+                  >
+                    &times;
+                  </button>
+                </div>
+              ) : null,
+            )}
         </div>
         {errors.imageExcess && (
           <p className="create-listing-errors text-red-500">

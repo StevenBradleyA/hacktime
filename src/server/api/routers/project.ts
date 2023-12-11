@@ -56,6 +56,83 @@ export const projectRouter = createTRPCRouter({
 
       throw new Error("Invalid userId");
     }),
+
+  update: protectedProcedure
+    .input(
+      z.object({
+        id: z.string(),
+        userId: z.string(),
+        title: z.string(),
+        text: z.string().optional(),
+        preview: z.number(),
+        deleteImageIds: z.array(z.string()).optional(),
+        images: z
+          .array(
+            z.object({
+              link: z.string(),
+            }),
+          )
+          .optional(),
+      }),
+    )
+    .mutation(async ({ input, ctx }) => {
+      const { id, title, text, deleteImageIds, images, userId, preview } =
+        input;
+
+      if (ctx.session.user.isAdmin) {
+        const updatedReview = await ctx.prisma.project.update({
+          where: {
+            id: id,
+          },
+          data: { title, text },
+        });
+
+        if (images && images.length > 0) {
+          await Promise.all(
+            images.map(async (image, i) => {
+              const imageType = i === preview ? "PROJECTPREVIEW" : "PROJECT";
+
+              return ctx.prisma.images.create({
+                data: {
+                  link: image.link,
+                  resourceType: imageType,
+                  resourceId: id,
+                  userId: userId,
+                },
+              });
+            }),
+          );
+        }
+        if (deleteImageIds && deleteImageIds.length > 0) {
+          const images = await ctx.prisma.images.findMany({
+            where: {
+              id: { in: deleteImageIds },
+            },
+          });
+          const removeFilePromises = images.map(async (image) => {
+            try {
+              await removeFileFromS3(image.link);
+            } catch (err) {
+              console.error(`Failed to remove file from S3: `, err);
+              throw new Error(`Failed to remove file from S3: `);
+            }
+          });
+
+          await Promise.all(removeFilePromises);
+
+          await ctx.prisma.images.deleteMany({
+            where: {
+              id: { in: deleteImageIds },
+            },
+          });
+        }
+
+        return updatedReview;
+      }
+
+      throw new Error("Invalid userId");
+    }),
+
   delete: protectedProcedure
     .input(
       z.object({

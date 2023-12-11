@@ -6,7 +6,7 @@ import PlusIcon from "~/components/Icons/plus";
 import SkullCrossBones from "~/components/Icons/skullCrossBones";
 import { motion } from "framer-motion";
 import ModalDialog from "~/components/Modal";
-import CreateProject from "~/components/Projects/CreateProject";
+import CreateProject from "~/components/Admin/Projects/CreateProject";
 import CrossIcon from "~/components/Icons/cross";
 import WizardHat from "~/components/Icons/wizardHat";
 import EachProjectCard from "~/components/Admin/Projects/ProjectCard";

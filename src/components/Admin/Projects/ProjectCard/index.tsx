@@ -7,6 +7,7 @@ import CrossIcon from "~/components/Icons/cross";
 import WizardHat from "~/components/Icons/wizardHat";
 import { useState } from "react";
 import ModalDialog from "~/components/Modal";
+import EditProjectModal from "../EditProject";
 
 interface EachProjectCardProps {
   project: Project;
@@ -37,7 +38,6 @@ export default function EachProjectCard({ project }: EachProjectCardProps) {
   const closeEditModal = () => {
     setIsEditModalOpen(false);
   };
-  //   setAllPhotoIds((prevIds) => [...prevIds, e.id]);
 
   return (
     <div className="mb-10">
@@ -99,9 +99,15 @@ export default function EachProjectCard({ project }: EachProjectCardProps) {
           </motion.button>
         </div>
       )}
-      <ModalDialog isOpen={isEditModalOpen} onClose={closeEditModal}>
-        yoyoyoyoyoy edit modal time
-      </ModalDialog>
+      {allPhotos && (
+        <ModalDialog isOpen={isEditModalOpen} onClose={closeEditModal}>
+          <EditProjectModal
+            project={project}
+            closeModal={closeEditModal}
+            images={allPhotos}
+          />
+        </ModalDialog>
+      )}
     </div>
   );
 }

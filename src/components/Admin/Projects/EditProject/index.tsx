@@ -48,7 +48,13 @@ export default function EditProjectModal({
 
   const [title, setTitle] = useState<string>(project.title);
   const [text, setText] = useState<string>(project.text);
-  const [preview, setPreview] = useState<number>(0);
+  // const [preview, setPreview] = useState<number>(0);
+
+  const [preview, setPreview] = useState<{ source: string; index: number }>({
+    source: "prev",
+    index: 0,
+  });
+
   const [imageFiles, setImageFiles] = useState<File[]>([]);
   const [errors, setErrors] = useState<ErrorsObj>({});
   const [enableErrorDisplay, setEnableErrorDisplay] = useState<boolean>(false);
@@ -57,6 +63,7 @@ export default function EditProjectModal({
   const [activeDeletedImageIds, setActiveDeletedImageIds] = useState<string[]>(
     [],
   );
+
 
   const { mutate } = api.project.create.useMutation({
     onSuccess: () => {
@@ -232,13 +239,15 @@ export default function EditProjectModal({
             <div key={i} className="relative">
               <Image
                 className={`h-28 w-auto cursor-pointer rounded-lg object-cover shadow-sm hover:scale-105 hover:shadow-md ${
-                  i === preview ? "border-4 border-green-500" : ""
+                  preview.index === i && preview.source === "new"
+                    ? "border-4 border-green-500"
+                    : ""
                 } `}
                 alt={`listing-${i}`}
                 src={URL.createObjectURL(e)}
                 width={100}
                 height={100}
-                onClick={() => setPreview(i)}
+                onClick={() => setPreview({ source: "new", index: i })}
               />
               <button
                 className="absolute right-[-10px] top-[-32px] transform p-1 text-2xl text-gray-600 transition-transform duration-300 ease-in-out hover:rotate-45 hover:scale-110 hover:text-red-500"
@@ -247,7 +256,7 @@ export default function EditProjectModal({
                   const newImageFiles = [...imageFiles];
                   newImageFiles.splice(i, 1);
                   setImageFiles(newImageFiles);
-                  setPreview(0);
+                  setPreview({ source: "new", index: 0 });
                 }}
               >
                 &times;
@@ -260,11 +269,16 @@ export default function EditProjectModal({
               !activeDeletedImageIds.includes(image.id) ? (
                 <div key={i} className="relative">
                   <Image
-                    className="h-28 w-auto rounded-lg object-cover shadow-sm hover:scale-105 hover:shadow-md"
+                    className={`h-28 w-auto cursor-pointer rounded-lg object-cover shadow-sm hover:scale-105 hover:shadow-md ${
+                      preview.index === i && preview.source === "prev"
+                        ? "border-4 border-green-500"
+                        : ""
+                    } `}
                     alt={`listing-${i}`}
                     src={image.link}
                     width={100}
                     height={100}
+                    onClick={() => setPreview({ source: "prev", index: i })}
                   />
                   <button
                     className="absolute right-[-10px] top-[-32px] transform p-1 text-2xl text-gray-600 transition-transform duration-300 ease-in-out hover:rotate-45 hover:scale-110 hover:text-red-500"
@@ -275,6 +289,7 @@ export default function EditProjectModal({
                         image.id,
                       ];
                       setActiveDeletedImageIds(newDeletedImageIds);
+                      setPreview({ source: "prev", index: 0 });
                     }}
                   >
                     &times;

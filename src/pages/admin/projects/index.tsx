@@ -14,16 +14,10 @@ import EachProjectCard from "~/components/Admin/Projects/ProjectCard";
 export default function AdminProjects() {
   const { data: session } = useSession();
   const accessDenied = !session || !session.user.isAdmin;
-  const ctx = api.useContext();
 
   const { data: allProjects } = api.project.getAll.useQuery();
-  const { data: allProjectImages } = api.image.getAllByResourceId.useQuery({
-    resourceId: "1,2,3",
-  });
 
-  const [deleteConfirmation, setDeleteConfirmation] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [isEditModalOpen, setIsEditModalOpen] = useState<boolean>(false);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -33,13 +27,7 @@ export default function AdminProjects() {
     setIsModalOpen(false);
   };
 
-  const openEditModal = () => {
-    setIsEditModalOpen(true);
-  };
-
-  const closeEditModal = () => {
-    setIsEditModalOpen(false);
-  };
+  
 
   if (accessDenied) {
     return <Custom404 />;
@@ -62,18 +50,13 @@ export default function AdminProjects() {
       <ModalDialog isOpen={isModalOpen} onClose={closeModal}>
         <CreateProject closeModal={closeModal} />
       </ModalDialog>
-      <ModalDialog isOpen={isEditModalOpen} onClose={closeEditModal}>
-        yoyoyoyoyoy edit modal time
-      </ModalDialog>
-      <div className="mt-5 flex w-full px-20">
+      
+      <div className="mt-5 flex w-full gap-10 px-20">
         {allProjects &&
           allProjects.length > 0 &&
           allProjects.map((e, i) => (
-            <div key={i} className="w-1/2">
-              <EachProjectCard
-                project={e}
-                deleteConfirmation={deleteConfirmation}
-              />
+            <div key={i} className="w-1/3">
+              <EachProjectCard project={e} />
             </div>
           ))}
       </div>

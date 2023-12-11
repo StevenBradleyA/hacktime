@@ -6,11 +6,10 @@ const SkullCrossBones = () => (
       width="20px"
       height="20px"
       viewBox="0 0 24 24"
-      enable-background="new 0 0 24 24"
       fill="#87CEFA"
     >
       <g>
-        <path d="M10,24c-0.6,0-1-0.4-1-1v-3c0-0.6,0.4-1,1-1s1,0.4,1,1v3C11,23.6,10.6,24,10,24z"  />
+        <path d="M10,24c-0.6,0-1-0.4-1-1v-3c0-0.6,0.4-1,1-1s1,0.4,1,1v3C11,23.6,10.6,24,10,24z" />
       </g>
       <g>
         <path d="M14,24c-0.6,0-1-0.4-1-1v-3c0-0.6,0.4-1,1-1s1,0.4,1,1v3C15,23.6,14.6,24,14,24z" />
@@ -18,10 +17,6 @@ const SkullCrossBones = () => (
       <g>
         <path
           stroke="#2D2D2D"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-miterlimit="10"
           d="M17,17"
         />
       </g>

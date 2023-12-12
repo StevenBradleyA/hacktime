@@ -29,9 +29,10 @@ interface Image {
 }
 
 interface ProjectData {
+  id: string;
   title: string;
   text: string;
-  preview: number;
+  preview: { source: string; index: number };
   userId: string;
   images: Image[];
 }
@@ -64,8 +65,7 @@ export default function EditProjectModal({
     [],
   );
 
-
-  const { mutate } = api.project.create.useMutation({
+  const { mutate } = api.project.update.useMutation({
     onSuccess: () => {
       toast.success("Project Complete!", {
         icon: "👏",
@@ -127,6 +127,7 @@ export default function EditProjectModal({
         }
 
         const data: ProjectData = {
+          id: project.id,
           title,
           text,
           preview,
@@ -183,6 +184,8 @@ export default function EditProjectModal({
   //   if (accessDenied) {
   //     return <Custom404 />;
   //   }
+
+  
   // TODO Preview image change is going to be complex but poggers here
 
   return (

@@ -64,7 +64,7 @@ export const projectRouter = createTRPCRouter({
         userId: z.string(),
         title: z.string(),
         text: z.string().optional(),
-        preview: z.number(),
+        preview: z.object({ source: z.string(), index: z.number() }),
         deleteImageIds: z.array(z.string()).optional(),
         images: z
           .array(
@@ -80,17 +80,55 @@ export const projectRouter = createTRPCRouter({
         input;
 
       if (ctx.session.user.isAdmin) {
-        const updatedReview = await ctx.prisma.project.update({
+        const updatedProject = await ctx.prisma.project.update({
           where: {
             id: id,
           },
           data: { title, text },
         });
 
+        // going to have to get all images by resource id if the preview is old we are going to have to change the resource type
+
+        await ctx.prisma.images.updateMany({
+          where: {
+            resourceId: id,
+            resourceType: "PROJECTREVIEW",
+          },
+          data: {
+            resourceType: "PROJECT",
+          },
+        });
+
+        if (preview.source === "prev") {
+          const allExistingImages = await ctx.prisma.images.findMany({
+            where: {
+              resourceId: id,
+            },
+          });
+          await Promise.all(
+            allExistingImages.map(async (image, i) => {
+              if (i === preview.index) {
+                return ctx.prisma.images.update({
+                  where: {
+                    id: image.id,
+                  },
+                  data: {
+                    resourceType: "PROJECTPREVIEW",
+                  },
+                });
+              }
+              return image;
+            }),
+          );
+        }
+
         if (images && images.length > 0) {
           await Promise.all(
             images.map(async (image, i) => {
-              const imageType = i === preview ? "PROJECTPREVIEW" : "PROJECT";
+              const imageType =
+                preview.source === "new" && preview.index === i
+                  ? "PROJECTPREVIEW"
+                  : "PROJECT";
 
               return ctx.prisma.images.create({
                 data: {
@@ -127,7 +165,7 @@ export const projectRouter = createTRPCRouter({
           });
         }
 
-        return updatedReview;
+        return updatedProject;
       }
 
       throw new Error("Invalid userId");

@@ -41,33 +41,18 @@ export default function EachProjectCard({ project }: EachProjectCardProps) {
 
   return (
     <div className="mb-10">
-      <div className=" rounded-xl bg-black p-10 ">
-        <div className="mb-3 text-2xl">{project.title}</div>
-        <div className="flex flex-wrap gap-5">
-          {allPhotos?.map((e, i) => (
-            <Image
-              key={i}
-              src={e.link}
-              alt="project"
-              width={500}
-              height={500}
-              className="h-28 w-32 object-cover"
-            />
-          ))}
-        </div>
-        <div className="">{project.text}</div>
-      </div>
-      {!deleteConfirmation && (
+
+{!deleteConfirmation && (
         <div className="flex w-full justify-end gap-1">
           <motion.button
-            className=" text-orange-400 "
+            className="  "
             onClick={() => openEditModal()}
             whileTap={{ scale: 0.95 }}
           >
             <WizardHat />
           </motion.button>
           <motion.button
-            className=" text-orange-400 "
+            className="  "
             onClick={() => setDeleteConfirmation(true)}
             whileTap={{ scale: 0.95 }}
           >
@@ -76,7 +61,7 @@ export default function EachProjectCard({ project }: EachProjectCardProps) {
         </div>
       )}
       {deleteConfirmation && allPhotoIds && (
-        <div className="flex w-full justify-end gap-5 text-orange-400">
+        <div className="flex w-full justify-end gap-5 ">
           <motion.button
             onClick={() => mutate({ id: project.id, imageIds: allPhotoIds })}
             whileHover={{
@@ -99,6 +84,25 @@ export default function EachProjectCard({ project }: EachProjectCardProps) {
           </motion.button>
         </div>
       )}
+
+
+      <div className=" rounded-xl bg-black p-10 ">
+        <div className="mb-3 text-2xl">{project.title}</div>
+        <div className="flex flex-wrap gap-5">
+          {allPhotos?.map((e, i) => (
+            <Image
+              key={i}
+              src={e.link}
+              alt="project"
+              width={500}
+              height={500}
+              className="h-28 w-32 object-cover"
+            />
+          ))}
+        </div>
+        <div className="">{project.text}</div>
+      </div>
+    
       {allPhotos && (
         <ModalDialog isOpen={isEditModalOpen} onClose={closeEditModal}>
           <EditProjectModal

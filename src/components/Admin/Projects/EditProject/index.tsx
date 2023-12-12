@@ -34,6 +34,7 @@ interface ProjectData {
   text: string;
   preview: { source: string; index: number };
   userId: string;
+  deleteImageIds: string[];
   images: Image[];
 }
 
@@ -45,12 +46,8 @@ export default function EditProjectModal({
   const { data: session } = useSession();
   const ctx = api.useContext();
 
-  //   const accessDenied = !session || !session.user.isVerified;
-
   const [title, setTitle] = useState<string>(project.title);
   const [text, setText] = useState<string>(project.text);
-  // const [preview, setPreview] = useState<number>(0);
-
   const [preview, setPreview] = useState<{ source: string; index: number }>({
     source: "prev",
     index: 0,
@@ -67,7 +64,7 @@ export default function EditProjectModal({
 
   const { mutate } = api.project.update.useMutation({
     onSuccess: () => {
-      toast.success("Project Complete!", {
+      toast.success("Project Updated!", {
         icon: "👏",
         style: {
           borderRadius: "10px",
@@ -76,6 +73,7 @@ export default function EditProjectModal({
         },
       });
       void ctx.project.getAll.invalidate();
+      void ctx.image.getAllByResourceId.invalidate();
       closeModal();
     },
   });
@@ -133,6 +131,7 @@ export default function EditProjectModal({
           preview,
           userId: sessionUserId,
           images: [],
+          deleteImageIds: activeDeletedImageIds,
         };
 
         setIsSubmitting(true);
@@ -180,13 +179,6 @@ export default function EditProjectModal({
       }
     }
   };
-
-  //   if (accessDenied) {
-  //     return <Custom404 />;
-  //   }
-
-  
-  // TODO Preview image change is going to be complex but poggers here
 
   return (
     <div className=" flex flex-col items-center">

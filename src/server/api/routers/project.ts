@@ -27,7 +27,6 @@ export const projectRouter = createTRPCRouter({
     )
     .mutation(async ({ input, ctx }) => {
       const { title, text, preview, userId, images } = input;
-      // todo add && ctx.session.user.isVerified
       if (ctx.session.user.isAdmin) {
         const newProject = await ctx.prisma.project.create({
           data: { title, text },
@@ -87,12 +86,10 @@ export const projectRouter = createTRPCRouter({
           data: { title, text },
         });
 
-        // going to have to get all images by resource id if the preview is old we are going to have to change the resource type
-
         await ctx.prisma.images.updateMany({
           where: {
             resourceId: id,
-            resourceType: "PROJECTREVIEW",
+            resourceType: "PROJECTPREVIEW",
           },
           data: {
             resourceType: "PROJECT",

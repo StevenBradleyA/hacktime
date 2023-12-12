@@ -40,6 +40,20 @@ export const imageRouter = createTRPCRouter({
         },
       });
     }),
+  getAllProjectPreviews: publicProcedure
+    .input(
+      z.object({
+        resourceId: z.string(),
+      }),
+    )
+    .query(({ ctx, input }) => {
+      return ctx.prisma.images.findMany({
+        where: {
+          resourceType: "PROJECTPREVIEW",
+          resourceId: input.resourceId,
+        },
+      });
+    }),
   create: protectedProcedure
     .input(
       z.object({

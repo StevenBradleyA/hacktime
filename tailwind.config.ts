@@ -11,7 +11,7 @@ export default {
         neonTeal: "#00FF99",
         hack: "#00dd00",
         failure: "#ff0000",
-        graybae: "#adadad",
+        hackGray: "#adadad",
         chillWhite: "#f1f1ef",
       },
       backgroundColor: {

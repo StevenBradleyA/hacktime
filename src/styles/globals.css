@@ -110,6 +110,21 @@
   transition-delay: 0.2s;
 }
 
+/* -----     Projects     ----- */
+
+.project-page-title {
+  font-size: 16vw;
+  line-height: 1;
+}
+.project-page-title-icons{
+  width: 3vw;
+}
+
+
+
+
+
+
 /* -----     PLAY button animation     ----- */
 /* 
 .move-left {

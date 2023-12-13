@@ -7,9 +7,9 @@ export default function Projects() {
   //   const { data: allPreviews } = api.image.getAllProjectPreviews.useQuery();
 
   return (
-    <div>
+    <div className="w-full px-20">
       <div className="text-[23rem]">PROJECTS</div>
-      <div className="mb-72 flex gap-10">
+      <div className="mb-72 flex flex-wrap gap-10 justify-center">
         {allProjects?.map((e, i) => (
           <ProjectCard project={e} key={i} index={i} />
         ))}

@@ -9,7 +9,7 @@ export default function Projects() {
 
   return (
     <div className="w-full px-20">
-      <div className="my-5 flex justify-between ">
+      <div className="mt-5 mb-20 flex justify-between ">
         <div className="project-page-title ">PROJECTS</div>
         <div className="text-hackGray flex flex-col justify-between py-10 ">
           <Image

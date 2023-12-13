@@ -24,26 +24,34 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
   return (
     <motion.div
-      className="mb-10 flex w-[48%] cursor-pointer flex-col"
+      className="mb-5 flex w-[48%] cursor-pointer flex-col "
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {previewImage?.[0] && (
         <div className="overflow-hidden rounded-3xl">
-          <Image
-            src={previewImage[0].link}
-            alt="project preview"
-            width={1000}
-            height={1000}
-            className="h-[25vw] w-full rounded-3xl object-cover transition-transform  hover:scale-105 "
-          />
+          <motion.div
+            whileHover={{
+              scale: 1.05,
+              transition: { type: "easeInOut" },
+            }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Image
+              src={previewImage[0].link}
+              alt="project preview"
+              width={1000}
+              height={1000}
+              className="h-[25vw] w-full rounded-3xl object-cover"
+            />
+          </motion.div>
         </div>
       )}
-      <div className="flex gap-5  ">
+      <div className="flex gap-5">
         <Image src={rectangle} alt="rectangle graphic" className="w-20" />
         <div className="text-xl">{binaryIndex}</div>
       </div>
-      <div className="relative flex h-20 w-full">
+      <div className="relative flex h-12 w-full">
         <AnimatePresence mode="wait">
           {isHovered ? (
             <motion.div className="flex">
@@ -69,7 +77,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
               key="notHovered"
               initial={{ x: 80 }}
               animate={{ x: 0 }}
-              transition={{ type: "spring", stiffness: 80, damping: 10 }}
+              transition={{ type: "spring", stiffness: 100, damping: 10 }}
               className="text-5xl"
             >
               {project.title}

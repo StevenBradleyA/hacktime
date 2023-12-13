@@ -22,6 +22,7 @@ export default {
         gold: "#D4AF37",
         lessDark: "#101010",
         offDark: "#2f2f2f",
+        lightGray: "#464646",
       },
       screens: {
         mobile: "320px",

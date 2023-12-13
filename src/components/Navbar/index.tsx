@@ -17,7 +17,6 @@ export default function NavBar() {
   const { data: sessionData } = useSession();
   const isAdmin = sessionData && sessionData.user.isAdmin;
 
-  // const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isHome, setIsHome] = useState<boolean>(false);
   const [isAboutUs, setIsAboutUs] = useState<boolean>(false);
@@ -107,9 +106,15 @@ export default function NavBar() {
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className=" flex items-center justify-center overflow-hidden rounded-full bg-black object-cover p-2"
+              className=" bg-lightGray flex w-12 items-center justify-center overflow-hidden rounded-full p-2"
             >
-              <Image className="w-8" src={hacktimeLogo} alt="hacktime" />
+              <Image
+                className="scale-150 transform object-cover"
+                src={hacktimeLogo}
+                alt="hacktime"
+                width={200}
+                height={200}
+              />
             </motion.button>
           </Link>
         )}

@@ -23,6 +23,7 @@ export default {
         lessDark: "#101010",
         offDark: "#2f2f2f",
         lightGray: "#464646",
+        chillWhite: "#f1f1ef",
       },
       screens: {
         mobile: "320px",

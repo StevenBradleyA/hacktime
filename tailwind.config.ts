@@ -13,6 +13,10 @@ export default {
         failure: "#ff0000",
         hackGray: "#adadad",
         chillWhite: "#f1f1ef",
+        charcoal: "#333",
+        slateBlack: "#202124",
+
+
       },
       backgroundColor: {
         dark: "#1E1E1E",

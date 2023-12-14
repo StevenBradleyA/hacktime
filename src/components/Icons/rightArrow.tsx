@@ -4,7 +4,7 @@ const RightArrow = () => (
     viewBox="0 0 38 38"
     fill="none"
     stroke="currentColor"
-    className="w-20"
+    // className="w-20"
   >
     <path
       stroke-linecap="round"

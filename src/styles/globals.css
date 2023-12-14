@@ -137,8 +137,11 @@
 }
 
 
+/* -----     Contact     ----- */
 
-
+.contact-page-title{
+  z-index: 1;
+}
 
 
 /* -----     PLAY button animation     ----- */

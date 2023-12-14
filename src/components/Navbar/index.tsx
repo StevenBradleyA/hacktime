@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { AnimatePresence, easeOut, motion, useAnimation } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
 import CircleNav from "../Icons/CircleNav";
 import MenuArrow from "../Icons/menuArrow";

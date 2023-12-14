@@ -6,21 +6,18 @@
 
 /* -----     home     ----- */
 
-
 ::-webkit-scrollbar {
-  width: 4px; 
+  width: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: green; 
+  background-color: green;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #1E1E1E; 
+  background-color: #1e1e1e;
 }
-
-
 
 .glowing-text {
   text-shadow: 0 0 10px rgba(0, 255, 153, 0.7);
@@ -58,12 +55,12 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 150%;
-  height: 150%;
-  background-image: url("../../public/Gifs/matrix.gif");
-  background-size: 150%;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../public/Gifs/highest.gif");
+  background-size: 100%;
   background-repeat: no-repeat;
-  background-position: right center;
+  background-position: center;
   opacity: 0;
   transform: rotate(45deg);
   transition:
@@ -73,7 +70,7 @@
 }
 
 .second-menu:hover::before {
-  opacity: 0.5;
+  opacity: 0.7;
   transform: rotate(0deg);
 }
 
@@ -89,10 +86,6 @@
   will-change: transform;
   display: inline-block;
   position: relative;
-  /* chill */
-  /* transition: 0.4s transform cubic-bezier(0.4, 0, 0.1, 1); */
-  /* snappy */
-  /* transition: 0.3s transform cubic-bezier(0.25, 0.8, 0.25, 1); */
   transition: 0.3s transform cubic-bezier(0.42, 0, 0.58, 1);
   z-index: 1;
 }
@@ -132,20 +125,18 @@
   font-size: 16vw;
   line-height: 1;
 }
-.project-page-title-icons{
+.project-page-title-icons {
   width: 3vw;
 }
 
-
 /* -----     Contact     ----- */
 
-.contact-page-title{
+.contact-page-title {
   z-index: 1;
 }
-.striped-button-hidden{
+.striped-button-hidden {
   z-index: -1;
 }
-
 
 /* -----     PLAY button animation     ----- */
 /* 

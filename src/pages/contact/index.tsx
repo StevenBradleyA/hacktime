@@ -1,5 +1,8 @@
 import Image from "next/image";
 import contactVert from "@public/Graphics/contact-vert.png";
+import grayLine from "@public/Graphics/gray-line.png";
+import contactContact from "@public/Graphics/contact-contact.png";
+import DiagonalRightArrow from "~/components/Icons/upperRightArrow";
 
 export default function Contact() {
   return (
@@ -19,44 +22,52 @@ export default function Contact() {
           {" "}
           {`Let's Chat`}
         </button>
-        <div className="flex flex-col mt-20" >
-
+        <div className="mt-20 flex flex-col">
           <div className="flex">
-            <button className="bg-charcoal w-16 h-16"></button>
-            <button className="bg-slateBlack w-16 h-16"></button>
-          </div>
-          <div className="flex">
-            <button className="bg-slateBlack w-16 h-16"></button>
-            <button className="bg-charcoal w-16 h-16"></button>
-          </div>
-
-          <div className="flex mt-10">
-            <button className="bg-charcoal w-16 h-16"></button>
-            <button className="bg-slateBlack w-16 h-16"></button>
+            <button className="h-16 w-16 bg-charcoal"></button>
+            <button className="h-16 w-16 bg-slateBlack"></button>
           </div>
           <div className="flex">
-            <button className="bg-slateBlack w-16 h-16"></button>
-            <button className="bg-charcoal w-16 h-16"></button>
+            <button className="h-16 w-16 bg-slateBlack"></button>
+            <button className="h-16 w-16 bg-charcoal"></button>
           </div>
 
+          <div className="mt-10 flex">
+            <button className="h-16 w-16 bg-charcoal"></button>
+            <button className="h-16 w-16 bg-slateBlack"></button>
+          </div>
+          <div className="flex">
+            <button className="h-16 w-16 bg-slateBlack"></button>
+            <button className="h-16 w-16 bg-charcoal"></button>
+          </div>
 
-
+          <div className=" absolute -right-7 bottom-14">
+            <Image src={grayLine} alt="contact-logo" className="scale-150" />
+          </div>
         </div>
       </div>
 
       <div className="relative z-10 w-2/3  ">
+        <div className="mt-36 flex flex-col items-center justify-center text-4xl">
+          <div>Reach us at</div>
+          <div> hacktimedev@outlook.com</div>
+          <DiagonalRightArrow />
+        </div>
+
         <div className=" absolute -top-20">
           <Image src={contactVert} alt="contact-logo" className="w-5/6" />
         </div>
+        <div className=" absolute bottom-44 right-24">
+          <Image
+            src={grayLine}
+            alt="contact-logo"
+            className="h-6 w-32 object-cover"
+          />
+        </div>
+        <div className=" absolute bottom-0 right-0">
+          <Image src={contactContact} alt="contact-logo" className="w-5/6" />
+        </div>
       </div>
-
-      {/* 
-      <div className="mt-96"> Reach us at </div>
-      <div> hacktimedev@outlook.com</div>
-
-      <div> contact form</div>
-
-      <div> links to our linkedIn as well</div> */}
     </div>
   );
 }

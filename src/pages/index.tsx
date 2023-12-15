@@ -1,17 +1,14 @@
 import Head from "next/head";
 import Spline from "@splinetool/react-spline";
 import { useEffect, useState } from "react";
-import {
-  motion,
-  animate,
-  useMotionValue,
-  useTransform,
-  useAnimation,
-} from "framer-motion";
-import PlayArrowIcon from "~/components/Icons/PlayArrow";
+import { motion, useAnimation } from "framer-motion";
 import temporary from "@public/Homepage/_f4b1680f-f1c9-478f-b70e-bacd25904b37.jpg";
 import Image from "next/image";
 import DownArrowIcon from "~/components/Icons/downArrow";
+import hacktimeStacked from "@public/Graphics/hacktime-stacked-offset.png";
+import stripedRectLong from "@public/Graphics/diagonal-rect-long.png";
+import smileBlur from "@public/Graphics/smile-blur.png";
+import smileX from "@public/Graphics/Smile-xx.png";
 
 export default function Home() {
   // todo enable scroll on 3D scene
@@ -103,11 +100,34 @@ export default function Home() {
           <DownArrowIcon />
         </motion.div>
       </div>
-      <div className="mt-0 w-full flex-col px-20">
-        <div>
+      <div className="mt-0 w-full px-20">
+        <div className="relative h-10  w-full">
+          <Image
+            src={hacktimeStacked}
+            alt="hacktime logo "
+            className=" absolute -bottom-24 right-0 w-1/3"
+          />
+        </div>
+        <Image src={stripedRectLong} alt="hacktime logo " className="" />
+        <div className="relative w-full">
+          <Image
+            src={smileBlur}
+            alt="smile logo "
+            className=" absolute -bottom-24 right-0 w-20"
+          />
+        </div>
+        <div className="relative w-full">
+          <Image
+            src={smileX}
+            alt="smile logo "
+            className=" absolute right-0 top-40 w-20"
+          />
+        </div>
+
+        <div className="w-1/3 text-4xl">
           {` At HackTime, we're not just web developers; we're your dedicated
           partners in turning digital dreams into reality. Our small yet dynamic
-          team of freelance web developers specializes in crafting unique and
+          team of developers specializes in crafting unique and
           impactful websites tailored to your needs.`}
         </div>
 

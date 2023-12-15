@@ -56,6 +56,10 @@ export default function Home() {
     exit: { opacity: 1, y: -20, rotate: 5 },
   };
 
+  // TODO Next.js TRPC Prisma Cloud storage talk about all these or add them to some cool graphics
+  // TODO better search results optimized for web crawling
+  // TODO fast websites
+
   return (
     <>
       <Head>
@@ -100,7 +104,12 @@ export default function Home() {
         </motion.div>
       </div>
       <div className="mt-0 w-full flex-col px-20">
-        <div>hey</div>
+        <div>
+          {` At HackTime, we're not just web developers; we're your dedicated
+          partners in turning digital dreams into reality. Our small yet dynamic
+          team of freelance web developers specializes in crafting unique and
+          impactful websites tailored to your needs.`}
+        </div>
 
         <div className="flex w-full justify-between ">
           <Image src={temporary} alt="temp photo" className="w-80" />
@@ -150,3 +159,26 @@ export default function Home() {
             <Spline scene="https://draft.spline.design/j0eJgdDnboOd6Ng6/scene.splinecode" />
           </div> */
 }
+
+// What Sets Us Apart:
+// 🚀 Passion for Innovation: We thrive on bringing fresh ideas to life. Whether it's a sleek portfolio, a robust e-commerce platform, or a cutting-edge blog, our passion for innovation knows no bounds.
+
+// 💡 Versatility: Any theme, any concept – we've got it covered! From modern and minimalist designs to vibrant and interactive layouts, we adapt to your vision and deliver websites that stand out.
+
+// 🤝 Collaborative Approach: We believe in collaboration. Your ideas combined with our expertise create a powerful synergy. We listen, strategize, and implement, ensuring your website not only meets but exceeds your expectations.
+
+// Our Services:
+// 🌐 Website Design & Development: Crafting visually stunning and user-friendly websites that leave a lasting impression.
+
+// 🛒 E-Commerce Solutions: Building secure and scalable e-commerce platforms that drive conversions.
+
+// 🔧 Custom Solutions: Tailoring websites to your unique requirements, ensuring a perfect fit for your business.
+
+// Why Choose HackTime?
+// 👨‍💻 Experienced Freelancers: Benefit from the expertise of a seasoned team of freelance web developers with a track record of successful projects.
+
+// 🚀 Timely Delivery: Time is of the essence. We prioritize efficiency and ensure your project is delivered on time, every time.
+
+// 📈 Scalable Solutions: As your business grows, so should your website. Our scalable solutions future-proof your online presence.
+
+// Ready to embark on a digital journey with us? Let's bring your ideas to life. Connect with HackTime, and let's build something extraordinary together!

@@ -90,7 +90,7 @@ export default function NavBar() {
   }, [isMenuOpen, handleClose, handleOutsideClick]);
 
   // todo sound effects????
-  // todo cool menu and lets chat button animations like lusion
+  // todo cool menu and lets chat button animations like lusion --- not sure
 
   return (
     <nav

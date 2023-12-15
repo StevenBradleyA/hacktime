@@ -30,6 +30,14 @@ export default function Admin() {
     return <Custom404 />;
   }
 
+
+
+// TODO change styling to match off white retro futur theme 
+// get rid of pixel title 
+// add vertical bars going down right side below image  
+// maybe add XXX svg or XX face next to title make it cool 
+// restyle later tho end game once live prob
+
   return (
     <>
       <Image src={adminLogo} alt="admin" className="w-1/4" />

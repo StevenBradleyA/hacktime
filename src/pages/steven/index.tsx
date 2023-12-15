@@ -1,23 +1,30 @@
-import Spline from "@splinetool/react-spline";
-import { motion } from "framer-motion";
+
+import Image from "next/image";
+import praiseTheSun from "@public/Graphics/under-construction.png";
+import diagonal from "@public/Graphics/diagonal-1.png";
+import line from "@public/Graphics/gray-line.png";
+
 export default function StevenAndersonProfile() {
   return (
-    <div className="h-3/4 w-3/4 ">
-    <motion.div
-      initial={{ opacity: 1, x: 200 }}
-      animate={{
-        opacity: 1,
-        x: 0,
-      }}
-      transition={{
-        duration: 2,
-        type: "spring",
-        stiffness: 75,
-        damping: 4,
-      }}
-    >
-      <Spline scene="https://draft.spline.design/UNte7wVDLbwLYlon/scene.splinecode" />
-    </motion.div>
-  </div>
+    <div className="relative mt-44 flex w-full px-20">
+      <div className="text-hackGray ml-20 mt-40 w-1/2 flex-wrap text-8xl">
+        {`Steven's page is under construction`}
+      </div>
+      <Image
+        src={line}
+        alt="diagonal lines"
+        className="absolute -bottom-44 left-20 w-96 "
+      />
+      <Image
+        src={diagonal}
+        alt="diagonal lines"
+        className="absolute right-0 top-0 w-1/2"
+      />
+      <Image
+        src={praiseTheSun}
+        alt="under construction"
+        className="absolute right-0 top-0 w-1/2"
+      />
+    </div>
   );
 }

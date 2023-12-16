@@ -1,13 +1,13 @@
 import Image from "next/image";
-import contactVert from "@public/Graphics/contact-vert.png";
-import grayLine from "@public/Graphics/gray-line.png";
-import contactContact from "@public/Graphics/contact-contact.png";
 import GitHubIcon from "~/components/Icons/github";
 import LinkedInIcon from "~/components/Icons/linkedIn";
 import ModalDialog from "~/components/Modal";
 import ContactForm from "~/components/ContactForm";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import contactVert from "@public/Contact/contact-vert.png";
+import contactContact from "@public/Contact/contact-contact.png";
+import grayLine from "@public/Graphics/gray-line.png";
 import stripedButtonBlack from "@public/Graphics/striped-label-black.png";
 import stripedButtonGray from "@public/Graphics/striped-label.png";
 

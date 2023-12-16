@@ -4,7 +4,9 @@ import { api } from "~/utils/api";
 import Image from "next/image";
 import Link from "next/link";
 import projectLogo from "@public/Admin/projects.png";
-import adminLogo from "@public/Admin/admin-title.png";
+import anonymous from "@public/Admin/admin-green.png";
+import adminTitle from "@public/Admin/admin-vert-title.png";
+import diagonal from "@public/Graphics/diagonal-1.png"
 import { useState } from "react";
 import CrossIcon from "~/components/Icons/cross";
 import SkullCrossBones from "~/components/Icons/skullCrossBones";
@@ -30,17 +32,36 @@ export default function Admin() {
     return <Custom404 />;
   }
 
-
-
-// TODO change styling to match off white retro futur theme 
-// get rid of pixel title 
-// add vertical bars going down right side below image  
-// maybe add XXX svg or XX face next to title make it cool 
-// restyle later tho end game once live prob
+  // TODO change styling to match off white retro futur theme
+  // get rid of pixel title
+  // add vertical bars going down right side below image
+  // maybe add XXX svg or XX face next to title make it cool
+  // restyle later tho end game once live prob
 
   return (
     <>
-      <Image src={adminLogo} alt="admin" className="w-1/4" />
+      <div className="relative h-10 w-1/3">
+        <Image
+          src={adminTitle}
+          alt="admin title"
+          className="png-light-gray absolute -left-40"
+        />
+      </div>
+
+      <div className="relative w-full">
+        <Image
+          src={anonymous}
+          alt="admin logo"
+          className="absolute left-20 top-0 w-44 "
+        />
+        <Image
+          src={diagonal}
+          alt="admin logo"
+          className="absolute left-20 top-44 w-44 "
+
+        />
+      </div>
+
       <div className="relative mb-10 flex w-full">
         <Link href="/admin/projects" aria-label="admin projects">
           <Image

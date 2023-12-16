@@ -8,9 +8,7 @@ import MenuArrow from "../Icons/menuArrow";
 import ModalDialog from "../Modal";
 import ContactForm from "../ContactForm";
 import { useSession } from "next-auth/react";
-import hacktimeLogo from "@public/Homepage/logo.png";
-import smileBlur from "@public/Graphics/smile-blur.png"
-
+import smileBlur from "@public/Graphics/smile-blur.png";
 
 export default function NavBar() {
   const menuRef = useRef<HTMLDivElement | null>(null);
@@ -105,26 +103,13 @@ export default function NavBar() {
       <div className="relative flex gap-5 ">
         {isAdmin && (
           <Link href="/admin" aria-label="Home">
-            {/* <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              className=" bg-lightGray flex w-12 items-center justify-center overflow-hidden rounded-full p-2"
-            >
-              <Image
-                className="scale-150 transform object-cover"
-                src={hacktimeLogo}
-                alt="hacktime"
-                width={200}
-                height={200}
-              />
-            </motion.button> */}
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               className="flex w-12 items-center justify-center overflow-hidden rounded-full p-2"
             >
               <Image
-                className=" scale-150 object-cover png-green-500"
+                className=" png-green-500 scale-150 object-cover"
                 src={smileBlur}
                 alt="hacktime"
                 width={200}

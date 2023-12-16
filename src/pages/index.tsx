@@ -5,7 +5,7 @@ import { motion, useAnimation } from "framer-motion";
 import temporary from "@public/Homepage/_f4b1680f-f1c9-478f-b70e-bacd25904b37.jpg";
 import Image from "next/image";
 import DownArrowIcon from "~/components/Icons/downArrow";
-import hacktimeStacked from "@public/Graphics/hacktime-stacked-offset.png";
+import hacktimeStacked from "@public/Homepage/hacktime-stacked-offset.png";
 import stripedRectLong from "@public/Graphics/diagonal-rect-long.png";
 import smileBlur from "@public/Graphics/smile-blur.png";
 import smileX from "@public/Graphics/Smile-xx.png";
@@ -53,6 +53,11 @@ export default function Home() {
     exit: { opacity: 1, y: -20, rotate: 5 },
   };
 
+  const scrollToHeight = () => {
+    // Adjust the value of 1000 to the desired scroll height
+    window.scrollTo({ top: 1000, behavior: "smooth" });
+  };
+
   // TODO Next.js TRPC Prisma Cloud storage talk about all these or add them to some cool graphics
   // TODO better search results optimized for web crawling
   // TODO fast websites
@@ -90,11 +95,12 @@ export default function Home() {
           <div>01</div>
         </div>
         <motion.div
-          className="flex justify-center gap-5"
+          className="flex cursor-pointer justify-center gap-5"
           initial="initial"
           animate="bobble"
           exit="exit"
           variants={bounceVariants}
+          onClick={scrollToHeight}
         >
           <div className="text-2xl">scroll down</div>
           <DownArrowIcon />

@@ -3,7 +3,6 @@ import Custom404 from "../404";
 import { api } from "~/utils/api";
 import Image from "next/image";
 import Link from "next/link";
-import projectLogo from "@public/Admin/projects.png";
 import anonymous from "@public/Admin/admin-green.png";
 import adminTitle from "@public/Admin/admin-vert-title.png";
 import diagonal from "@public/Graphics/diagonal-1.png";
@@ -70,14 +69,14 @@ export default function Admin() {
           <Image
             src={dots}
             alt="projects"
-            className="absolute right-32 top-44 w-72"
+            className="absolute right-36 top-44 w-72 opacity-30"
           />
           <Image
             src={smile}
             alt="admin logo"
             className="png-light-gray absolute right-20 top-20 w-44 "
           />
-          <div className=" absolute right-56 top-64 w-44 text-6xl ">
+          <div className=" absolute right-60 top-64 w-44 text-6xl ">
             PROJECTS
           </div>
         </Link>
@@ -89,7 +88,7 @@ export default function Admin() {
           <div key={i} className="w-1/3">
             {!deleteConfirmation && (
               <motion.button
-                className="flex w-full justify-end  "
+                className="flex w-full justify-end"
                 onClick={() => setDeleteConfirmation(true)}
               >
                 <CrossIcon />

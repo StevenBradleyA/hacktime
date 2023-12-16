@@ -8,6 +8,7 @@ import WizardHat from "~/components/Icons/wizardHat";
 import { useState } from "react";
 import ModalDialog from "~/components/Modal";
 import EditProjectModal from "../EditProject";
+import diagonalLong from "@public/Graphics/diagonal-rect-long.png";
 
 interface EachProjectCardProps {
   project: Project;
@@ -41,9 +42,8 @@ export default function EachProjectCard({ project }: EachProjectCardProps) {
 
   return (
     <div className="mb-10">
-
-{!deleteConfirmation && (
-        <div className="flex w-full justify-end gap-1">
+      {!deleteConfirmation && (
+        <div className="relative mb-1 flex w-full justify-end gap-5">
           <motion.button
             className="  "
             onClick={() => openEditModal()}
@@ -58,10 +58,17 @@ export default function EachProjectCard({ project }: EachProjectCardProps) {
           >
             <CrossIcon />
           </motion.button>
+          <div className="png-green absolute left-2 top-0 w-5/6 overflow-hidden opacity-10">
+            <Image
+              src={diagonalLong}
+              alt="diagonal graphic"
+              className=" w-full scale-150"
+            />
+          </div>
         </div>
       )}
       {deleteConfirmation && allPhotoIds && (
-        <div className="flex w-full justify-end gap-5 ">
+        <div className="relative flex w-full justify-end gap-5">
           <motion.button
             onClick={() => mutate({ id: project.id, imageIds: allPhotoIds })}
             whileHover={{
@@ -82,11 +89,17 @@ export default function EachProjectCard({ project }: EachProjectCardProps) {
           >
             {`C:// abort`}
           </motion.button>
+          <div className="png-green absolute left-2 top-0 w-3/4 overflow-hidden opacity-10">
+            <Image
+              src={diagonalLong}
+              alt="diagonal graphic"
+              className=" w-full scale-150"
+            />
+          </div>
         </div>
       )}
 
-
-      <div className=" rounded-xl bg-black p-10 ">
+      <div className=" w-full rounded-xl bg-black p-10 ">
         <div className="mb-3 text-2xl">{project.title}</div>
         <div className="flex flex-wrap gap-5">
           {allPhotos?.map((e, i) => (
@@ -102,7 +115,7 @@ export default function EachProjectCard({ project }: EachProjectCardProps) {
         </div>
         <div className="">{project.text}</div>
       </div>
-    
+
       {allPhotos && (
         <ModalDialog isOpen={isEditModalOpen} onClose={closeEditModal}>
           <EditProjectModal

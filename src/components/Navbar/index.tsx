@@ -109,7 +109,7 @@ export default function NavBar() {
               className="flex w-12 items-center justify-center overflow-hidden rounded-full p-2"
             >
               <Image
-                className=" png-green-500 scale-150 object-cover"
+                className=" png-green scale-150 object-cover"
                 src={smileBlur}
                 alt="hacktime"
                 width={200}

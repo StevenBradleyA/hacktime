@@ -2,14 +2,12 @@ import { useSession } from "next-auth/react";
 import { useState } from "react";
 import Custom404 from "~/pages/404";
 import { api } from "~/utils/api";
-import PlusIcon from "~/components/Icons/plus";
-import SkullCrossBones from "~/components/Icons/skullCrossBones";
-import { motion } from "framer-motion";
 import ModalDialog from "~/components/Modal";
 import CreateProject from "~/components/Admin/Projects/CreateProject";
-import CrossIcon from "~/components/Icons/cross";
-import WizardHat from "~/components/Icons/wizardHat";
 import EachProjectCard from "~/components/Admin/Projects/ProjectCard";
+import diagonal from "@public/Graphics/diagonal-1.png";
+import plusPlus from "@public/Graphics/Plus-Plus.png";
+import Image from "next/image";
 
 export default function AdminProjects() {
   const { data: session } = useSession();
@@ -27,8 +25,6 @@ export default function AdminProjects() {
     setIsModalOpen(false);
   };
 
-  
-
   if (accessDenied) {
     return <Custom404 />;
   }
@@ -36,22 +32,26 @@ export default function AdminProjects() {
 
   return (
     <>
-      <div className="relative mt-10 flex items-center justify-center text-6xl ">
-        PROJECTS
-        <motion.button
-          className="absolute -right-96 rounded-2xl bg-black px-6 py-1"
-          whileHover={{ y: -5, transition: { type: "spring", stiffness: 400 } }}
-          whileTap={{ scale: 0.95 }}
+      <div className="relative mt-10 flex w-full items-center justify-center text-8xl ">
+        <div style={{ zIndex: 2 }}>PROJECTS</div>
+        <Image
+          src={diagonal}
+          alt="diagonal art"
+          className="absolute right-1/4 opacity-50 "
+        />
+
+        <Image
           onClick={openModal}
-        >
-          <PlusIcon />
-        </motion.button>
+          src={plusPlus}
+          alt="plus graphic"
+          className="png-green absolute right-40 w-32 cursor-pointer ease-in-out hover:scale-110"
+        />
       </div>
       <ModalDialog isOpen={isModalOpen} onClose={closeModal}>
         <CreateProject closeModal={closeModal} />
       </ModalDialog>
-      
-      <div className="mt-5 flex w-full gap-10 px-20">
+
+      <div className="my-20 flex w-full gap-10 px-20">
         {allProjects &&
           allProjects.length > 0 &&
           allProjects.map((e, i) => (

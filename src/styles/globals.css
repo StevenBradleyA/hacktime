@@ -6,7 +6,7 @@
 
 /* -----     PNG filters     ----- */
 
-.png-green-500 {
+.png-green {
   filter: invert(48%) sepia(5%) saturate(3277%) hue-rotate(72deg)
     brightness(116%) contrast(126%);
 }

@@ -119,18 +119,26 @@ export default function Home() {
           <Image
             src={smileBlur}
             alt="smile logo "
-            className=" absolute -bottom-24 right-0 w-20"
+            className=" absolute right-0 top-24 w-20"
           />
-        </div>
-        <div className="relative w-full">
           <Image
-            src={smileX}
+            src={smileBlur}
             alt="smile logo "
-            className=" absolute right-0 top-40 w-20"
+            className=" absolute right-0 top-48 w-20"
+          />
+          <Image
+            src={smileBlur}
+            alt="smile logo "
+            className=" absolute right-0 top-96 w-20"
+          />
+          <Image
+            src={smileBlur}
+            alt="smile logo "
+            className=" absolute right-0 top-72 w-20"
           />
         </div>
 
-        <div className="w-1/3 text-4xl">
+        <div className=" w-2/3 border  border-green-500 px-20 py-32 text-center text-6xl ">
           {` At HackTime, we're not just web developers; we're your dedicated
           partners in turning digital dreams into reality. Our small yet dynamic
           team of developers specializes in crafting unique and
@@ -158,10 +166,10 @@ export default function Home() {
             <Spline scene="https://prod.spline.design/KLzdjlL6uWS9CbiJ/scene.splinecode" />
           </div>
         </div>
-        <div className="mb-40 mt-40 flex justify-between">
+        {/* <div className="mb-40 mt-40 flex justify-between">
           <motion.div className="w-1/3 text-5xl">{count} </motion.div>
           <div className="text-6xl">Reasons to work with us</div>
-        </div>
+        </div> */}
         <div className="my-10 text-3xl">
           Sites that look great on mobile and all devices
         </div>

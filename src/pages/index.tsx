@@ -115,34 +115,21 @@ export default function Home() {
           />
         </div>
         <Image src={stripedRectLong} alt="hacktime logo " className="" />
-        <div className="relative w-full">
-          <Image
-            src={smileBlur}
-            alt="smile logo "
-            className=" absolute right-0 top-24 w-20"
-          />
-          <Image
-            src={smileBlur}
-            alt="smile logo "
-            className=" absolute right-0 top-48 w-20"
-          />
-          <Image
-            src={smileBlur}
-            alt="smile logo "
-            className=" absolute right-0 top-96 w-20"
-          />
-          <Image
-            src={smileBlur}
-            alt="smile logo "
-            className=" absolute right-0 top-72 w-20"
-          />
-        </div>
 
-        <div className=" w-2/3 border  border-green-500 px-20 py-32 text-center text-6xl ">
-          {` At HackTime, we're not just web developers; we're your dedicated
+        <div className="flex w-full ">
+          <p className=" w-2/3 border  border-green-500 px-20 py-32 text-center text-6xl ">
+            {` At HackTime, we're not just web developers; we're your dedicated
           partners in turning digital dreams into reality. Our small yet dynamic
           team of developers specializes in crafting unique and
           impactful websites tailored to your needs.`}
+          </p>
+
+          <div className="flex flex-col gap-10 w-1/3 bg-red-200">
+            <Image src={smileBlur} alt="smile logo " className="  w-32" />
+            <Image src={smileBlur} alt="smile logo " className="  w-32" />
+            <Image src={smileBlur} alt="smile logo " className="  w-32" />
+            <Image src={smileBlur} alt="smile logo " className="  w-32" />
+          </div>
         </div>
 
         <div className="flex w-full justify-between ">

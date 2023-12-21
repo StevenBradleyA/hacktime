@@ -22,7 +22,7 @@ export default function AboutUs() {
           beautiful sites for people.
         </p>
       </div>
-      <div className="flex gap-10">
+      <div className="flex gap-10 mb-96">
         <div className="png-light-gray h-96  border-4 border-black text-3xl">
           hi we are hacktime. I love coding and decided I wanted to build
           beautiful sites for people.

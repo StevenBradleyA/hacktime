@@ -111,23 +111,35 @@ export default function Home() {
           <Image
             src={hacktimeStacked}
             alt="hacktime logo "
-            className=" absolute -bottom-24 right-0 w-1/3"
+            className=" absolute -bottom-24 right-0 w-1/3 png-light-gray"
           />
         </div>
-        <Image src={stripedRectLong} alt="hacktime logo " className="" />
+        <Image src={stripedRectLong} alt="hacktime logo " className=" png-light-gray" />
 
         <div className="flex w-full ">
-          <p className=" w-2/3 border  border-green-500 px-20 py-32 text-center text-6xl ">
+          <p className=" w-2/3 border-4  border-green-500 px-20 py-32 text-center text-6xl ">
             {` At HackTime, we're not just web developers; we're your dedicated
           partners in turning digital dreams into reality. Our small yet dynamic
           team of developers specializes in crafting unique and
           impactful websites tailored to your needs.`}
           </p>
 
-          <div className="flex flex-col gap-10 w-1/3 bg-red-200">
-            <Image src={smileBlur} alt="smile logo " className="  w-32" />
-            <Image src={smileBlur} alt="smile logo " className="  w-32" />
-            <Image src={smileBlur} alt="smile logo " className="  w-32" />
+          <div className="png-light-gray flex w-1/3 flex-col justify-evenly">
+            <Image
+              src={smileBlur}
+              alt="smile logo "
+              className=" w-32  opacity-10"
+            />
+            <Image
+              src={smileBlur}
+              alt="smile logo "
+              className=" w-32  opacity-50"
+            />
+            <Image
+              src={smileBlur}
+              alt="smile logo "
+              className="w-32  opacity-75"
+            />
             <Image src={smileBlur} alt="smile logo " className="  w-32" />
           </div>
         </div>

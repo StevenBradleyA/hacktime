@@ -7,7 +7,7 @@ import anonymous from "@public/Admin/admin-green.png";
 import adminTitle from "@public/Admin/admin-vert-title.png";
 import diagonal from "@public/Graphics/diagonal-1.png";
 import dots from "@public/Graphics/dots-rect.png";
-import smile from "@public/Graphics/smile-blur.png";
+import smile from "@public/Graphics/hacktime-logo.png";
 import { useState } from "react";
 import CrossIcon from "~/components/Icons/cross";
 import SkullCrossBones from "~/components/Icons/skullCrossBones";

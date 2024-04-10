@@ -7,7 +7,7 @@ import Image from "next/image";
 import DownArrowIcon from "~/components/Icons/downArrow";
 import hacktimeStacked from "@public/Homepage/hacktime-stacked-offset.png";
 import stripedRectLong from "@public/Graphics/diagonal-rect-long.png";
-import smileBlur from "@public/Graphics/smile-blur.png";
+import hacktime from "@public/Graphics/hacktime-logo.png";
 import smileX from "@public/Graphics/Smile-xx.png";
 
 export default function Home() {
@@ -62,6 +62,9 @@ export default function Home() {
   // TODO better search results optimized for web crawling
   // TODO fast websites
 
+  // SEO PROs
+  // talk about next.js
+
   return (
     <>
       <Head>
@@ -70,51 +73,75 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="absolute left-1/4 top-10 z-30 flex-col text-5xl">
+      <h1 className="absolute left-1/4 top-8 z-30 flex-col text-5xl">
         <div>We build bespoke web</div>
         <div> experiences, turning your </div>
         <div>visions into online reality</div>
-      </div>
+      </h1>
 
-      <div className="mt-10 h-screen w-full flex-col items-center justify-center  px-20">
-        <div className="flex h-7 w-full justify-between"></div>
-
+      <div className="relative mt-12 h-[85vh] w-full flex-col items-center justify-center px-24 ">
+        <div className="absolute -top-5 right-24 flex gap-2">
+          <Image
+            src={hacktime}
+            alt="hacktime logo "
+            className=" png-green w-6"
+          />
+          <Image
+            src={hacktime}
+            alt="hacktime logo "
+            className=" png-green w-6"
+          />{" "}
+          <Image
+            src={hacktime}
+            alt="hacktime logo "
+            className=" png-green w-6"
+          />
+        </div>
         <div
-          className="relative h-3/4 w-full rounded-3xl bg-black"
+          className="relative mt-5 h-[86%] w-full rounded-3xl bg-black"
           onMouseEnter={handle3DSceneMouseEnter}
           onMouseLeave={handle3DSceneMouseLeave}
         >
-          <div className="absolute -top-32 w-full cursor-pointer ">
-            <Spline scene="https://prod.spline.design/vC6L8LFnvRbgMcAo/scene.splinecode" />
+          <div className="absolute bottom-0 w-[95%] cursor-pointer ">
+            {/* <Spline scene="https://prod.spline.design/vC6L8LFnvRbgMcAo/scene.splinecode" /> */}
           </div>
         </div>
-        <div className="flex h-7 w-full justify-between">
+        <div className="relative flex w-full justify-between ">
           <div>00</div>
           <div>01</div>
           <div>00</div>
           <div>01</div>
+          <div className="absolute left-1/2 top-3 -translate-x-1/2">
+            <motion.button
+              className="flex cursor-pointer items-center justify-center gap-5 "
+              initial="initial"
+              animate="bobble"
+              exit="exit"
+              variants={bounceVariants}
+              onClick={scrollToHeight}
+            >
+              <div className="text-2xl">scroll down</div>
+              <DownArrowIcon />
+            </motion.button>
+          </div>
         </div>
-        <motion.div
-          className="flex cursor-pointer justify-center gap-5"
-          initial="initial"
-          animate="bobble"
-          exit="exit"
-          variants={bounceVariants}
-          onClick={scrollToHeight}
-        >
-          <div className="text-2xl">scroll down</div>
-          <DownArrowIcon />
-        </motion.div>
       </div>
-      <div className="mt-0 w-full px-20">
-        <div className="relative h-10  w-full">
+
+
+
+      <div className="mt-16 w-full px-24 bg-purple-300">
+        {/* <div className="relative h-10  w-full">
           <Image
             src={hacktimeStacked}
             alt="hacktime logo "
             className=" absolute -bottom-24 right-0 w-1/3 png-light-gray"
           />
-        </div>
-        <Image src={stripedRectLong} alt="hacktime logo " className=" png-light-gray" />
+        </div> */}
+        <Image
+          src={stripedRectLong}
+          alt="hacktime logo "
+          className=" png-light-gray"
+        />
 
         <div className="flex w-full ">
           <p className=" w-2/3 border-4  border-green-500 px-20 py-32 text-center text-6xl ">
@@ -126,21 +153,21 @@ export default function Home() {
 
           <div className="png-light-gray flex w-1/3 flex-col justify-evenly">
             <Image
-              src={smileBlur}
+              src={hacktime}
               alt="smile logo "
               className=" w-32  opacity-10"
             />
             <Image
-              src={smileBlur}
+              src={hacktime}
               alt="smile logo "
               className=" w-32  opacity-50"
             />
             <Image
-              src={smileBlur}
+              src={hacktime}
               alt="smile logo "
               className="w-32  opacity-75"
             />
-            <Image src={smileBlur} alt="smile logo " className="  w-32" />
+            <Image src={hacktime} alt="smile logo " className="  w-32" />
           </div>
         </div>
 

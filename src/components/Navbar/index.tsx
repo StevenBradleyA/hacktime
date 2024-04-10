@@ -8,7 +8,7 @@ import MenuArrow from "../Icons/menuArrow";
 import ModalDialog from "../Modal";
 import ContactForm from "../ContactForm";
 import { useSession } from "next-auth/react";
-import smileBlur from "@public/Graphics/smile-blur.png";
+import smileBlur from "@public/Graphics/hacktime-logo.png";
 
 export default function NavBar() {
   const menuRef = useRef<HTMLDivElement | null>(null);
@@ -94,7 +94,7 @@ export default function NavBar() {
 
   return (
     <nav
-      className=" sticky top-0 z-50 mb-5 flex items-center justify-between gap-10 px-20 pt-10 font-aeonik text-lg"
+      className=" sticky top-0 z-50 flex items-center justify-between gap-10 px-24 py-12 font-aeonik text-lg "
       aria-label="Main Navigation -z-30"
     >
       <Link href="/" aria-label="Home" className="text-4xl">

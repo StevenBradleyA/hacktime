@@ -66,10 +66,13 @@ model User {
     email         String?   @unique
     emailVerified DateTime?
     image         String?
+    
     isAdmin       Boolean   @default(false)
-    accounts      Account[]
-    sessions      Session[]
-    Images        Images[]
+    isCustomer    Boolean   @default(false)
+
+    accounts Account[]
+    sessions Session[]
+    Images   Images[]
 }
 
 model Request {

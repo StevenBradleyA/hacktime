@@ -28,7 +28,6 @@ export default function ContactForm({ closeModal }: ContactFormProps) {
     onSuccess: () => {
       void ctx.request.getAll.invalidate();
       toast.success("Form Submitted!", {
-        icon: "👏",
         style: {
           borderRadius: "10px",
           background: "#333",

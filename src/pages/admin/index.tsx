@@ -68,7 +68,7 @@ export default function Admin() {
         <Link href="/admin/projects" aria-label="admin projects">
           <Image
             src={dots}
-            alt="projects"
+            alt="dots"
             className="absolute right-36 top-44 w-72 opacity-30"
           />
           <Image
@@ -76,11 +76,24 @@ export default function Admin() {
             alt="admin logo"
             className="png-light-gray absolute right-20 top-20 w-44 "
           />
-          <div className=" absolute right-60 top-64 w-44 text-6xl ">
-            PROJECTS
-          </div>
+          <h2 className=" absolute right-60 top-64 w-44 text-6xl ">PROJECTS</h2>
         </Link>
-        <button className="absolute right-72 top-0"></button>
+        <Link href="/admin/customers" aria-label="admin customers">
+          <Image
+            src={dots}
+            alt="dots"
+            className="absolute right-36 top-[35rem] w-72 opacity-30"
+          />
+          <Image
+            src={smile}
+            alt="admin logo"
+            className="png-light-gray absolute right-20 top-[29rem] w-44 "
+          />
+          <h2 className=" absolute right-60 top-[40rem] w-44 text-6xl ">
+            CUSTOMERS
+          </h2>
+        </Link>
+        {/* <button className="absolute right-72 top-0 bg-purple-500"></button> */}
       </div>
       {allRequests &&
         allRequests.length > 0 &&

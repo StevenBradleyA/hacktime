@@ -118,12 +118,22 @@ export default function NavBar() {
             </motion.button>
           </Link>
         )}
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          className="rounded-3xl bg-white px-6 py-2"
-          onClick={openModal}
-        >{`LET'S CHAT`}</motion.button>
+        {sessionData && sessionData.user ? (
+          <Link href="/dashboard" aria-label="Home">
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-darkGray rounded-3xl px-6 py-2"
+            >{`DASHBOARD`}</motion.button>
+          </Link>
+        ) : (
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className="rounded-3xl bg-white px-6 py-2"
+            onClick={openModal}
+          >{`LET'S CHAT`}</motion.button>
+        )}
         <ModalDialog isOpen={isModalOpen} onClose={closeModal}>
           <ContactForm closeModal={closeModal} />
         </ModalDialog>
@@ -187,6 +197,7 @@ export default function NavBar() {
                     {isHome && <CircleNav />}
                   </motion.div>
                 </Link>
+
                 <Link
                   href="/about-us"
                   aria-label="projects"

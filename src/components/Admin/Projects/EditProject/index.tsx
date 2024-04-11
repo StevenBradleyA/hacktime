@@ -65,11 +65,10 @@ export default function EditProjectModal({
   const { mutate } = api.project.update.useMutation({
     onSuccess: () => {
       toast.success("Project Updated!", {
-        icon: "👏",
         style: {
           borderRadius: "10px",
           background: "#333",
-          color: "#fff",
+          color: "#ff0000",
         },
       });
       void ctx.project.getAll.invalidate();

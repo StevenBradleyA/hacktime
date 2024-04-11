@@ -34,17 +34,17 @@ export default function Contact() {
 
   return (
     <div className="flex w-full">
-      <div className=" bg-lightGray absolute top-0 h-screen w-1/3 "></div>
+      <div className=" absolute top-0 h-screen w-1/3 bg-lightGray "></div>
       <div className="relative z-10 w-1/3 px-20 text-xl ">
         <div className="absolute -right-10 -top-2 rotate-90 text-8xl">
           HT://
         </div>
-        <div className="text-hackGray mt-60 text-2xl">
-          Ready to build your amazing website?{" "}
-        </div>
-        <div className="mt-5">
+        <h2 className="mt-60 text-3xl text-hackGray">
+          Ready for your amazing website?
+        </h2>
+        <h3 className="mt-2">
           {` All you have to do is share your details in this form, and we'll get back to you!`}
-        </div>
+        </h3>
         <motion.button
           className={`relative mt-10 ${
             isHovered ? "text-green-500" : "text-hackGray"
@@ -85,7 +85,7 @@ export default function Contact() {
         <ModalDialog isOpen={isModalOpen} onClose={closeModal}>
           <ContactForm closeModal={closeModal} />
         </ModalDialog>
-        <div className="mt-24 flex flex-col">
+        <div className="mt-16 flex flex-col">
           <div className="flex">
             <button className="h-16 w-16 bg-charcoal"></button>
             <button
@@ -142,10 +142,10 @@ export default function Contact() {
         </div>
       </div>
       <div className="relative w-2/3  ">
-        <div className="mt-64 flex flex-col items-center justify-center text-3xl">
+        <h1 className="mt-64 flex flex-col items-center justify-center text-3xl">
           <div className="text-white">Get in touch with us at</div>
           <a href="mailto:hacktimedev@outlook.com">hacktimedev@outlook.com</a>
-        </div>
+        </h1>
         <div className=" contact-page-title absolute -top-20">
           <Image src={contactVert} alt="contact-logo" className="w-5/6" />
         </div>

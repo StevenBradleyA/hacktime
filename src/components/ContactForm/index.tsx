@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { api } from "~/utils/api";
 import toast from "react-hot-toast";
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
+import hacktime from "@public/Graphics/hacktime-logo.png";
 
 interface ContactFormProps {
   closeModal: () => void;
@@ -59,7 +61,7 @@ export default function ContactForm({ closeModal }: ContactFormProps) {
     }
 
     if (!text.length) {
-      errorsObj.text = "Please provide the body";
+      errorsObj.text = "Please provide a description";
     }
 
     setErrors(errorsObj);
@@ -86,83 +88,93 @@ export default function ContactForm({ closeModal }: ContactFormProps) {
   };
 
   return (
-    <form className="flex flex-col items-center justify-center p-10 text-2xl">
-      <div className=" mb-10 text-center text-6xl">{`Let's work together!`}</div>
-      <div className="mb-5">What are your budget expectations? </div>
-      <div className="flex gap-5">
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          className={`rounded-3xl  px-6 py-2 ${
-            budget === "0-1k" ? "bg-green-500 text-black" : "bg-black"
-          }`}
-          onClick={(e) => handleBudgetClick(e, "low")}
-        >
-          0-1k
-        </motion.button>
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          className={`rounded-3xl  px-6 py-2 ${
-            budget === "1-5k" ? "bg-green-500 text-black" : "bg-black"
-          }`}
-          onClick={(e) => handleBudgetClick(e, "mid")}
-        >
-          1-5k
-        </motion.button>
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          className={`rounded-3xl  px-6 py-2 ${
-            budget === "10k+" ? "bg-green-500 text-black" : "bg-black"
-          }`}
-          onClick={(e) => handleBudgetClick(e, "high")}
-        >
-          10k+
-        </motion.button>
-      </div>
-      {showErrors && errors.budget && (
-        <div className="text-failure text-lg ">{errors.budget}</div>
-      )}
-
-      <div className="my-5">
-        What kind of site do you want us to build for you?
-      </div>
-      <textarea
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        className=" h-48 w-full rounded-md bg-black p-5 text-lg text-white focus:border-transparent focus:outline-none focus:ring-1 focus:ring-green-500"
-        placeholder="Explain a bit about your site"
+    <div className="desktop:h-[700px] laptop:h-[660px] relative flex h-[500px] w-[650px] overflow-auto">
+      <Image
+        alt="hacktime-logo"
+        src={hacktime}
+        className="png-green absolute bottom-0 left-0 w-8"
       />
-      {showErrors && errors.text && (
-        <div className="text-failure text-lg ">{errors.text}</div>
-      )}
-      <div className=" mt-5 flex items-center gap-5 ">
-        <div>{`What's your email?`} </div>
-        <input
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className=" rounded-md bg-black px-8 py-3 text-lg text-white focus:border-transparent focus:outline-none focus:ring-1 focus:ring-green-500"
-          placeholder="example@gmail.com"
-        />
-      </div>
-      {showErrors && errors.email && (
-        <div className="text-failure text-lg ">{errors.email}</div>
-      )}
-      {showErrors && errors.emailFormat && (
-        <div className="text-failure text-lg">{errors.emailFormat}</div>
-      )}
-      <motion.button
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        className="mt-6 rounded-3xl bg-white px-6 py-2"
-        onClick={(e) => {
-          e.preventDefault();
-          void submit(e);
-        }}
+
+      <form
+        className={`flex flex-col items-center justify-center  overflow-auto p-10 text-2xl  `}
       >
-        Submit
-      </motion.button>
-    </form>
+        <h1 className=" mb-5 text-center text-6xl">{`Let's work together!`}</h1>
+        <h2 className="mb-2">What are your budget expectations? </h2>
+        <div className="flex gap-5">
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className={`rounded-3xl  px-6 py-2 ${
+              budget === "0-1k" ? "bg-green-500 text-black" : "bg-black"
+            }`}
+            onClick={(e) => handleBudgetClick(e, "low")}
+          >
+            0-1k
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className={`rounded-3xl  px-6 py-2 ${
+              budget === "1-5k" ? "bg-green-500 text-black" : "bg-black"
+            }`}
+            onClick={(e) => handleBudgetClick(e, "mid")}
+          >
+            1-5k
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className={`rounded-3xl  px-6 py-2 ${
+              budget === "10k+" ? "bg-green-500 text-black" : "bg-black"
+            }`}
+            onClick={(e) => handleBudgetClick(e, "high")}
+          >
+            10k+
+          </motion.button>
+        </div>
+        {showErrors && errors.budget && (
+          <div className="text-base text-red-500 ">{errors.budget}</div>
+        )}
+
+        <label className="mt-5">
+          What kind of site do you want us to build for you?
+          <textarea
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            className="mt-2 h-48 w-full rounded-md bg-black p-5 text-lg text-white focus:border-transparent focus:outline-none focus:ring-1 focus:ring-green-500"
+            placeholder="Explain a bit about your site"
+          />
+        </label>
+        {showErrors && errors.text && (
+          <div className="text-base text-red-500 ">{errors.text}</div>
+        )}
+        <div className=" mt-5 flex items-center gap-5 ">
+          <h2>{`What's your email?`} </h2>
+          <input
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className=" rounded-md bg-black px-8 py-3 text-lg text-white focus:border-transparent focus:outline-none focus:ring-1 focus:ring-green-500"
+            placeholder="example@gmail.com"
+          />
+        </div>
+        {showErrors && errors.email && (
+          <div className="text-base text-red-500 ">{errors.email}</div>
+        )}
+        {showErrors && errors.emailFormat && (
+          <div className="text-base text-red-500">{errors.emailFormat}</div>
+        )}
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          className="mt-6 rounded-3xl bg-white px-6 py-2"
+          onClick={(e) => {
+            e.preventDefault();
+            void submit(e);
+          }}
+        >
+          Submit
+        </motion.button>
+      </form>
+    </div>
   );
 }

@@ -9,6 +9,7 @@ import { useState } from "react";
 import ModalDialog from "~/components/Modal";
 import EditProjectModal from "../EditProject";
 import diagonalLong from "@public/Graphics/diagonal-rect-long.png";
+import toast from "react-hot-toast";
 
 interface EachProjectCardProps {
   project: Project;
@@ -22,6 +23,13 @@ export default function EachProjectCard({ project }: EachProjectCardProps) {
 
   const { mutate } = api.project.delete.useMutation({
     onSuccess: () => {
+      toast.success("Project Deleted!", {
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#ff0000",
+        },
+      });
       void ctx.project.getAll.invalidate();
     },
   });

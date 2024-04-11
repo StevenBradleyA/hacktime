@@ -69,7 +69,7 @@ const ModalDialog: React.FC<ModalDialogProps> = ({
             onClick={handleModalClick}
           >
             <button
-              className="absolute right-4 top-2 transform text-lg text-gray-600 transition-transform duration-300 ease-in-out hover:rotate-45 hover:scale-110 hover:text-purple-500"
+              className="absolute right-4 top-2 transform text-lg text-gray-600 transition-transform duration-300 ease-in-out hover:rotate-45 hover:scale-110 hover:text-green-500"
               onClick={handleClose}
             >
               &times;

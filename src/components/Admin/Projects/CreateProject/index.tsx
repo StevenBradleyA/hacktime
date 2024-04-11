@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { uploadFileToS3 } from "~/utils/aws";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import anon from "@public/Admin/admin-black.png";
 
 interface CreateProjectProps {
   closeModal: () => void;
@@ -52,12 +53,11 @@ export default function CreateProject({ closeModal }: CreateProjectProps) {
 
   const { mutate } = api.project.create.useMutation({
     onSuccess: () => {
-      toast.success("Project Complete!", {
-        icon: "👏",
+      toast.success("Project Created!", {
         style: {
           borderRadius: "10px",
           background: "#333",
-          color: "#fff",
+          color: "#ff0000",
         },
       });
       void ctx.project.getAll.invalidate();
@@ -165,59 +165,60 @@ export default function CreateProject({ closeModal }: CreateProjectProps) {
   //   }
 
   return (
-    <div className=" flex flex-col items-center">
-      <form className="flex w-full flex-col items-center">
-        <div className="text-4xl"> Project Title </div>
-        <input
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          className=" my-1 rounded-xl bg-black px-4 py-2 text-xl"
-          placeholder="title"
-        />
+    <div className=" desktop:h-[750px] relative flex h-[600px] w-[700px] flex-col overflow-auto text-red-600">
+      <Image
+        alt="admin logo"
+        src={anon}
+        className="png-red absolute left-0 top-0 w-12 object-contain "
+      />
+      <form className="mt-5 flex w-full flex-col gap-5">
+        <label className="flex flex-col items-center text-4xl">
+          PROJECT TITLE
+          <input
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className=" mt-1 w-3/4 rounded-md bg-black px-4 py-2 text-xl"
+            placeholder="title"
+          />
+        </label>
         {enableErrorDisplay && errors.title && (
-          <p className="text-xl text-red-400">{errors.title}</p>
+          <p className="text-xl text-red-500">{errors.title}</p>
         )}
 
-        <div className="mt-3 text-4xl"> Project Description </div>
-        <textarea
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          className=" text-md my-1 h-60 w-96 rounded-xl bg-black px-6 py-2"
-          placeholder="Description"
-        ></textarea>
-
+        <label className="flex flex-col items-center text-4xl">
+          DESCRIPTION
+          <textarea
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            className=" mt-1 h-60 w-3/4 rounded-md bg-black px-6 py-2 text-lg"
+            placeholder="Description"
+          ></textarea>
+        </label>
         {enableErrorDisplay && errors.text && (
-          <p className="text-xl text-red-400">{errors.text}</p>
+          <p className="text-xl text-red-500">{errors.text}</p>
         )}
-
-        <div className="mt-3 flex justify-center text-4xl text-red-600">
-          H:// Execute Image Upload Protocol
-        </div>
-        <div className="py-4">
-          <label className="relative flex justify-center">
-            <input
-              className="absolute h-full w-full cursor-pointer opacity-0"
-              type="file"
-              multiple
-              // accept="image/png, image/jpg, image/jpeg"
-              accept="image/*"
-              onChange={(e) => {
-                if (e.target.files)
-                  setImageFiles([...imageFiles, ...e.target.files]);
-              }}
-            />
-            <button className="h-20 w-44 rounded-2xl bg-black">
-              <span className="bg-black text-center text-red-600">
-                Access Data Vessels
-              </span>
-            </button>
-          </label>
-        </div>
-        <div className="mb-5 flex w-3/4 flex-wrap justify-center gap-10  ">
+        <div className=" flex justify-center text-4xl">IMAGE UPLOAD</div>
+        <label className="relative flex justify-center">
+          <input
+            className="absolute h-full w-3/4 cursor-pointer rounded-md  opacity-0"
+            type="file"
+            multiple
+            // accept="image/png, image/jpg, image/jpeg"
+            accept="image/*"
+            onChange={(e) => {
+              if (e.target.files)
+                setImageFiles([...imageFiles, ...e.target.files]);
+            }}
+          />
+          <button className="bg-darkGray w-3/4 rounded-md p-5 text-2xl">
+            CLICK ME
+          </button>
+        </label>
+        <div className="mt-5 flex w-full flex-wrap justify-center gap-10  ">
           {imageFiles.map((e, i) => (
             <div key={i} className="relative">
               <Image
-                className={`h-28 w-auto cursor-pointer rounded-lg object-cover shadow-sm hover:scale-105 hover:shadow-md ${
+                className={`h-24 w-auto cursor-pointer rounded-lg object-cover shadow-sm hover:scale-105 hover:shadow-md ${
                   i === preview ? "border-4 border-green-500" : ""
                 } `}
                 alt={`listing-${i}`}
@@ -252,25 +253,26 @@ export default function CreateProject({ closeModal }: CreateProjectProps) {
           </p>
         )}
         {enableErrorDisplay && errors.imageShortage && (
-          <p className="text-xl text-red-400">{errors.imageShortage}</p>
+          <p className="text-xl text-red-500">{errors.imageShortage}</p>
         )}
-
-        <motion.button
-          whileHover={{
-            scale: 1.1,
-          }}
-          whileTap={{ scale: 0.95 }}
-          onClick={(e) => {
-            e.preventDefault();
-            void submit(e);
-          }}
-          disabled={hasSubmitted || isSubmitting}
-          className={`rounded-2xl bg-black px-6 py-2 ${
-            hasSubmitted ? "text-red-500" : ""
-          } ${isSubmitting ? "text-red-500" : ""}`}
-        >
-          {isSubmitting ? "Uploading..." : "Submit"}
-        </motion.button>
+        <div className="flex justify-center">
+          <motion.button
+            whileHover={{
+              scale: 1.1,
+            }}
+            whileTap={{ scale: 0.95 }}
+            onClick={(e) => {
+              e.preventDefault();
+              void submit(e);
+            }}
+            disabled={hasSubmitted || isSubmitting}
+            className={`w-1/4 rounded-md border-2 border-red-500 px-6 py-2 text-xl hover:border-black hover:bg-black ${
+              hasSubmitted ? "text-red-500" : ""
+            } ${isSubmitting ? "text-red-500" : ""}`}
+          >
+            {isSubmitting ? "Uploading..." : "Submit"}
+          </motion.button>
+        </div>
       </form>
     </div>
   );

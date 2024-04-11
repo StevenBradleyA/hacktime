@@ -74,13 +74,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1 className="absolute left-1/4 top-8 z-30 flex-col text-5xl">
+      <h1 className="desktop:top-8 desktop:text-5xl absolute left-1/4 top-16 z-30 flex-col text-4xl">
         <div>We build bespoke web</div>
         <div> experiences, turning your </div>
         <div>visions into online reality</div>
       </h1>
 
-      <div className="relative mt-12 h-[85vh] w-full flex-col items-center justify-center px-24 ">
+      <div className="desktop:h-[85vh] laptop:h-[78vh] relative mt-12 h-[70vh] w-full flex-col items-center justify-center px-24 ">
         <div className="absolute -top-3 right-24 flex gap-2">
           <Image
             src={hacktime}

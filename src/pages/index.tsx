@@ -2,13 +2,14 @@ import Head from "next/head";
 import Spline from "@splinetool/react-spline";
 import { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
-import temporary from "@public/Homepage/_f4b1680f-f1c9-478f-b70e-bacd25904b37.jpg";
 import Image from "next/image";
 import DownArrowIcon from "~/components/Icons/downArrow";
 import hacktimeStacked from "@public/Homepage/hacktime-stacked-offset.png";
 import stripedRectLong from "@public/Graphics/diagonal-rect-long.png";
 import hacktime from "@public/Graphics/hacktime-logo.png";
-import smileX from "@public/Graphics/Smile-xx.png";
+import backLayout from "@public/Homepage/back-layout.png";
+import hackBarCode from "@public/Homepage/its-hacking-time-code.png";
+import bigPogTimeCode from "@public/Homepage/big-pogtime-now-code.png";
 
 export default function Home() {
   // todo enable scroll on 3D scene
@@ -80,7 +81,7 @@ export default function Home() {
       </h1>
 
       <div className="relative mt-12 h-[85vh] w-full flex-col items-center justify-center px-24 ">
-        <div className="absolute -top-5 right-24 flex gap-2">
+        <div className="absolute -top-3 right-24 flex gap-2">
           <Image
             src={hacktime}
             alt="hacktime logo "
@@ -90,7 +91,7 @@ export default function Home() {
             src={hacktime}
             alt="hacktime logo "
             className=" png-green w-6"
-          />{" "}
+          />
           <Image
             src={hacktime}
             alt="hacktime logo "
@@ -127,9 +128,78 @@ export default function Home() {
         </div>
       </div>
 
+      <div className="relative mt-16 flex w-full flex-col overflow-hidden px-24">
+        <Image
+          src={backLayout}
+          alt="hacktime logo "
+          className=" back-layout-container absolute bottom-0 left-0 right-0 top-0 object-cover "
+        />
 
+        <div className="back-layout relative left-1/2 top-10 z-10 w-5/6 -translate-x-1/2 text-sm">
+          <Image
+            src={hacktime}
+            alt="hacktime logo "
+            className=" png-green absolute left-0 w-12"
+          />
+          <div className="absolute left-[10%] top-1 text-4xl text-[#616161]">{`HT://`}</div>
+          <div className="absolute left-5 top-40 origin-left -rotate-90 ">
+            FUTURISM
+          </div>
+          <div className="absolute left-5 top-96 origin-left -rotate-90">
+            INTELLIGENCE
+          </div>
 
-      <div className="mt-16 w-full px-24 bg-purple-300">
+          <Image
+            src={hackBarCode}
+            alt="hacktime logo "
+            className=" png-green absolute -right-32 top-4 h-7 w-64 object-cover"
+          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+            viewBox="0 0 64 64"
+            className="absolute right-0 top-40 w-4 text-neonTeal"
+          >
+            <path
+              d="M62 10.571L53.429 2L32 23.429L10.571 2L2 10.571L23.429 32L2 53.429L10.571 62L32 40.571L53.429 62L62 53.429L40.571 32z"
+              fill="currentColor"
+            />
+          </svg>
+          <div className="absolute right-2 top-80 origin-right -rotate-90">
+            CYBERNETICS
+          </div>
+        </div>
+
+        <div className=" relative left-[55%] top-32 z-10  flex w-full flex-col ">
+          <h2 className="text-8xl ">FREE-LANCE</h2>
+          <p className="-mb-2 text-white">
+            At hacktime we build stuff ya know and that is pretty poggers
+          </p>
+          <p className="-mb-2 text-white">
+            At hacktime we build stuff ya know and that is pretty poggers
+          </p>
+          <p className="text-white">
+            At hacktime we build stuff ya know and that is pretty poggers
+          </p>
+        </div>
+
+        <div className="z-10 ml-[15%] mt-48 flex w-full flex-col ">
+          <p className="-mb-2 text-white">
+            At hacktime we build stuff ya know and that is pretty poggers
+          </p>
+          <p className="-mb-2 text-white">
+            At hacktime we build stuff ya know and that is pretty poggers
+          </p>
+          <p className="-mb-12 text-white">
+            At hacktime we build stuff ya know and that is pretty poggers
+          </p>
+          <h2 className="-mb-32 text-[12rem] ">HUMAN-</h2>
+          <h2 className="text-[12rem] ">MACHINE</h2>
+        </div>
+        {/* <div className="back-layout w-2/3 left-0  bg-green-300 h-32 z-10 absolute"> */}
+
+        {/* </div> */}
+
         {/* <div className="relative h-10  w-full">
           <Image
             src={hacktimeStacked}
@@ -137,10 +207,13 @@ export default function Home() {
             className=" absolute -bottom-24 right-0 w-1/3 png-light-gray"
           />
         </div> */}
+        <div className="mt-96 h-10"></div>
+        <div className="mt-96 h-10"></div>
+
         <Image
           src={stripedRectLong}
           alt="hacktime logo "
-          className=" png-light-gray"
+          className="png-light-gray mt-96"
         />
 
         <div className="flex w-full ">
@@ -172,7 +245,7 @@ export default function Home() {
         </div>
 
         <div className="flex w-full justify-between ">
-          <Image src={temporary} alt="temp photo" className="w-80" />
+          {/* <Image src={temporary} alt="temp photo" className="w-80" /> */}
           <div className="flex-col">
             <div className="my-10 text-3xl">
               Sites that look great on mobile and all devices
@@ -189,7 +262,7 @@ export default function Home() {
             Your Business is unique so your site should be too
           </div>
           <div className="flex h-[600px] w-1/4 items-center justify-center rounded-2xl bg-black px-10 shadow-2xl">
-            <Spline scene="https://prod.spline.design/KLzdjlL6uWS9CbiJ/scene.splinecode" />
+            {/* <Spline scene="https://prod.spline.design/KLzdjlL6uWS9CbiJ/scene.splinecode" /> */}
           </div>
         </div>
         {/* <div className="mb-40 mt-40 flex justify-between">

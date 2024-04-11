@@ -20,8 +20,41 @@
     brightness(110%) contrast(105%);
 }
 
-
-
+@keyframes bg-animation {
+  0% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-1%, -1%);
+  }
+  20% {
+    transform: translate(-2%, 1%);
+  }
+  30% {
+    transform: translate(1%, -2%);
+  }
+  40% {
+    transform: translate(-1%, 2%);
+  }
+  50% {
+    transform: translate(-2%, 1%);
+  }
+  60% {
+    transform: translate(2%, 0);
+  }
+  70% {
+    transform: translate(0, 2%);
+  }
+  80% {
+    transform: translate(-2%, 0);
+  }
+  90% {
+    transform: translate(1%, 1%);
+  }
+  100% {
+    transform: translate(1%, 0);
+  }
+}
 
 /* -----     home     ----- */
 
@@ -42,6 +75,15 @@
   text-shadow: 0 0 10px rgba(0, 255, 153, 0.7);
 }
 
+/* .back-layout-container {
+  z-index: 10;
+} */
+.back-layout {
+  z-index: 30
+}
+
+
+
 /* -----     navbar     ----- */
 
 /* menu matrix */
@@ -49,14 +91,7 @@
 .second-menu {
   position: relative;
   overflow: hidden;
-  /* background-color: #333333; */
   background-color: #464646;
-  /* background-color: #2C3539; */
-  /* background-color: #4D4D4D; */
-  /* background-color: #595959; */
-  /* background-color: #6C757D; */
-
-  /* color: black; */
   transition: background-color 0.3s ease;
 }
 
@@ -66,7 +101,6 @@
   /* color: lime; */
   /* color: mediumspringgreen; */
   color: springgreen;
-  /* box-shadow: 0 0 10px 5px rgba(0, 255, 0, 0.3); */
 }
 
 .second-menu::before {

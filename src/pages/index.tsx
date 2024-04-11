@@ -139,20 +139,31 @@ export default function Home() {
           <Image
             src={hacktime}
             alt="hacktime logo "
-            className=" png-green absolute left-0 w-12"
+            className=" png-light-gray absolute left-0 w-12"
           />
-          <div className="absolute left-[10%] top-1 text-4xl text-[#616161]">{`HT://`}</div>
-          <div className="absolute left-5 top-40 origin-left -rotate-90 ">
-            FUTURISM
+          <div className="absolute left-[10%] top-1 text-4xl text-neonTeal">{`HT://`}</div>
+          <div className="absolute left-5 top-40 origin-left -rotate-90 text-hackGray">
+            FAST
           </div>
-          <div className="absolute left-5 top-96 origin-left -rotate-90">
-            INTELLIGENCE
+          <div className="absolute left-5 top-96 origin-left -rotate-90 text-hackGray">
+            SEO OPTIMIZED
           </div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+            viewBox="0 0 64 64"
+            className="absolute left-3 top-[35rem] w-4 text-neonTeal"
+          >
+            <path
+              d="M62 10.571L53.429 2L32 23.429L10.571 2L2 10.571L23.429 32L2 53.429L10.571 62L32 40.571L53.429 62L62 53.429L40.571 32z"
+              fill="currentColor"
+            />
+          </svg>
 
           <Image
             src={hackBarCode}
             alt="hacktime logo "
-            className=" png-green absolute -right-32 top-4 h-7 w-64 object-cover"
+            className=" png-light-gray absolute -right-32 top-4 h-7 w-64 object-cover"
           />
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -165,124 +176,131 @@ export default function Home() {
               fill="currentColor"
             />
           </svg>
-          <div className="absolute right-2 top-80 origin-right -rotate-90">
-            CYBERNETICS
+          <div className="absolute right-2 top-80 origin-right -rotate-90 text-hackGray">
+            NEXT JS
+          </div>
+          <div className="absolute right-2 top-[40rem] origin-right -rotate-90 text-white">
+            POGGERS
+          </div>
+          <div className="absolute left-1/2 top-10 z-10 w-full -translate-x-1/2">
+            <Spline scene="https://prod.spline.design/KLzdjlL6uWS9CbiJ/scene.splinecode" />
           </div>
         </div>
 
-        <div className=" relative left-[55%] top-32 z-10  flex w-full flex-col ">
-          <h2 className="text-8xl ">FREE-LANCE</h2>
+        <div className=" relative left-[55%] top-24   z-30 flex w-full flex-col">
+          <h2 className="text-8xl text-neonTeal ">FREELANCE-</h2>
+          <h2 className="text-8xl text-neonTeal ">DEVELOPERS</h2>
+
           <p className="-mb-2 text-white">
-            At hacktime we build stuff ya know and that is pretty poggers
+            Need a website? We do everything from domain acquistion to
           </p>
           <p className="-mb-2 text-white">
-            At hacktime we build stuff ya know and that is pretty poggers
+            design, hosting, and building a fast beautiful site that makes your
+            business
           </p>
           <p className="text-white">
-            At hacktime we build stuff ya know and that is pretty poggers
+            stand out. Your Business is unique so your site should be too
           </p>
         </div>
 
-        <div className="z-10 ml-[15%] mt-48 flex w-full flex-col ">
+        <div className="z-30 ml-[15%] mt-24 flex w-full flex-col text-neonTeal ">
           <p className="-mb-2 text-white">
-            At hacktime we build stuff ya know and that is pretty poggers
+            Small Business? Corporate Business? We work with them all.
           </p>
           <p className="-mb-2 text-white">
-            At hacktime we build stuff ya know and that is pretty poggers
+            Want a unique feature or something custom, we can build it.
           </p>
-          <p className="-mb-12 text-white">
-            At hacktime we build stuff ya know and that is pretty poggers
-          </p>
-          <h2 className="-mb-32 text-[12rem] ">HUMAN-</h2>
-          <h2 className="text-[12rem] ">MACHINE</h2>
+          <p className="-mb-16 text-white">Your success is our success.</p>
+          <h2 className="-mb-32 text-[12rem] ">UNIQUE-</h2>
+          <h2 className="text-[12rem] ">DESIGNS</h2>
         </div>
-        {/* <div className="back-layout w-2/3 left-0  bg-green-300 h-32 z-10 absolute"> */}
+      </div>
 
-        {/* </div> */}
+      <div className="bg-darkGray z-20 h-[60vh] w-full px-24 text-3xl text-purple-500">
+        uh hey
+      </div>
 
-        {/* <div className="relative h-10  w-full">
+      {/* <div className="back-layout w-2/3 left-0  bg-green-300 h-32 z-10 absolute"> */}
+
+      {/* </div> */}
+
+      {/* <div className="relative h-10  w-full">
           <Image
             src={hacktimeStacked}
             alt="hacktime logo "
             className=" absolute -bottom-24 right-0 w-1/3 png-light-gray"
           />
         </div> */}
-        <div className="mt-96 h-10"></div>
-        <div className="mt-96 h-10"></div>
+      <div className="mt-96 h-10"></div>
+      <div className="mt-96 h-10"></div>
 
-        <Image
-          src={stripedRectLong}
-          alt="hacktime logo "
-          className="png-light-gray mt-96"
-        />
+      <Image
+        src={stripedRectLong}
+        alt="hacktime logo "
+        className="png-light-gray mt-96"
+      />
 
-        <div className="flex w-full ">
-          <p className=" w-2/3 border-4  border-green-500 px-20 py-32 text-center text-6xl ">
-            {` At HackTime, we're not just web developers; we're your dedicated
+      <div className="flex w-full ">
+        <p className=" w-2/3 border-4  border-green-500 px-20 py-32 text-center text-6xl ">
+          {` At HackTime, we're not just web developers; we're your dedicated
           partners in turning digital dreams into reality. Our small yet dynamic
           team of developers specializes in crafting unique and
           impactful websites tailored to your needs.`}
-          </p>
+        </p>
 
-          <div className="png-light-gray flex w-1/3 flex-col justify-evenly">
-            <Image
-              src={hacktime}
-              alt="smile logo "
-              className=" w-32  opacity-10"
-            />
-            <Image
-              src={hacktime}
-              alt="smile logo "
-              className=" w-32  opacity-50"
-            />
-            <Image
-              src={hacktime}
-              alt="smile logo "
-              className="w-32  opacity-75"
-            />
-            <Image src={hacktime} alt="smile logo " className="  w-32" />
-          </div>
+        <div className="png-light-gray flex w-1/3 flex-col justify-evenly">
+          <Image
+            src={hacktime}
+            alt="smile logo "
+            className=" w-32  opacity-10"
+          />
+          <Image
+            src={hacktime}
+            alt="smile logo "
+            className=" w-32  opacity-50"
+          />
+          <Image
+            src={hacktime}
+            alt="smile logo "
+            className="w-32  opacity-75"
+          />
+          <Image src={hacktime} alt="smile logo " className="  w-32" />
         </div>
-
-        <div className="flex w-full justify-between ">
-          {/* <Image src={temporary} alt="temp photo" className="w-80" /> */}
-          <div className="flex-col">
-            <div className="my-10 text-3xl">
-              Sites that look great on mobile and all devices
-            </div>
-            <div className="my-10 text-3xl">
-              Our sites are search engine optimized so your business will get
-              clicks
-            </div>
-          </div>
-        </div>
-
-        <div className="flex w-full justify-evenly bg-dark">
-          <div className="mt-30 w-1/3 text-8xl ">
-            Your Business is unique so your site should be too
-          </div>
-          <div className="flex h-[600px] w-1/4 items-center justify-center rounded-2xl bg-black px-10 shadow-2xl">
-            {/* <Spline scene="https://prod.spline.design/KLzdjlL6uWS9CbiJ/scene.splinecode" /> */}
-          </div>
-        </div>
-        {/* <div className="mb-40 mt-40 flex justify-between">
-          <motion.div className="w-1/3 text-5xl">{count} </motion.div>
-          <div className="text-6xl">Reasons to work with us</div>
-        </div> */}
-        <div className="my-10 text-3xl">
-          Sites that look great on mobile and all devices
-        </div>
-        <div className="my-10 text-3xl">
-          Our sites are search engine optimized so your business will get clicks
-        </div>
-        <div className="my-10 text-3xl">Your success is our success</div>
-        <div>
-          Payment integration, email, text confirmations, cloud storage whatever
-          your business needs we can do it.
-        </div>
-        <div>Featured Work</div>
-        <div>cards here</div>
       </div>
+
+      <div className="flex w-full justify-between ">
+        <div className="flex-col">
+          <div className="my-10 text-3xl">
+            Sites that look great on mobile and all devices
+          </div>
+          <div className="my-10 text-3xl">
+            Our sites are search engine optimized so your business will get
+            clicks
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-30 w-1/3 text-8xl ">
+        Your Business is unique so your site should be too
+      </div>
+
+      <div className="my-10 text-3xl">
+        Sites that look great on mobile and all devices
+      </div>
+      <div className="my-10 text-3xl">
+        {`   Our sites are search engine optimized so your business will get
+          clicks. We have a ton of experience in understanding web crawlers. we
+          use the correct semantics to help your site be accessible. Next.js has
+          the speed of React so pages don't refresh. but the power to preload
+          and make your sites easier to find by consumers.`}
+      </div>
+      <div className="my-10 text-3xl">Your success is our success</div>
+      <div>
+        Payment integration, email, text confirmations, cloud storage whatever
+        your business needs we can do it.
+      </div>
+      <div>Featured Work</div>
+      <div>cards here</div>
     </>
   );
 }

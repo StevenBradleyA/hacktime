@@ -9,12 +9,15 @@ export default {
       },
       textColor: {
         neonTeal: "#00FF99",
+        neonPurp: "#9900FF",
         hack: "#00dd00",
         failure: "#ff0000",
         hackGray: "#adadad",
         chillWhite: "#f1f1ef",
         charcoal: "#333",
         slateBlack: "#202124",
+        darkGray: "#616161",
+        keebyGray: "#2f2f2f",
       },
       backgroundColor: {
         dark: "#1E1E1E",
@@ -26,6 +29,8 @@ export default {
         offDark: "#2f2f2f",
         lightGray: "#464646",
         chillWhite: "#f1f1ef",
+        darkGray: "#616161",
+        keebyGray: "#2f2f2f",
       },
       screens: {
         mobile: "320px",

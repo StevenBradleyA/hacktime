@@ -19,6 +19,7 @@ interface ErrorsObj {
   title?: string;
   priceNone?: string;
   priceExcess?: string;
+  link?: string;
 }
 
 interface Image {
@@ -30,6 +31,7 @@ interface ProjectData {
   text: string;
   preview: number;
   userId: string;
+  link: string;
   images: Image[];
 }
 
@@ -43,6 +45,7 @@ export default function CreateProject({ closeModal }: CreateProjectProps) {
   //   const accessDenied = !session || !session.user.isVerified;
 
   const [title, setTitle] = useState<string>("");
+  const [link, setLink] = useState<string>("");
   const [text, setText] = useState<string>("");
   const [preview, setPreview] = useState<number>(0);
   const [imageFiles, setImageFiles] = useState<File[]>([]);
@@ -81,6 +84,9 @@ export default function CreateProject({ closeModal }: CreateProjectProps) {
     if (!title.length) {
       errorsObj.title = "Please provide a title";
     }
+    if (!link.length) {
+      errorsObj.link = "Please provide a link";
+    }
 
     for (const file of imageFiles) {
       if (file.size > maxFileSize) {
@@ -91,7 +97,7 @@ export default function CreateProject({ closeModal }: CreateProjectProps) {
     }
 
     setErrors(errorsObj);
-  }, [imageFiles, text, title]);
+  }, [imageFiles, text, title, link]);
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -110,6 +116,7 @@ export default function CreateProject({ closeModal }: CreateProjectProps) {
           title,
           text,
           preview,
+          link,
           userId: sessionUserId,
           images: [],
         };
@@ -184,7 +191,18 @@ export default function CreateProject({ closeModal }: CreateProjectProps) {
         {enableErrorDisplay && errors.title && (
           <p className="text-xl text-red-500">{errors.title}</p>
         )}
-
+        <label className="flex flex-col items-center text-4xl">
+          URL
+          <input
+            value={link}
+            onChange={(e) => setLink(e.target.value)}
+            className=" mt-1 w-3/4 rounded-md bg-black px-4 py-2 text-xl"
+            placeholder="link"
+          />
+        </label>
+        {enableErrorDisplay && errors.link && (
+          <p className="text-xl text-red-500">{errors.link}</p>
+        )}
         <label className="flex flex-col items-center text-4xl">
           DESCRIPTION
           <textarea

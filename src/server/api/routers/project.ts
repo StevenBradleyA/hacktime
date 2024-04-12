@@ -11,11 +11,30 @@ export const projectRouter = createTRPCRouter({
   getAll: publicProcedure.query(({ ctx }) => {
     return ctx.prisma.project.findMany();
   }),
+  getByTitle: publicProcedure
+    .input(z.string())
+    .query(async ({ input, ctx }) => {
+      const projectData = await ctx.prisma.project.findUnique({
+        where: {
+          title: input,
+        },
+      });
+
+      if (projectData) {
+        const projectImages = await ctx.prisma.images.findMany({
+          where: {
+            resourceId: projectData.id,
+          },
+        });
+        return { projectData, projectImages };
+      }
+    }),
   create: protectedProcedure
     .input(
       z.object({
         title: z.string(),
         text: z.string(),
+        link: z.string(),
         preview: z.number(),
         userId: z.string(),
         images: z.array(
@@ -26,10 +45,10 @@ export const projectRouter = createTRPCRouter({
       }),
     )
     .mutation(async ({ input, ctx }) => {
-      const { title, text, preview, userId, images } = input;
+      const { title, text, preview, userId, images, link } = input;
       if (ctx.session.user.isAdmin) {
         const newProject = await ctx.prisma.project.create({
-          data: { title, text },
+          data: { title, text, link },
         });
 
         const createdImages = await Promise.all(
@@ -63,6 +82,7 @@ export const projectRouter = createTRPCRouter({
         userId: z.string(),
         title: z.string(),
         text: z.string().optional(),
+        link: z.string(),
         preview: z.object({ source: z.string(), index: z.number() }),
         deleteImageIds: z.array(z.string()).optional(),
         images: z
@@ -75,7 +95,7 @@ export const projectRouter = createTRPCRouter({
       }),
     )
     .mutation(async ({ input, ctx }) => {
-      const { id, title, text, deleteImageIds, images, userId, preview } =
+      const { id, title, text, deleteImageIds, images, userId, preview, link } =
         input;
 
       if (ctx.session.user.isAdmin) {
@@ -83,7 +103,7 @@ export const projectRouter = createTRPCRouter({
           where: {
             id: id,
           },
-          data: { title, text },
+          data: { title, text, link },
         });
 
         await ctx.prisma.images.updateMany({

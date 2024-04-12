@@ -5,33 +5,22 @@ import grid from "@public/About/grid-tunnel.png";
 
 export default function AboutUs() {
   return (
-    <div className="w-full px-72">
-      <div className="flex justify-center">
+    <div className="relative h-[80vh] w-full px-24 ">
+      <div className="absolute -left-72 top-60 w-[40%] origin-bottom  rotate-90 object-cover">
         <Image src={aboutTitle} alt="title" className="png-green" />
       </div>
-      <div className="png-light-gray my-5 h-60 w-full border-4 border-black text-3xl">
-        <p>
-          hi we are hacktime. I love coding and decided I wanted to build
-          beautiful sites for people.
+      <div className="flex w-full justify-end items-center h-3/4 ">
+        <p className="bg-keebyGray w-1/2 flex-wrap rounded-md p-10">
+          Hello, we are HackTime. We love coding and decided to build. Poggers
+          pog pog pog pog pog pog pog pog pog pog pog pog pog pog pog pog pog
+          pog pog pog pog pog pog pog pog pog pog pog pog pog pog pog pog pog
+          pog pog pog pog pog pog pog pog pog pog pog pog pog pog pog pog pog
+          pog pog pog pog pog pog pog pog pog pog pog pog pog pog pog pog pog
+          pog pog pog pog pog pog pog pog pog pog pog pog pog pog pog pog pog
+          pog pog pog pog pog pog pog pog pog pog pog pog pog pog pog pog pog
+          pog pog pog pog pog pog pog pog pog pog pog pog pog pog pog pog pog
+          pog pog pog pog pog pog pog pog pog pog pog
         </p>
-      </div>
-      <Image src={grid} alt="title" className="png-light-gray" />
-      <div className="png-light-gray my-5 h-60 w-full border-4 border-black text-3xl">
-        <p>
-          hi we are hacktime. I love coding and decided I wanted to build
-          beautiful sites for people.
-        </p>
-      </div>
-      <div className="flex gap-10 mb-96">
-        <div className="png-light-gray h-96  border-4 border-black text-3xl">
-          hi we are hacktime. I love coding and decided I wanted to build
-          beautiful sites for people.
-        </div>
-
-        <div className="png-light-gray h-96  border-4 border-black text-3xl">
-          hi we are hacktime. I love coding and decided I wanted to build
-          beautiful sites for people.
-        </div>
       </div>
     </div>
   );

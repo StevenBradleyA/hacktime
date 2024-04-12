@@ -10,6 +10,7 @@ import hacktime from "@public/Graphics/hacktime-logo.png";
 import backLayout from "@public/Homepage/back-layout.png";
 import hackBarCode from "@public/Homepage/its-hacking-time-code.png";
 import bigPogTimeCode from "@public/Homepage/big-pogtime-now-code.png";
+import diagonal from "@public/Graphics/diagonal-1.png";
 
 export default function Home() {
   // todo enable scroll on 3D scene
@@ -132,10 +133,10 @@ export default function Home() {
         <Image
           src={backLayout}
           alt="hacktime logo "
-          className=" back-layout-container absolute bottom-0 left-0 right-0 top-0 object-cover "
+          className=" back-layout-container absolute bottom-0 left-0 right-0 top-0 object-cover  "
         />
 
-        <div className="back-layout relative left-1/2 top-10 z-10 w-5/6 -translate-x-1/2 text-sm">
+        <div className="back-layout desktop:w-5/6 relative left-1/2 top-10 z-10 w-full -translate-x-1/2 text-sm">
           <Image
             src={hacktime}
             alt="hacktime logo "
@@ -163,7 +164,7 @@ export default function Home() {
           <Image
             src={hackBarCode}
             alt="hacktime logo "
-            className=" png-light-gray absolute -right-32 top-4 h-7 w-64 object-cover"
+            className=" png-light-gray desktop:-right-32 absolute -right-10 top-4 h-7 w-64 object-cover"
           />
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -182,14 +183,18 @@ export default function Home() {
           <div className="absolute right-2 top-[40rem] origin-right -rotate-90 text-white">
             POGGERS
           </div>
-          <div className="absolute left-1/2 top-10 z-10 w-full -translate-x-1/2">
+          <div className="desktop:top-10 desktop:w-full absolute left-1/2  top-0 z-10 w-5/6 -translate-x-1/2">
             <Spline scene="https://prod.spline.design/KLzdjlL6uWS9CbiJ/scene.splinecode" />
           </div>
         </div>
 
         <div className=" relative left-[55%] top-24   z-30 flex w-full flex-col">
-          <h2 className="text-8xl text-neonTeal ">FREELANCE-</h2>
-          <h2 className="text-8xl text-neonTeal ">DEVELOPERS</h2>
+          <h2 className="desktop:text-8xl text-5xl text-neonTeal ">
+            FREELANCE-
+          </h2>
+          <h2 className="desktop:text-8xl text-5xl text-neonTeal ">
+            DEVELOPERS
+          </h2>
 
           <p className="-mb-2 text-white">
             Need a website? We do everything from domain acquistion to
@@ -210,19 +215,34 @@ export default function Home() {
           <p className="-mb-2 text-white">
             Want a unique feature or something custom, we can build it.
           </p>
-          <p className="-mb-16 text-white">Your success is our success.</p>
-          <h2 className="-mb-32 text-[12rem] ">UNIQUE-</h2>
-          <h2 className="text-[12rem] ">DESIGNS</h2>
+          <p className="desktop:-mb-16 -mb-8 text-white">
+            Your success is our success.
+          </p>
+          <h2 className="desktop:-mb-32 desktop:text-[12rem] -mb-20 text-[8rem] ">
+            UNIQUE-
+          </h2>
+          <h2 className="desktop:text-[12rem] text-[8rem] ">DESIGNS</h2>
         </div>
       </div>
 
-      <div className="bg-darkGray z-20 h-[60vh] w-full px-24 text-3xl text-purple-500">
-        uh hey
+      <div className=" bg-darkGray desktop:h-[65vh] z-20 flex h-[80vh] w-full justify-between px-24 text-3xl text-purple-500">
+        <div className="h-2/3 w-96 rounded-lg bg-black p-10"></div>
+
+        <div className="mt-20 h-2/3 w-96 rounded-lg bg-black p-10"></div>
+
+        <div className="mt-40 h-2/3 w-96 rounded-lg bg-black p-10"></div>
       </div>
 
-      {/* <div className="back-layout w-2/3 left-0  bg-green-300 h-32 z-10 absolute"> */}
-
-      {/* </div> */}
+      <div className=" w-full  px-24 relative">
+        <h2 className=" text-9xl relative z-20">
+          OUR WORK
+        </h2>
+          <Image
+            src={diagonal}
+            alt="diagonal art"
+            className="absolute left-[20%] top-0 opacity-50 z-10 "
+          />
+      </div>
 
       {/* <div className="relative h-10  w-full">
           <Image
@@ -241,13 +261,6 @@ export default function Home() {
       />
 
       <div className="flex w-full ">
-        <p className=" w-2/3 border-4  border-green-500 px-20 py-32 text-center text-6xl ">
-          {` At HackTime, we're not just web developers; we're your dedicated
-          partners in turning digital dreams into reality. Our small yet dynamic
-          team of developers specializes in crafting unique and
-          impactful websites tailored to your needs.`}
-        </p>
-
         <div className="png-light-gray flex w-1/3 flex-col justify-evenly">
           <Image
             src={hacktime}

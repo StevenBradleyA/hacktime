@@ -13,6 +13,7 @@ import CrossIcon from "~/components/Icons/cross";
 import SkullCrossBones from "~/components/Icons/skullCrossBones";
 import { motion } from "framer-motion";
 
+
 export default function Admin() {
   const { data: session } = useSession();
   const accessDenied = !session || !session.user.isAdmin;

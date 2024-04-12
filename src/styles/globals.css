@@ -131,6 +131,85 @@
   transform: rotate(0deg);
 }
 
+.nav-menu-button {
+  background-color: white;
+  color: #22c55e;
+  transition:
+    background-color 0.4s cubic-bezier(0.35, 0, 0, 1),
+    color 0.4s cubic-bezier(0.35, 0, 0, 1);
+}
+.nav-menu-button:hover {
+  background-color: #2f2f2f;
+}
+
+.nav-menu-button-arrow {
+  transition: transform 0.4s cubic-bezier(0.35, 0, 0, 1);
+}
+
+.nav-menu-button:hover .nav-menu-button-arrow {
+  transform: rotate(45deg);
+}
+
+.nav-menu-button-cross {
+  transition: transform 0.4s cubic-bezier(0.35, 0, 0, 1);
+}
+
+.nav-menu-button:hover .nav-menu-button-cross {
+  transform: rotate(180deg);
+}
+
+.nav-talk-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  overflow: hidden;
+  background-color: white;
+  transition: background-color 0.4s cubic-bezier(0.35, 0, 0, 1);
+}
+.nav-talk-button:hover {
+  background-color: #616161;
+}
+
+.nav-talk-button-text {
+  transition:
+    transform 0.4s cubic-bezier(0.35, 0, 0, 1),
+    opacity 0.4s cubic-bezier(0.35, 0, 0, 1);
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.nav-talk-button-circle {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.4s cubic-bezier(0.35, 0, 0, 1);
+}
+
+.nav-talk-button-arrow {
+  transition:
+    opacity 0.4s cubic-bezier(0.35, 0, 0, 1),
+    transform 0.4s cubic-bezier(0.35, 0, 0, 1);
+  opacity: 0;
+  transform: scale(0) translateX(0);
+  visibility: hidden;
+}
+
+.nav-talk-button:hover .nav-talk-button-circle {
+  opacity: 0;
+  transform: scale(0.9);
+  visibility: hidden;
+  transition-delay: 0s, 0s;
+}
+
+.nav-talk-button:hover .nav-talk-button-arrow {
+  opacity: 1;
+  transform: scale(1) translateX(20px);
+  visibility: visible;
+}
+.nav-talk-button:hover .nav-talk-button-text {
+  transform: translateX(20px);
+}
+
 /* -----     menu drop down slide up effect    ----- */
 
 .menu-slide-container {

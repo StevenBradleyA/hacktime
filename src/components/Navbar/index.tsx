@@ -8,7 +8,7 @@ import MenuArrow from "../Icons/menuArrow";
 import ModalDialog from "../Modal";
 import ContactForm from "../ContactForm";
 import { useSession } from "next-auth/react";
-import smileBlur from "@public/Graphics/hacktime-logo.png";
+import hacktime from "@public/Graphics/hacktime-logo.png";
 
 export default function NavBar() {
   const menuRef = useRef<HTMLDivElement | null>(null);
@@ -110,7 +110,7 @@ export default function NavBar() {
             >
               <Image
                 className=" png-green scale-150 object-cover"
-                src={smileBlur}
+                src={hacktime}
                 alt="hacktime"
                 width={200}
                 height={200}
@@ -128,11 +128,33 @@ export default function NavBar() {
           </Link>
         ) : (
           <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            className="rounded-3xl bg-white px-6 py-2"
+            className="nav-talk-button flex items-center gap-2 rounded-3xl  py-3 pr-6"
             onClick={openModal}
-          >{`LET'S CHAT`}</motion.button>
+          >
+            <svg
+              className="nav-talk-button-arrow w-4"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="3"
+                d="M3.515 12h16.97m0 0L13.01 4.525M20.485 12l-7.475 7.476"
+              ></path>
+            </svg>
+            <span className="nav-talk-button-text">{`LET'S CHAT`}</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              className="nav-talk-button-circle w-2"
+              viewBox="0 0 32 32"
+            >
+              <circle cx="16" cy="16" r="16" />
+            </svg>
+          </motion.button>
         )}
         <ModalDialog isOpen={isModalOpen} onClose={closeModal}>
           <ContactForm closeModal={closeModal} />
@@ -141,11 +163,33 @@ export default function NavBar() {
         <motion.button
           onClick={toggleMenu}
           ref={menuButtonRef}
-          className="rounded-3xl bg-white px-6 py-2"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
+          className="nav-menu-button flex items-center gap-2 rounded-3xl  bg-white px-6 py-2"
         >
-          {`${isMenuOpen ? "CLOSE" : "MENU"}`}
+          <span className="nav-menu-button-text">
+            {`${isMenuOpen ? "CLOSE" : "MENU"}`}
+          </span>
+          {!isMenuOpen ? (
+            <svg
+              className="nav-menu-button-arrow w-4"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="3"
+                d="M3.515 12h16.97m0 0L13.01 4.525M20.485 12l-7.475 7.476"
+              ></path>
+            </svg>
+          ) : (
+            <Image
+              alt="hacktime-logo"
+              className="nav-menu-button-cross png-green w-4"
+              src={hacktime}
+            />
+          )}
         </motion.button>
 
         <AnimatePresence>

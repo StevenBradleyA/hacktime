@@ -114,11 +114,11 @@ export default function Home() {
               animate="bobble"
               exit="exit"
               variants={bounceVariants}
-              // onClick={scrollToHeight}
               onClick={() => {
                 descriptionRef.current?.scrollIntoView({
                   behavior: "smooth",
                 });
+            
               }}
             >
               <div className="text-2xl">scroll down</div>

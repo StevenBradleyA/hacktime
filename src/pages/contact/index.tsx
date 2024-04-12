@@ -40,7 +40,7 @@ export default function Contact() {
           HT://
         </div>
         <h2 className="mt-60 text-3xl text-hackGray">
-          Ready for your amazing website?
+          Ready for an amazing website?
         </h2>
         <h3 className="mt-2">
           {` All you have to do is share your details in this form, and we'll get back to you!`}
@@ -85,7 +85,22 @@ export default function Contact() {
         <ModalDialog isOpen={isModalOpen} onClose={closeModal}>
           <ContactForm closeModal={closeModal} />
         </ModalDialog>
-        <div className="mt-16 flex flex-col">
+        <div className="mt-10 flex flex-col">
+          <div className="menu-slide-container flex w-full items-center justify-between text-sm ">
+            <h3 className="menu-slide-text">
+              <div className="relative flex">
+                <div> {`// Steven`}</div>
+                <div className="absolute -right-5 bottom-2 text-xs ">00</div>
+              </div>
+            </h3>
+            <h3 className="menu-slide-text-clone ">
+              <div className="relative flex">
+                <div> {`// Steven`}</div>
+                <div className="absolute -right-5 bottom-2 text-xs ">00</div>
+              </div>
+            </h3>
+          </div>
+
           <div className="flex">
             <button className="h-16 w-16 bg-charcoal"></button>
             <button
@@ -111,7 +126,21 @@ export default function Contact() {
             </button>
             <button className="h-16 w-16 bg-charcoal"></button>
           </div>
-          <div className="mt-10 flex">
+          <div className="menu-slide-container mt-10 flex w-full items-center justify-between text-sm ">
+            <h3 className="menu-slide-text">
+              <div className="relative flex">
+                <div> {`// Zaviar`}</div>
+                <div className="absolute -right-5 bottom-2 text-xs ">01</div>
+              </div>
+            </h3>
+            <h3 className="menu-slide-text-clone ">
+              <div className="relative flex">
+                <div> {`// Zaviar`}</div>
+                <div className="absolute -right-5 bottom-2 text-xs ">01</div>
+              </div>
+            </h3>
+          </div>
+          <div className=" flex">
             <button className="flex h-16 w-16 items-center justify-center bg-charcoal"></button>
             <button
               className="flex h-16 w-16 items-center justify-center bg-slateBlack"

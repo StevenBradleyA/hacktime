@@ -118,7 +118,6 @@ export default function Home() {
                 descriptionRef.current?.scrollIntoView({
                   behavior: "smooth",
                 });
-            
               }}
             >
               <div className="text-2xl">scroll down</div>

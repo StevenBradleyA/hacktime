@@ -21,9 +21,8 @@
 }
 .png-red {
   filter: invert(26%) sepia(83%) saturate(7492%) hue-rotate(356deg)
-      brightness(112%) contrast(123%);
+    brightness(112%) contrast(123%);
 }
-
 
 @keyframes bg-animation {
   0% {
@@ -84,10 +83,8 @@
   z-index: 10;
 } */
 .back-layout {
-  z-index: 30
+  z-index: 30;
 }
-
-
 
 /* -----     navbar     ----- */
 
@@ -189,6 +186,67 @@
   width: 3vw;
 }
 
+/* -----     Project Page     ----- */
+
+#scrollable-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#scrollable-container::-webkit-scrollbar {
+  display: none;
+}
+
+.live-site-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  overflow: hidden;
+}
+
+.live-site-button-text {
+  transition:
+    transform 0.4s cubic-bezier(0.35, 0, 0, 1),
+    opacity 0.4s cubic-bezier(0.35, 0, 0, 1);
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.live-site-button-circle {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.4s cubic-bezier(0.35, 0, 0, 1);
+}
+
+.live-site-button-arrow {
+  transition:
+    opacity 0.4s cubic-bezier(0.35, 0, 0, 1),
+    transform 0.4s cubic-bezier(0.35, 0, 0, 1);
+  opacity: 0;
+  transform: scale(0);
+  visibility: hidden;
+  position: relative;
+  right: 20px;
+}
+
+.live-site-button:hover .live-site-button-circle {
+  opacity: 0;
+  transform: scale(0.9);
+  visibility: hidden;
+  transition-delay: 0s, 0s;
+}
+
+.live-site-button:hover .live-site-button-arrow {
+  opacity: 1;
+  transform: scale(1);
+
+  visibility: visible;
+  transition-delay: 0.2s, 0.2s;
+}
+.live-site-button:hover .live-site-button-text {
+  transform: translateX(-20px);
+}
 /* -----     Contact     ----- */
 
 .contact-page-title {

@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Spline from "@splinetool/react-spline";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import Image from "next/image";
 import DownArrowIcon from "~/components/Icons/downArrow";
@@ -17,6 +17,7 @@ export default function Home() {
   // todo what is background had the matrix falling when clicked for the 3d scene? could be cool?
 
   const [is3DHover, setIs3DHover] = useState<boolean>(false);
+  const descriptionRef = useRef<HTMLImageElement | null>(null);
 
   const handle3DSceneMouseEnter = () => {
     setIs3DHover(true);
@@ -26,23 +27,21 @@ export default function Home() {
     setIs3DHover(false);
   };
 
-  // TODO test resposive sizing with autozoom test moving it to different monitors as well
-  const [count, setCount] = useState(0);
-  const controls = useAnimation();
+  // const [count, setCount] = useState(0);
+  // const controls = useAnimation();
 
-  // todo implement acceleration on count and instersect observer
-  useEffect(() => {
-    const animateCount = () => {
-      let i = 0;
-      const interval = setInterval(() => {
-        i++;
-        setCount(i);
-        if (i === 100) clearInterval(interval);
-      }, 100); // Adjust the interval as needed (milliseconds)
-    };
+  // useEffect(() => {
+  //   const animateCount = () => {
+  //     let i = 0;
+  //     const interval = setInterval(() => {
+  //       i++;
+  //       setCount(i);
+  //       if (i === 100) clearInterval(interval);
+  //     }, 100); // Adjust the interval as needed (milliseconds)
+  //   };
 
-    animateCount();
-  }, []);
+  //   animateCount();
+  // }, []);
 
   const bounceVariants = {
     initial: { opacity: 1, y: 20, rotate: 0 },
@@ -53,11 +52,6 @@ export default function Home() {
       transition: { duration: 2, yoyo: "loop", repeat: 10 },
     },
     exit: { opacity: 1, y: -20, rotate: 5 },
-  };
-
-  const scrollToHeight = () => {
-    // Adjust the value of 1000 to the desired scroll height
-    window.scrollTo({ top: 1000, behavior: "smooth" });
   };
 
   // TODO Next.js TRPC Prisma Cloud storage talk about all these or add them to some cool graphics
@@ -120,7 +114,12 @@ export default function Home() {
               animate="bobble"
               exit="exit"
               variants={bounceVariants}
-              onClick={scrollToHeight}
+              // onClick={scrollToHeight}
+              onClick={() => {
+                descriptionRef.current?.scrollIntoView({
+                  behavior: "smooth",
+                });
+              }}
             >
               <div className="text-2xl">scroll down</div>
               <DownArrowIcon />
@@ -134,6 +133,7 @@ export default function Home() {
           src={backLayout}
           alt="hacktime logo "
           className=" back-layout-container absolute bottom-0 left-0 right-0 top-0 object-cover  "
+          ref={descriptionRef}
         />
 
         <div className="back-layout desktop:w-5/6 relative left-1/2 top-10 z-10 w-full -translate-x-1/2 text-sm">
@@ -233,15 +233,13 @@ export default function Home() {
         <div className="mt-40 h-2/3 w-96 rounded-lg bg-black p-10"></div>
       </div>
 
-      <div className=" w-full  px-24 relative">
-        <h2 className=" text-9xl relative z-20">
-          OUR WORK
-        </h2>
-          <Image
-            src={diagonal}
-            alt="diagonal art"
-            className="absolute left-[20%] top-0 opacity-50 z-10 "
-          />
+      <div className=" relative  w-full px-24">
+        <h2 className=" relative z-20 text-9xl">OUR WORK</h2>
+        <Image
+          src={diagonal}
+          alt="diagonal art"
+          className="absolute left-[20%] top-0 z-10 opacity-50 "
+        />
       </div>
 
       {/* <div className="relative h-10  w-full">
